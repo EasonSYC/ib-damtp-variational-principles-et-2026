@@ -1,0 +1,153 @@
+\section{Calculus on \(\RR^n\)}
+
+Consider \(\functiondomain{f}{\RR^n}{\RR}\), and we write
+\[
+    \vm{x} = \para{x_1, x_2, \ldots, x_n} \in \RR^n.
+\]
+
+Assume \(f\) is sufficiently differentiable (and in particular, at least \(\contClass{2}\), meaning \(f\) is twice continuously differentiable).
+
+\begin{definition}[Stationary Point]
+    \label{def:stationary-point}%
+    We say a point \(\vm{a} \in \RR^n\) is a \emph{stationary point} of \(f\), if
+    \[
+        \para{\grad f} \para{\vm{a}} = \vm{0},
+    \]
+    where the \emph{gradient} is given by
+    \[
+        \grad f = \para{\PartialFrac{f}{x_1}, \PartialFrac{f}{x_2}, \ldots, \PartialFrac{f}{x_n}}.
+    \]
+\end{definition}
+
+We may also Taylor expand a function about a point, having
+\[
+    f\para{\vm{x}} = f\para{\vm{a}} + \sum_{i} \para{x_i - a_i} \para{\nabla_i f} \para{\vm{a}} + \frac{1}{2} \sum_{i, j} \para{x_i - a_i} \para{x_j - a_j} H_{ij} \para{\vm{a}} + \bigO \para{\norm{\vm{x} - \vm{a}}^3},
+\]
+where the \emph{Hessian matrix} is given by
+\[
+    H_{ij} = \frac{\partial^2 f}{\partial x_i \partial x_j}.
+\]
+
+Since \(f\) is \(\contClass{2}\), \(H_{ij} = H_{ji}\). From now on, we simplify the notation with \(\vm{a} = \vm{0}\) by a translation to the origin. Under the summation convention, at a stationary point, we have
+\[
+    f\para{\vm{x}} - f\para{\vm{0}} = \frac{1}{2} x_i H_{ij} x_j + \bigO \para{\abs{\vm{x}}^3}.
+\]
+
+Recall that we may diagonalise \(H_{ij}\), since it is symmetric, and we may rotate the coordinates under the transformation
+\[
+    x_i = R_{ij} x'_{j}.
+\]
+
+Then the new Hessian matrix will be transformed as
+\[
+    \vm{H}' = \vm{R}\transpose \vm{H} \vm{R} = \begin{pmatrix}
+        \lambda_1 & & & 0\\ 
+        & \lambda_2 \\
+        & & \ddots \\
+        0 & & & \lambda_n
+    \end{pmatrix},
+\]
+and the eigenvalues \(\lambda_1, \ldots, \lambda_n\) are the eigenvalues of \(\vm{H}\). Note that since \(\vm{H}\) is real, symmetric, all the eigenvalues are therefore real.
+
+After diagonalisation, the quadratic form will be diagonalised as
+\[
+    f\para{\vm{x}} - f\para{\vm{0}} = \frac{1}{2} \sum_{i = 1}^{n} \lambda_i x_i'^2 + \bigO \para{\abs{\vm{x}}^3}.
+\]
+
+Therefore, we have the following result.
+
+\begin{proposition}[Classification of Stationary Point using Hessian Matrix]
+    \label{prop:classification-stationary-point}%
+    Using the Hessian matrix, at a stationary point,
+    \begin{itemize}
+        \item if \(\lambda_i > 0\) for all \(i\), then \(f\para{\vm{x}} > f\para{\vm{0}}\) for sufficiently small \(\vm{x}\), and hence \(\vm{x} = \vm{0}\) is a \emph{local minimum};
+        \item if \(\lambda_i < 0\) for all \(i\), then \(\vm{x} = \vm{0}\) is a \emph{local maximum};
+        \item if there is some \(\lambda_i > 0\) and some other \(\lambda_j < 0\), then \(\vm{x} = \vm{0}\) is a \emph{saddle point}.
+    \end{itemize}
+\end{proposition}
+
+\begin{remark}
+    The remaining cases are \emph{degenerate} stationary points -- behaviour depends on \(\bigO\para{x^3}\) terms.
+\end{remark}
+
+\begin{corollary}[Hessian Matrix in Two-Variable Case]
+    \label{cor:hessian-2-d}%
+    In the special case where \(n = 2\), we have
+    \begin{itemize}
+        \item if \(\det \vm{H} > 0\) and \(\tr \vm{H} > 0\), then it is a local minimum;
+        \item if \(\det \vm{H} > 0\) and \(\tr \vm{H} < 0\), then it is a local maximum;
+        \item if \(\det \vm{H} < 0\), then it is a saddle point;
+        \item if \(\det \vm{H} = 0\), then it is degenerate.
+    \end{itemize}
+\end{corollary}
+
+\begin{proof}
+    We have \(\det \vm{H} = \lambda_1 \lambda_2\), and \(\tr \vm{H} = \lambda_1 + \lambda_2\). Applying \autoref{prop:classification-stationary-point} gives the result.
+\end{proof}
+
+\begin{remark}
+    If a local minimum is not a global minimum, then either:
+    \begin{itemize}
+        \item there is another stationary point that is the global minimum; or
+        \item the global minimum occurs on the boundary of the domain of \(f\); or
+        \item \(f\) does not have a global minimum.
+    \end{itemize}
+\end{remark}
+
+\begin{example}[Finding and Classifying Stationary Points]
+    \label{ex:finding-classifying-stationary-points}%
+    Consider the function \(\functiondomain{f}{\RR^2}{\RR}\), given by
+    \[
+        f\para{x, y} = x^3 + y^3 - 3xy.
+    \]
+
+    We find the gradient as
+    \[
+        \grad f = \para{3 x^2 - 3y, 3 y^2 - 3x},
+    \]
+    and note
+    \[
+        \grad f = \vm{0} \iff x^2 = y \text{ and } y^2 = x.
+    \]
+
+    This then solves to \(\para{x, y} = \para{0, 0}\) or \(\para{x, y} = \para{1, 1}\).
+
+    Now, looking at the Hessian matrix, we have
+    \[
+        \vm{H} = \begin{pmatrix}
+            6x & -3 \\ -3 & 6y
+        \end{pmatrix}.
+    \]
+
+    The determinant and the trace are therefore given by
+    \[
+        \det \vm{H} = 9 \para{4xy - 1}, \quad \tr \vm{H} = 6 \para{x + y}.
+    \]
+
+    At \(\para{x, y} = \para{1, 1}\), \(\det \vm{H} = 27 > 0\) and \(\tr \vm{H} = 12 > 0\). Therefore, \(\para{1, 1}\) is a local minimum, and
+    \[
+        f\para{1, 1} = -1.
+    \]
+
+    At \(\para{x, y} = \para{0, 0}\), \(\det \vm{H} = -9 < 0\). Therefore, \(\para{0, 0}\) is a saddle, and
+    \[
+        f\para{0, 0} = 0.
+    \]
+
+    We may calculate the eigenvalues and the corresponding eigenvectors as
+    \[
+        \lambda_1 = -3, \quad \vm{e}_1 = \begin{pmatrix}
+            1 \\ 1
+        \end{pmatrix}
+    \]
+    and
+    \[
+        \lambda_2 = 3, \quad \vm{e}_2 = \begin{pmatrix}
+            1 \\ -1
+        \end{pmatrix}.
+    \]
+
+    Therefore, \(\para{0, 0}\) is a local maximum along the line parallel to \(\vm{e}_1\) (\(y = x\)), while it is a local minimum along the line parallel to \(\vm{e}_2\) (\(y = -x\)).
+
+    But note \(f\) does not have a global maximum or minimum -- we can make \(x\) and \(y\) very large (but of the same sign), and \(f\) increases/decreases without bound.
+\end{example}

@@ -1,0 +1,97 @@
+\section{Convex Functions}
+
+\begin{definition}[Convex Set]
+    \label{def:convex-set}%
+    A set \(S \subseteq \RR^n\) is \emph{convex}, if for any \(\vm{x}, \vm{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
+    \[
+        t \vm{x} + \para{1 - t} \vm{y} \in S.
+    \]
+\end{definition}
+
+\autoref{def:convex-set} says that a set is convex, if and only if the straight line segment that connects any two points are included in the set.
+
+\begin{definition}[Graph of Function]
+    \label{def:graph-of-fn}%
+    Let \(f\) be a function with domain \(\mathcal{D}\para{f} \subseteq \RR^n\), i.e., \(\functiondomain{f}{\mathcal{D}\para{f}}{\RR}\). The \emph{graph} of \(f\) is the surface
+    \[
+        z = f\para{\vm{x}}
+    \]
+    in \(\RR^{n + 1}\), with coordinates \(\para{\vm{x}, z}\). A \emph{chord} of \(f\) is a line segment joining \(2\) points of its graph.
+\end{definition}
+
+\begin{definition}[Convex Function]
+    \label{def:convex-function}%
+    A function \(f\) is \emph{convex}, if
+    \begin{itemize}
+        \item its domain \(\mathcal{D}\para{f}\) is convex (as a set); and
+        \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vm{x}, \vm{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
+        \begin{equation}
+            f\para{t \vm{x} + \para{1 - t} \vm{y}} \leq t f\para{\vm{x}} + \para{1 - t} f\para{\vm{y}}. \label{eq:convex-condition}
+        \end{equation}
+    \end{itemize}
+
+    If instead, \autoref{eq:convex-condition} is strict: for any \(\vm{x}, \vm{y} \in S\) with \(\vm{x} \neq \vm{y}\), and \(t \in \oointv{0}{1}\), we have
+    \begin{equation}
+        f\para{t \vm{x} + \para{1 - t} \vm{y}} < t f\para{\vm{x}} + \para{1 - t} f\para{\vm{y}}, \label{eq:strict-convex-condition}
+    \end{equation}
+    then we say \(f\) is \emph{strictly convex}.
+
+    We say \(f\) is \emph{(strictly) concave} if \(-f\) is (strictly) convex.
+\end{definition}
+
+Note that the first property is important, since we need the domain to be convex for \(f\para{t \vm{x} + \para{1 - t} \vm{y}}\) to be well-defined in the first place.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(f\para{x}\)},
+            xmin = 0, xmax = 6,
+            ymin = 0, ymax = 6,
+            samples = 100,
+            domain = 0.5:5.5,
+            xtick = {2, 3, 5},
+            xticklabels = {\(x\), \(t x+\para{1-t}y\), \(y\)},
+            ytick = \empty
+        ]
+
+            \addplot[no marks] {0.5*(x-3)^2 + 1};
+            \node[above left] at (axis cs:5.5,4.125) {\(f\)};
+
+            \addplot[only marks, mark=*, mark size=1pt]
+                coordinates {(2, 1.5) (5, 3)};
+
+            \node[below left] at (axis cs:2, 1.5) {\(\para{x, f\para{x}}\)};
+            \node[above left] at (axis cs:5, 3) {\(\para{y, f\para{y}}\)};
+
+            \addplot[dashed] coordinates {(2, 1.5) (5, 3)};
+            \addplot[only marks, mark=*, mark size=1pt]
+                coordinates {(3, 2) (3, 1)};
+            \node[above left] at (axis cs:3, 2) {\(t f\para{x} + \para{1 - t} f\para{y}\)};
+            \node[below right] at (axis cs:3, 1) {\(f\para{t x + \para{1 - t} y}\)};
+
+            \addplot[dotted] coordinates {(3, 0) (3, 2)};
+
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Convex Function}
+    \label{fig:convex-fn}
+\end{figure}
+
+\begin{examples}[Convex Functions]
+    \label{ex:convex-fn}%
+    \begin{enumerate}
+        \item The function \(f\para{x} = x^2\) is strictly convex, since
+        \[
+            \brac{\para{1 - t} x + ty}^2 - \para{1 - t} x^2 - t y^2 = - t \para{1 - t} \para{x - y}^2 < 0
+        \]
+        for \(t \in \oointv{0}{1}\), \(x \neq y\).
+
+        \item The functions \(f\para{x} = e^x\) and \(g\para{x} = e^{-x}\) are strictly convex.
+        
+        \item The function \(f\para{x} = \abs{x}\) is convex but not strictly convex: to show it is not strict, take for example \(x = 1\) and \(y = 2\), because some chords lie on the graph.
+    \end{enumerate}
+\end{examples}
