@@ -2,9 +2,9 @@
 
 \begin{definition}[Convex Set]
     \label{def:convex-set}%
-    A set \(S \subseteq \RR^n\) is \emph{convex}, if for any \(\vm{x}, \vm{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
+    A set \(S \subseteq \RR^n\) is \emph{convex}, if for any \(\vb{x}, \vb{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
     \[
-        t \vm{x} + \para{1 - t} \vm{y} \in S.
+        t \vb{x} + \pqty{1 - t} \vb{y} \in S.
     \]
 \end{definition}
 
@@ -12,34 +12,34 @@
 
 \begin{definition}[Graph of Function]
     \label{def:graph-of-fn}%
-    Let \(f\) be a function with domain \(\mathcal{D}\para{f} \subseteq \RR^n\), i.e., \(\functiondomain{f}{\mathcal{D}\para{f}}{\RR}\). The \emph{graph} of \(f\) is the surface
+    Let \(f\) be a function with domain \(\mathcal{D}\pqty{f} \subseteq \RR^n\), i.e., \(\functiondomain{f}{\mathcal{D}\pqty{f}}{\RR}\). The \emph{graph} of \(f\) is the surface
     \[
-        z = f\para{\vm{x}}
+        z = f\pqty{\vb{x}}
     \]
-    in \(\RR^{n + 1}\), with coordinates \(\para{\vm{x}, z}\). A \emph{chord} of \(f\) is a line segment joining \(2\) points of its graph.
+    in \(\RR^{n + 1}\), with coordinates \(\pqty{\vb{x}, z}\). A \emph{chord} of \(f\) is a line segment joining \(2\) points of its graph.
 \end{definition}
 
 \begin{definition}[Convex Function]
     \label{def:convex-function}%
     A function \(f\) is \emph{convex}, if
     \begin{itemize}
-        \item its domain \(\mathcal{D}\para{f}\) is convex (as a set); and
-        \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vm{x}, \vm{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
+        \item its domain \(\mathcal{D}\pqty{f}\) is convex (as a set); and
+        \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vb{x}, \vb{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
         \begin{equation}
-            f\para{t \vm{x} + \para{1 - t} \vm{y}} \leq t f\para{\vm{x}} + \para{1 - t} f\para{\vm{y}}. \label{eq:convex-condition}
+            f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}} \leq t f\pqty{\vb{x}} + \pqty{1 - t} f\pqty{\vb{y}}. \label{eq:convex-condition}
         \end{equation}
     \end{itemize}
 
-    If instead, \autoref{eq:convex-condition} is strict: for any \(\vm{x}, \vm{y} \in S\) with \(\vm{x} \neq \vm{y}\), and \(t \in \oointv{0}{1}\), we have
+    If instead, \autoref{eq:convex-condition} is strict: for any \(\vb{x}, \vb{y} \in S\) with \(\vb{x} \neq \vb{y}\), and \(t \in \oointv{0}{1}\), we have
     \begin{equation}
-        f\para{t \vm{x} + \para{1 - t} \vm{y}} < t f\para{\vm{x}} + \para{1 - t} f\para{\vm{y}}, \label{eq:strict-convex-condition}
+        f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}} < t f\pqty{\vb{x}} + \pqty{1 - t} f\pqty{\vb{y}}, \label{eq:strict-convex-condition}
     \end{equation}
     then we say \(f\) is \emph{strictly convex}.
 
     We say \(f\) is \emph{(strictly) concave} if \(-f\) is (strictly) convex.
 \end{definition}
 
-Note that the first property is important, since we need the domain to be convex for \(f\para{t \vm{x} + \para{1 - t} \vm{y}}\) to be well-defined in the first place.
+Note that the first property is important, since we need the domain to be convex for \(f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}}\) to be well-defined in the first place.
 
 \begin{figure}[ht!]
     \centering
@@ -47,13 +47,13 @@ Note that the first property is important, since we need the domain to be convex
         \begin{axis}[
             axis lines = middle,
             xlabel = {\(x\)},
-            ylabel = {\(f\para{x}\)},
+            ylabel = {\(f\pqty{x}\)},
             xmin = 0, xmax = 6,
             ymin = 0, ymax = 6,
             samples = 100,
             domain = 0.5:5.5,
             xtick = {2, 3, 5},
-            xticklabels = {\(x\), \(t x+\para{1-t}y\), \(y\)},
+            xticklabels = {\(x\), \(t x+\pqty{1-t}y\), \(y\)},
             ytick = \empty
         ]
 
@@ -63,14 +63,14 @@ Note that the first property is important, since we need the domain to be convex
             \addplot[only marks, mark=*, mark size=1pt]
                 coordinates {(2, 1.5) (5, 3)};
 
-            \node[below left] at (axis cs:2, 1.5) {\(\para{x, f\para{x}}\)};
-            \node[above left] at (axis cs:5, 3) {\(\para{y, f\para{y}}\)};
+            \node[below left] at (axis cs:2, 1.5) {\(\pqty{x, f\pqty{x}}\)};
+            \node[above left] at (axis cs:5, 3) {\(\pqty{y, f\pqty{y}}\)};
 
             \addplot[dashed] coordinates {(2, 1.5) (5, 3)};
             \addplot[only marks, mark=*, mark size=1pt]
                 coordinates {(3, 2) (3, 1)};
-            \node[above left] at (axis cs:3, 2) {\(t f\para{x} + \para{1 - t} f\para{y}\)};
-            \node[below right] at (axis cs:3, 1) {\(f\para{t x + \para{1 - t} y}\)};
+            \node[above left] at (axis cs:3, 2) {\(t f\pqty{x} + \pqty{1 - t} f\pqty{y}\)};
+            \node[below right] at (axis cs:3, 1) {\(f\pqty{t x + \pqty{1 - t} y}\)};
 
             \addplot[dotted] coordinates {(3, 0) (3, 2)};
 
@@ -84,14 +84,14 @@ Note that the first property is important, since we need the domain to be convex
 \begin{examples}[Convex Functions]
     \label{ex:convex-fn}%
     \begin{enumerate}
-        \item The function \(f\para{x} = x^2\) is strictly convex, since
+        \item The function \(f\pqty{x} = x^2\) is strictly convex, since
         \[
-            \brac{\para{1 - t} x + ty}^2 - \para{1 - t} x^2 - t y^2 = - t \para{1 - t} \para{x - y}^2 < 0
+            \bqty{\pqty{1 - t} x + ty}^2 - \pqty{1 - t} x^2 - t y^2 = - t \pqty{1 - t} \pqty{x - y}^2 < 0
         \]
         for \(t \in \oointv{0}{1}\), \(x \neq y\).
 
-        \item The functions \(f\para{x} = e^x\) and \(g\para{x} = e^{-x}\) are strictly convex.
+        \item The functions \(f\pqty{x} = e^x\) and \(g\pqty{x} = e^{-x}\) are strictly convex.
         
-        \item The function \(f\para{x} = \abs{x}\) is convex but not strictly convex: to show it is not strict, take for example \(x = 1\) and \(y = 2\), because some chords lie on the graph.
+        \item The function \(f\pqty{x} = \abs{x}\) is convex but not strictly convex: to show it is not strict, take for example \(x = 1\) and \(y = 2\), because some chords lie on the graph.
     \end{enumerate}
 \end{examples}
