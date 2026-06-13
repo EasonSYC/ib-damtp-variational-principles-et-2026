@@ -11,9 +11,9 @@ Let \(\pqty{u, v}\) parameterise \(S\), i.e., let
     S: \quad \vb{x} = \vb{x} \pqty{u, v}
 \]
 
-We would like to extremise \(f\pqty{\vb{x} \pqty{u, v}}\).
+We would like to optimise \(f\pqty{\vb{x} \pqty{u, v}}\).
 
-But this is straightfowrard -- \(f\) is now effectively in terms of \(u\) and \(v\), so we want
+But this is straightforward -- \(f\) is now effectively in terms of \(u\) and \(v\), so we want
 \begin{align*}
     0 &= \pdv{u} f\pqty{\vb{x}} = \pqty{\grad f} \vdot \pqty{\pdv{\vb{x}}{u}}, \\
     0 &= \pdv{v} f\pqty{\vb{x}} = \pqty{\grad f} \vdot \pqty{\pdv{\vb{x}}{v}}.
@@ -136,6 +136,7 @@ so the Hessian of \(\phi\) cannot be positive/negative-definite.
 The main advantage of this method is it works even when the constraint is very complicated to solve explicitly (and often simpler even if the constraint can be solved).
 
 \begin{example}[Optimising Quadratic Form]
+    \label{ex:optimising-quadratic-form}%
     We find the minimum of the quadratic form on \(\RR^n\)
     \[
         f\pqty{\vb{x}} = x_i A_{ij} x_j

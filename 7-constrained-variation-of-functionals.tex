@@ -58,15 +58,165 @@ and optimising with respect to \(\lambda\), we have
 
 Consider the class of functions
 \[
-    \contClass = \set{\functiondomain{y}{\ccintv{\alpha}{\beta}}{\RR}}{y \text{ is }\contClass{2}\text{ and }y\pqty{\alpha} = y\pqty{\beta} = 0}.
+    \contClassSymb = \set{\functiondomain{y}{\ccintv{\alpha}{\beta}}{\RR}}{y \text{ is }\contClass{2}\text{ and }y\pqty{\alpha} = y\pqty{\beta} = 0}.
 \]
 
 Let
-\[
-    F\bqty{y} = \int_{\alpha}^{\beta} \bqty{\rho y'^2 + \sigma y^2} \dd{x}
-\]
-and
-\[
-    G\bqty{y} = \int_{\alpha}^{\beta} w y^2 \dd{X}
-\]
+\begin{subequations}
+    \label{eq:sturm-liouville}%
+    \begin{equation}
+        F\bqty{y} = \int_{\alpha}^{\beta} \bqty{\rho y'^2 + \sigma y^2} \dd{x}
+    \end{equation}
+    \begin{equation}
+        G\bqty{y} = \int_{\alpha}^{\beta} w y^2 \dd{X}
+    \end{equation}
+\end{subequations}
 where \(\rho, w > 0\) on \(\oointv{\alpha}{\beta}\), and all of \(\rho, \sigma, w\) are functions on \(\ccintv{\alpha}{\beta}\). We want to minimise \(F\bqty{y}\) in \(\contClassSymb\) subject to constraint \(G\bqty{y} = 1\).
+
+\begin{example}[Sturm--Liouville using Lagrange Multiplier]
+    We optimise
+    \[
+        \Phi_{\lambda} \bqty{y} = F\bqty{y} - \lambda \pqty{G\bqty{y} - 1}.
+    \]
+
+    We verify that the boundary terms indeed vanishes in \(\var{\Phi_{\lambda}}\) vanishes.
+
+    Therefore,
+    \begin{equation}
+        \label{eq:euler-lagrange-sturm-liouville}
+        \fdv{F\bqty{y}}{y\pqty{x}} - \lambda \fdv{G\bqty{y}}{y\pqty{x}} = 0
+    \end{equation}
+    and we have
+    \[
+        \fdv{F\bqty{y}}{y\pqty{x}} = 2 \sigma y - \dv{x} \pqty{2 \rho y'} = 2 \mathcal{L} y
+    \]
+    where we define the operator \(\mathcal{L}\) to be
+    \[
+        \mathcal{L} = - \dv{x} \pqty{\rho \dv{x}} + \sigma.
+    \]
+
+    We also have
+    \[
+        \fdv{G\bqty{y}}{y\pqty{x}} = 2 w y.
+    \]
+
+    Hence, \autoref{eq:euler-lagrange-sturm-liouville} reduces to
+    \begin{equation}
+        \label{eq:eigenvalue-problem}%
+        \mathcal{L} y = \lambda w y
+    \end{equation}
+
+    \autoref{eq:eigenvalue-problem} with the boundary conditions \(y\pqty{\alpha} = y\pqty{\beta} = 0\) is an \emph{eigenvalue problem}: only for discrete \(\lambda\) does there exist a non-trivial solution (eigenfunction) \(y\pqty{x}\). This will be studied in \textit{Methods} in more detail, and \(w\) is called a \emph{weight function}.
+
+    Note this is a linear problem: if \(y \pqty{x}\) fixes this, then so does \(C y \pqty{x}\). Therefore, our constraint of \(G\bqty{y} = 1\) fixes a normalisation of \(y\). The putting \(y\) back into our functional, using integration by parts gives
+    \begin{align*}
+        F\bqty{y} &= \int_{\alpha}^{\beta} y \mathcal{L} y \dd{x} - \bqty{\rho y y'}_{\alpha}^{\beta} \\
+        &= \int_{\alpha}^{\beta} \lambda w y^2 \dd{x} && \text{by \autoref{eq:eigenvalue-problem}} \\
+        &= \lambda G\bqty{y} \\
+        &= \lambda
+    \end{align*}
+    so the solution of our problem must be the lowest eigenvalue.
+\end{example}
+
+We may check that this also works if we change the boundary conditions to vanishing \(y'\) at endpoints, or vanishing \(y\) at one endpoint and \(y'\) at the other.
+
+Recall that this is very similar to \autoref{ex:optimising-quadratic-form}. So we may do something similar to what we did back then -- converting this into a unconstrained problem..
+
+\begin{example}[Sturm--Liouville using Unconstrained Optimisation]
+    Define
+    \[
+        \Lambda \bqty{y} = \frac{F\bqty{y}}{G\bqty{y}},
+    \]
+    and we would like to optimise \(\Lambda\).
+
+    We have (using chain rule)
+    \begin{align*}
+        0 &= \fdv{\Lambda}{y} \\
+        &= \frac{1}{G} \pqty{\fdv{F}{y} - \frac{F}{G} \fdv{G}{y}} \\
+        &= \frac{2}{G} \pqty{\mathcal{L} t - \Lambda w y}
+    \end{align*}
+    and the minimal value of \(\Lambda\) is indeed the lowest eigenvalue of the Sturm--Liouville problem.
+\end{example}
+
+\subsection{Geodesics on a Surface, Function Constraints}
+
+Consider a surface \(S\) in Euclidean space, with some equation \(g\pqty{\vb{x}} = 0\). Let \(A, B \in S\), we want to find a shortest curve on \(S\) that connects these two points.
+
+\begin{example}[Geodesics on a Surface]
+    Let \(\vb{x} \pqty{t}\) for \(0 \l eq t \leq 1\) be a curve on \(S\), with
+    \[
+        \vb{x} \pqty{0} = \vb{x}_{A} \qand \vb{x} \pqty{1} = \vb{x}_{B}.
+    \]
+
+    We want to optimise the length \emph{functional}
+    \[
+        L\bqty{\vb{x}} = \int_{0}^{1} \sqrt{\dot{\vb{x}}^2} \dd{t}
+    \]
+    subject to a constraint given by a \emph{function}
+    \[
+        g\pqty{\vb{x}\pqty{t}} = 0.
+    \]
+
+    To do this, we use a Lagrange multiplier \emph{function} \(\lambda\pqty{t}\): let
+    \[
+        \Phi\bqty{\vb{x}, \lambda} = L \bqty{\vb{x}} - \int_{0}^{1} \lambda g\pqty{\vb{x} \pqty{t}} \dd{t}.
+    \]
+
+    Taking the functional derivative w.r.t. \(\lambda\) gives
+    \[
+        0 = \fdv{\Phi}{\lambda} = - g \pqty{\vb{x} \pqty{t}} \eqno{(\ast)}
+    \]
+    recovering the constraint; taking the functional derivative w.r.t. \(x_i \pqty{t}\) gives
+    \[
+        0 = \fdv{\Phi}{x_i \pqty{t}} = - \lambda \nabla_i g\pqty{\vb{x} \pqty{t}} - \dv{t} \pqty{\frac{\dot{x}_i}{\sqrt{\dot{\vb{x}}^2}}}. \eqno{(\dagger)}
+    \]
+
+    We want to eliminate the Lagrange multiplier function \(\lambda\). The trick is to differentiate \((\ast)\) w.r.t. \(t\), giving
+    \[
+        0 = \dot{x}_i \pdv{g}{x_i}
+    \]
+    and hence
+    \[
+        \frac{\dot{x}_i \pqty{\pdv*{g}{x_i}}}{\sqrt{\dot{\vb{x}}^2}} = 0.
+    \]
+
+    Taking another functional derivative give
+    \[
+        \dv{t} \pqty{\frac{\dot{x}_i}{\sqrt{\dot{\vb{x}}^2}}} \pdv{g}{x_i} + \frac{\dot{x}_i \dot{x}_j \pqty{\pdv*{g}{x_i}{x_j}}}{\sqrt{\dot{\vb{x}}^2}} = 0.
+    \]
+
+    Using \((\dagger)\), we have
+    \[
+        \lambda\pqty{t} = \frac{\dot{x}_i \dot{x}_j \pqty{\pdv*{g}{x_i}{x_j}}}{\sqrt{\dot{\vb{x}}^2} \pqty{\grad g}^2}
+    \]
+
+    Now, diving by \((\dagger)\) by \(\sqrt{\dot{\vb{x}}^2}\) gives
+    \[
+        \frac{1}{\sqrt{\dot{\vb{x}}}^2} \dv{t} \pqty{\frac{\dot{x}_i}{\sqrt{\dot{\vb{x}}}^2}} + \frac{\dot{x}_j \dot{x}_k \pqty{\pdv{g}{x_j}{x_k}}}{\pqty{\grad g}^2 \pqty{\dot{\vb{x}}}^2} \nabla_i g = 0.
+    \]
+
+    This is the equation for the geodesics on the surface, and we solve this along with \((\ast)\) which is the constraint that the curve lies on the surface.
+
+    If we re-parameterise to use arc length as a parameter, we have
+    \[
+        \dv{l} = \frac{1}{\sqrt{\dot{\vb{x}}^2}} \dv{t},
+    \]
+    and our equation now becomes
+    \[
+        \dv[2]{x_i}{l} + \frac{1}{\pqty{\grad g}^2} \dv{x_j}{l} \dv{x_k}{l} \pdv{g}{x_j}{x_k} \nabla_i g = 0.
+    \]
+\end{example}
+
+\begin{example}[Geodesics for a Plane]
+    We consider the constraint \(g = z\), i.e. the plane \(z = 0\). (The answer should be a straight line on this plane.)
+
+    The second derivative
+    \[
+        \pdv{g}{x_j}{x_k} = 0
+    \]
+    and hence the geodesic equation gives
+    \[
+        \dv[2]{x_i}{l} = 0
+    \]
+    recovers a straight line indeed.
+\end{example}

@@ -1,0 +1,81 @@
+\section{Symmetries and Noether's Theorem}
+
+\textit{Continuous symmetries of the action corresponds to first integrals of the Euler--Lagrange Equations.}
+
+We first want to understand what is a symmetry of an action. Consider a smooth map
+\[
+    \functiondomain{\vb{Q}}{\RR^{6N + 1}}{\RR^{3N}}.
+\]
+
+If given a curve \(\vb{q} \pqty{t}\) in the configuration space, define
+
+\begin{definition}[Mapping a Curve under Symmetry]
+    We define
+    \begin{equation}
+        \label{eq:mapping-curve-symmetry}%
+        \vb{q}^{\ast}\pqty{t} = \vb{Q} \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t}.
+    \end{equation}
+\end{definition}
+
+\begin{definition}[Symmetry of the Action]
+    We say the smooth map \(\vb{Q}\) is a \emph{symmetry of the action} if and only if for all curves \(\vb{q} \pqty{t}\) and starting/end times \(t_A, t_B\), we have
+    \begin{equation}
+        \label{eq:symmetry-of-action}%
+        \int_{t_A}^{t_B} L\pqty{\vb{q}^{\ast} \pqty{t}, \dot{\vb{q}}^{\ast} \pqty{t}, t} \dd{t} = \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t} \dd{t}.
+    \end{equation}
+\end{definition}
+
+Consider a \(1\)-parameter family of such maps, labelled by say a parameter \(s\), i.e.,
+\[
+    \vb{Q} = \vb{Q} \pqty{\vb{q}, \dot{\vb{q}}, t, s}
+\]
+and assume \(\vb{Q} = \vb{q}\) if \(s = 0\).
+
+For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), giving
+\begin{equation}
+    \label{eq:image-curve-taylor}%
+    \vb{q}^{\ast} = \vb{q} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \bigO \pqty{s^2}
+\end{equation}
+
+\begin{theorem}[Noether's Theorem, Version 1]
+    \label{thm:noether-thm-ver-1}%
+    If there exists an \(1\)-parameter family of symmetries of the action (i.e., continuous symmetry of the action), then any solution of the Euler--Lagrange equations has a conserved quantity (i.e. a first integral) of the form
+    \[
+        \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} = \text{constant}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    For any small \(s\), we substitute \autoref{eq:image-curve-taylor} into \autoref{eq:symmetry-of-action}. Subtracting gives
+    \begin{align*}
+        0 &= \int_{t_A}^{t_B} \bqty{L \pqty{\vb{q} \pqty{t} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, \dot{\vb{q}} \pqty{t} + s \dv{t} \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots}, t} - L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} \\
+        &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{q_i} + s \dv{t} \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} + \cdots} \dd{t} \\
+        &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pqty{\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i}} + s \dv{t} \pqty{\pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0}} + \cdots} \dd{t} \\
+        &= \bqty{s \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{t = 0}}_{t_A}^{t_B} + \bigO\pqty{s^2}.
+    \end{align*}
+
+    Taking an \(s\)-derivative and setting \(s = 0\) gives
+    \[
+        \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{t = 0}
+    \]
+    takes the same value at time \(t_A\) and \(t_B\). But this holds for arbitrary \(t_A\) and \(t_B\), giving a conserved quantity.
+\end{proof}
+
+\begin{example}[Conservation of Conjugate Momentum]
+    Suppose \(L\) does not depend on \(q_1\) (for example, a central force does not depend on orientation). Then consider
+    \[
+        \vb{Q} = \pqty{q_1 + s, q_2, q_3, \ldots, q_{3N}}.
+    \]
+
+    Hence,
+    \[
+        q^{\ast}_1 = q_1 + s, \quad q^{\ast}_2 = q_2, \ldots, q^{\ast}_{3N} = q_{3N},
+    \]
+    while all the velocities remain identical. But \(L\) does not depend on \(q_1\), so this is indeed a symmetry of the action.
+
+    By \autoref{thm:noether-thm-ver-1} (Noether's Theorem), this gives rise to a conserved quantity
+    \[
+        \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} = \pdv{L}{\dot{q}_1} = p_1
+    \]
+    which is the conjugate momentum, as in \autoref{eq:conjugate-momentum}.
+\end{example}

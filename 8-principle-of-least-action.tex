@@ -1,0 +1,308 @@
+\section{Principle of Least Action (Hamilton's Principle)}
+
+Consider a system of \(N\) particles in three-dimensional space. The positions \(\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N\) of the particles correspond to a single point
+\[
+    \pqty{\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N}
+\]
+in a \(3N\)-dimensional space. This space is called \emph{configuration space}. Of course, it is possible (and often useful) to use non-Cartesian coordinates, and the notation we use is
+\[
+    \vb{q} = \pqty{\vb{q}_1, \vb{q}_2, \ldots, \vb{q}_N}
+\]
+for this space.
+
+\begin{definition}[Configuration Space]
+    The \emph{configuration space} is the space of \(N\)-tuples of positions of the \(N\) particles in the system.
+\end{definition}
+
+A na\"ive way to find an equation for \(\vb{q}\) is to start from Cartesian and convert -- but starting with two quantities, the kinetic energy \(T\) and the potential energy \(V\) in terms of \(\vb{q}\) and \(\dot{\vb{q}}\), we can formalise it without worrying about conversion between coordinate systems.
+
+\begin{definition}[Lagrangian, Action]
+    We define the \emph{Lagrangian}
+    \begin{equation}
+        \label{eq:lagrangian}%
+        L \pqty{\vb{q}, \dot{\vb{q}}, t} = T - V
+    \end{equation}
+    and the \emph{action} of a path \(\vb{q}\pqty{t}\) in the configuration space between \(\vb{q}_{A}\) and \(\vb{q}_{B}\) is
+    \[
+        I \bqty{\vb{q}} = \int_{t_A}^{t_B} L \pqty{\vb{q}\pqty{t}, \dot{\vb{q}} \pqty{t}, t} \dd{t}
+    \]
+    which has dimension \(\dimM \dimL^2 \dimT^{-1}\) (which has the same dimension as \(\hbar\) in quantum mechanics -- this is not a coincidence).
+\end{definition}
+
+\begin{theorem}[Principle of Least Action]
+    The actual path from \(\vb{q}_A\) to \(\vb{q}_B\) of the system optimises the action.
+\end{theorem}
+
+Since \(\vb{q}_A\) and \(\vb{q}_B\) are fixed, the boundary term in \(\var{I}\) vanishes, allowing us to simply recover \autoref{eq:euler-lagrange}, the Euler--Lagrange equation:
+\[
+    \pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i} = 0,
+\]
+for \(i = 1, 2, \ldots, N\).
+
+\begin{example}[Lagrangian for One-Dimensional Central Potential]
+    We take \(N = 1\) and \(\vb{q} = \vb{x}\) in Cartesian. Then we have
+    \[
+        T = \frac{1}{2} m \dot{\vb{x}}^2
+    \]
+    and assume \(V = V \pqty{\vb{x}, t}\), in particular with no dependence on \(\dot{\vb{x}}\). Then we have
+    \[
+        L = \frac{1}{2} m \dot{\vb{x}}^2 - V \pqty{\vb{x}, t}.
+    \]
+
+    \autoref{eq:euler-lagrange} reduces to
+    \[
+        \pdv{V}{x_i} + \dv{t} \pqty{m \dot{x}_i} = 0
+    \]
+    which gives
+    \[
+        m \ddot{\vb{x}} = - \grad V,
+    \]
+    a familiar result we met in \textit{Dynamics and Relativity} for conservative forces!
+\end{example}
+
+The following result is a consequence of \autoref{prop:first-integral-x-inidependence}, but we prove again explicitly using this new notation.
+
+\begin{proposition}[Time Independence leads to Conserved Energy]
+    If \(L\) has no explicit \(t\)-dependence, then there is a first integral of the form
+    \[
+        L - \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i} = - E,
+    \]
+    where \(E\) is a constant.
+\end{proposition}
+
+\begin{proof}
+    Consider the total derivative with respect to \(t\). We have
+    \begin{align*}
+        \dv{L}{t} &= \dv{t} L\pqty{\vb{q}, \dot{\vb{q}}, t} \\
+        &= \pdv{L}{t} + \sum_{i = 1}^{3N} \pqty{\pdv{L}{q_i} \dot{q}_i + \pdv{L}{\dot{q}_i} \ddot{q}_i} \\
+        &= \pdv{L}{t} + \sum_{i = 1}^{3N} \dot{q}_i \pqty{\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i}} + \dv{t} \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i}.
+    \end{align*}
+
+    By the Euler-Lagrange equations, the first term (the term in the brackets) vanishes, and hence
+    \[
+        \dv{t} \pqty{L - \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i}} = \pdv{L}{t}.
+    \]
+
+    If \(L\) has no explicit \(t\)-dependence, the right-hand side reduces to zero, as desired.
+\end{proof}
+
+\begin{example}[Conserved Energy in Conservative Forces]
+    If \(V = V\pqty{\vb{x}}\) from above, we have
+    \begin{align*}
+        -E &= \frac{1}{2} m \dot{\vb{x}}^2 - V\pqty{\vb{x}} - \sum_{i = 1}^{3N} \dot{x}_i m \dot{x}_i \\
+        &= - \frac{1}{2} m \dot{\vb{x}}^2 - V\pqty{\vb{x}} \\
+        &= - \pqty{T + V}.
+    \end{align*}
+
+    So \(E\) is the \emph{total energy} of the particle.
+\end{example}
+
+The Lagrangian encodes the laws of physics -- and this asserts that if the laws of physics does not change with time, then energy is conserved. This is a more fundamental view of where conserved energy arises.
+
+\subsection{Central Force Field}
+
+Consider particles in two-dimensions, using usual polar coordinates \(\vb{q} = \pqty{r, \phi}\). The kinetic energy is therefore given by
+\[
+    T = \frac{1}{2} m \pqty{\dot{r}^2 + r^2 \dot{\phi}^2}.
+\]
+
+Assume that we have a central potential \(V = V\pqty{r}\). Then the Lagrangian is given by
+\[
+    L = \frac{1}{2} m \pqty{\dot{r}^2 + r^2 \dot{\phi}^2} - V\pqty{r}.
+\]
+
+\begin{example}[Conserved Angular Momentum]
+    Euler--Lagrange equations gives for \(\phi\), that
+    \[
+        \pdv{L}{\phi} - \dv{t} \pdv{L}{\dot{\phi}} = 0,
+    \]
+    and with no explicit dependence on \(\phi\), a first integral gives
+    \[
+        \pdv{L}{\dot{\phi}} = \text{constant},
+    \]
+    and hence writing this out gives
+    \[
+        m r^2 \phi = \text{constant},
+    \]
+    or more commonly seen, the \emph{angular momentum} per unit mass \(h\) is conserved
+    \[
+        r^2 \dot{\phi} = h.
+    \]
+\end{example}
+
+Another conservation result can be seen from no explicit \(t\) dependence, which gives conserved energy in the form
+\[
+    E = \dot{r} \pdv{L}{\dot{r}} + \dot{\phi} \pdv{L}{\dot{\phi}} - L = \frac{1}{2} m \pqty{\dot{r}^2 + r^2 \dot{\phi}^2} + V.
+\]
+
+We could use this instead of finding the Euler--Lagrange equation for \(r\). As seen in \textit{Dynamics and Relativity}, eliminating \(\dot{\phi}\), we have
+\[
+    \frac{1}{2} m \dot{r}^2 + V_{\text{eff}} \pqty{r} = E
+\]
+for the \emph{effective potential}
+\[
+    V_{\text{eff}} \pqty{r} = \frac{m h^2}{2 r^2} + V\pqty{r}.
+\]
+
+\subsection{The Hamiltonian and Hamilton's Equations}
+
+Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function of \(\dot{\vb{q}}\). This allows us to take Legendre Transforms using \autoref{eq:legendre-transform-of-convex-function} with respect to \(\dot{\vb{q}}\), with \(\vb{q}\) and \(t\) fixed.
+
+\begin{definition}[Hamiltonian]
+    The \emph{Hamiltonian} \(H \pqty{\vb{q}, \vb{p}, t}\) is defined as the Legendre transform of \(L\) w.r.t. \(\dot{\vb{q}}\), i.e.
+    \begin{equation}
+        \label{eq:hamiltonian}%
+        H \pqty{\vb{q}, \vb{p}, t} = \sup_{\dot{\vb{q}}} \bqty{\vb{p} \vdot \dot{\vb{q}} - L \pqty{\vb{q}, \dot{\vb{q}}, t}}.
+    \end{equation}
+\end{definition}
+
+Using \autoref{eq:legendre-transform-of-convex-function}, we have
+\[
+    H\pqty{\vb{q}, \vb{p}, t} = \bqty{\vb{p} \vdot \dot{\vb{q}} - L\pqty{\vb{q}, \dot{\vb{q}}, t}}
+\]
+for the stationary point of the brackets in \(\dot{q}_i\), i.e.,
+\begin{equation}
+    \label{eq:conjugate-momentum}%
+    p_i = \pdv{L}{\dot{q}_i}
+\end{equation}
+
+\begin{example}[Hamiltonian for One-Dimensional Central Potential]
+    In \(N = 1\), \(\vb{q} = \vb{x}\), we have
+    \[
+        L = \frac{1}{2} m \dot{\vb{x}}^2 - V \pqty{\vb{x}, t}.
+    \]
+
+    We have by \autoref{eq:conjugate-momentum},
+    \[
+        p_i = \pdv{L}{\dot{x}_i} = m \dot{x}_i
+    \]
+    and
+    \[
+        \vb{p} = m \dot{\vb{x}}
+    \]
+    is the \emph{momentum} of the particle. Using \autoref{eq:hamiltonian}, we have
+    \[
+        H = \vb{p} \vdot \frac{\vb{p}}{m} - \pqty{\frac{\vb{p}^2}{2m} + V} = \frac{\vb{p}^2}{2m} + V
+    \]
+    is the \emph{total energy}.
+\end{example}
+
+\begin{examples}[Two-Dimensional Central Potential]
+    Recall we have
+    \[
+        L = \frac{1}{2} m \pqty{\dot{r}^2 + r^2 \dot{\phi}^2} - V\pqty{r}
+    \]
+    with \(\vb{q} = \pqty{r, \phi}\).
+
+    From \autoref{eq:conjugate-momentum}, we have
+    \[
+        p_r = \pdv{L}{\dot{r}} = m \dot{r},
+    \]
+    and
+    \[
+        p_{\phi} = \pdv{L}{\dot{\phi}} = m r^2 \dot{\phi}.
+    \]
+
+    So
+    \[
+        \dot{r} = \frac{p_r}{m}
+    \]
+    and
+    \[
+        \dot{\phi} = \frac{p_\phi}{m r^2}.
+    \]
+
+    Then we have from \autoref{eq:hamiltonian} that
+    \[
+        H = p_r \dot{r} + p_\phi \dot{\phi} - L = \frac{p_r^2}{2m} + \frac{p_\phi^2}{2 m r^2} + V\pqty{r} \dot{\phi}    \]
+    is indeed the total energy of the particle.
+\end{examples}
+
+\begin{definition}[Conjugate Momentum]
+    We call the variable \(p_i\) as the \emph{conjugate momentum} to \(q_i\).
+\end{definition}
+
+The Hamiltonian \(H\) is just the total energy
+\[
+    H = \sum_{i = 1}^{N} \dot{q}_i \pdv{L}{\dot{q}_i} - L,
+\]
+but since \(H = H\pqty{\vb{q}, \vb{p}, t}\), we would have \(\dot{\vb{q}}\) eliminated in favour of \(\vb{q}, \vb{p}\) and \(t\), using \autoref{eq:conjugate-momentum}.
+
+Therefore, the Hamiltonian is conserved if \(\pdv*{L}{t} = 0\).
+
+We can now `forget' about the Lagrangian formalism, and write the equations of motions in terms of \(H\).
+
+\begin{proposition}[Differentiating Hamiltonian w.r.t Conjugate Momentum]
+    \label{prop:hamiltonian-diff-conjugate-momentum}%
+    We have
+    \[
+        \pqty{\pdv{H}{p_i}}_{\vb{q}} = \dot{q}_i.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \pqty{\pdv{H}{p_i}}_{\vb{q}} &= \dot{q}_i + \sum_{j = 1}^{N} p_j \pdv{\dot{q}_j}{p_i} - \sum_{j = 1}^{N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{p_i} \\
+        &= \dot{q}_i
+    \end{align*}
+    by \autoref{eq:conjugate-momentum}.
+\end{proof}
+
+\begin{proposition}[Differentiating Hamiltonian w.r.t. Position]
+    \label{prop:hamiltonian-diff-position}%
+    We have
+    \[
+        \pqty{\pdv{H}{q_i}}_{\vb{p}} = - \pdv{L}{q_i} = - \dot{p}_i
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \pqty{\pdv{H}{q_i}}_{\vb{p}} &= \sum_{j = 1}^{N} p_j \pdv{\dot{q}_j}{q_i} - \pdv{L}{q_i} - \sum_{j = 1}^{N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{q_i} = - \pdv{L}{q_i}
+    \end{align*}
+    by \autoref{eq:conjugate-momentum}.
+
+    By Euler--Lagrange Equations, we have
+    \[
+        - \pdv{L}{q_i} = - \dv{t} \pdv{L}{\dot{q}_i} = - \dot{p}_i
+    \]
+    again by using \autoref{eq:conjugate-momentum}.
+\end{proof}
+
+\autoref{prop:hamiltonian-diff-conjugate-momentum} and \autoref{prop:hamiltonian-diff-position} give the following pair of equations.
+
+\begin{theorem}[Hamilton's Equations]
+    We have
+    \begin{equation}
+        \label{eq:hamilton-equations}
+        \dot{q}_i = \pdv{H}{q_i} \qand \dot{p}_i = - \pdv{H}{q_i}
+    \end{equation}
+\end{theorem}
+
+The Euler--Lagrange equations are second-order ODEs in a \(3N\)-dimensional configuration space with coordinates \(\vb{q}\). In contrast, Hamilton's equations are first-order ODEs in a \(6N\)-dimensional space with coordinates \(\pqty{\vb{q}, \vb{p}}\).
+
+\begin{definition}[Phase Space]
+    The \(6N\)-dimensional space that Hamilton's equations (in \(\pqty{\vb{q}, \vb{p}}\)) is called \emph{phase space}.
+\end{definition}
+
+Another way to derive \autoref{eq:hamilton-equations} is to find the action in terms of
+\[
+    I\bqty{\vb{q}, \vb{p}} = \int_{t_A}^{t_B} \pqty{\vb{p} \vdot \dot{\vb{q}} - H \pqty{\vb{q}, \vb{p}, t}} \dd{t}
+\]
+for fixed \(\vb{q} \pqty{t_A}, \vb{q} \pqty{t_B}\) (but not for \(\vb{p}\), since we only do integration by parts on \(\vb{q}\)).
+
+\begin{proposition}[Time-Independent Hamiltonian is Conserved]
+    If \(H\) has no explicit time-dependence, then the Hamiltonian is conserved for any solution to Hamilton's equations.
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \dv{H}{t} &= \dv{t} \pqty{H \pqty{\vb{q}, \vb{p}, t}} \\
+        &= \sum_{i = 1}^{N} \pqty{\pdv{H}{q_i} \dot{q}_i + \pdv{H}{p_i} \dot{p}_i} + \pdv{H}{t} \\
+        &= \pdv{H}{t}
+    \end{align*}
+    by using \autoref{eq:hamilton-equations}. Therefore, if \(H\) has no explicit time-dependence, the Hamiltonian is conserved.
+\end{proof}
