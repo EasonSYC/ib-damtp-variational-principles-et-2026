@@ -1,0 +1,151 @@
+\section{Functionals and Euler--Lagrange Equations}
+
+\begin{definition}[Differentiability Classes]
+    For \(\Omega \subseteq \RR^n\), we define
+    \begin{align*}
+        \contClass{k} \pqty{\Omega} &= \set{\functiondomain{y}{\Omega}{\RR}}{y \text{ is }k\text{ times continuously differentiable}}, \\
+        \smoothClass \pqty{\Omega} &= \set{\functiondomain{y}{\Omega}{\RR}}{y \text{ is smooth (infinitely differentiable)}}
+    \end{align*}
+\end{definition}
+
+For our discussion, usually \(\contClass{2}\) is sufficient. Denote \(\contClassSymb\) be some set of functions, for example \(\contClass{n} \pqty{\Omega}\).
+
+\begin{definition}[Functional]
+    A \emph{functional} is a map
+    \[
+        \function{F}{\contClassSymb}{\RR}{y}{F\bqty{y},}
+    \]
+    i.e. \(F\) maps a function to a number. More generally, a functional can take inputs of the form \(\pqty{f_1, \ldots, f_n}\) and output a number.
+\end{definition}
+
+An important case is when \(\Omega = \ccintv{\alpha}{\beta} \subseteq \RR\), and \(\contClassSymb = \smoothClass \pqty{\Omega}\), and
+\[
+    F\bqty{y} = \int_{\alpha}^{\beta} f\pqty{y \pqty{x}, y' \pqty{x}, x} \dd{x}
+\]
+for some smooth function \(f\) (with three arguments). We could generalise \(f\) to depend on other derivatives, but this is the most important example.
+
+Our question is, which \(y \in \contClassSymb\) optimises \(F\)?
+
+Consider varying \(y\) to \(y + \var{y} \in \contClassSymb\), and we have
+\begin{align*}
+    \var{F\bqty{y}} &= F\bqty{y + \var{y}} - F\bqty{y} \\
+    &= \int_{\alpha}^{\beta} \bqty{f \pqty{y + \var{y}, y' + \var{y}, x} - f \pqty{y, y', x}} \dd{x} \\
+    &= \int_{\alpha}^{\beta} \pqty{\var{y} \pdv{f}{y} + \var{y'} \pdv{f}{y'}} + \cdots\\
+    &= \int_{\alpha}^{\beta} \dd{x} \var{y\pqty{x}} \pqty{\pdv{f}{y} - \dv{x} \pdv{f}{y'}} + \bqty{\var{y} \pdv{f}{y'}}_{\alpha}^{\beta} + \cdots
+\end{align*}
+using integration by parts.
+
+Now assume that \(\contClassSymb\) is such that the boundary conditions makes the final term vanish, for example,
+\begin{itemize}
+    \item \(y\pqty{\alpha} = a, y\pqty{\beta} = b\) for some \(a, b\); or
+    \item \(\pdv*{f}{y'} = 0\) at \(x = \alpha, \beta\), for example \(f = \sqrt{1 + y'^2}\) equipped with \(y'\pqty{\alpha} = y'\pqty{\beta} = 0\).
+\end{itemize}
+
+\begin{definition}[Functional Derivative]
+    \label{def:functional-derivative}%
+    We define
+    \[
+        \fdv{F\bqty{y}}{y\pqty{x}} = \pdv{f}{y} - \dv{x} \pdv{f}{y'}
+    \]
+    to be the \emph{functional derivative} of \(F\bqty{y}\) w.r.t \(y\pqty{x}\). This is a function in \(x\).
+\end{definition}
+
+So \(\var{F\bqty{y}}\) vanishes to first order for \emph{arbitrary} \(\var{y\pqty{x}}\), if and only if \(y\pqty{x}\) satisfies
+\begin{equation}
+    \fdv{F\bqty{y}}{y\pqty{x}} = \pdv{f}{y} - \dv{x} \pdv{f}{y'} = 0,
+    \label{eq:euler-lagrange}
+\end{equation}
+the \emph{Euler--Lagrange Equation}. This is an second order ODE for \(y\pqty{x}\).
+
+\begin{theorem}[Euler--Lagrange Equation]
+    Let \(\functiondomain{f}{\RR^3}{\RR}\) be a function, and \(\contClassSymb\) be smooth on \(\ccintv{\alpha}{\beta}\) such that the boundary equation
+    \[
+        \bqty{\var{y} \pdv{f}{y'}}_{\alpha}^{\beta} = 0
+    \]
+    holds for all \(\var{y}, y \in \contClassSymb\). Then a function \(y \in \contClassSymb\) minimises the functional
+    \[
+        F\bqty{y} = \int_{\alpha}^{\beta} f\pqty{y, y', x} \dd{x}
+    \]
+    if and only if \autoref{eq:euler-lagrange} (the Euler--Lagrange Equation) holds.
+\end{theorem}
+
+For a generalisation, for a function
+\[
+    \vb{y} \pqty{x} = \pqty{y_1 \pqty{x}, y_2 \pqty{x}, \ldots, y_n \pqty{x}}
+\]
+for \(x \in \ccintv{\alpha}{\beta}\), i.e., \(\functiondomain{\vb{y}}{\ccintv{\alpha}{\beta}}{\RR^n}\), we define
+\[
+    F\bqty{\vb{y}} = \int_{\alpha}^{\beta} f\pqty{\vb{y}, \vb{y}', x} \dd{x}
+\]
+and we have
+\[
+    \var{F\bqty{y}} = \int_{\alpha}^{\beta} \sum_{i = 1}^{n} \var{y_i \pqty{x}} \pqty{\pdv{f}{y_i} - \dv{x} \pdv{f}{y'_i}} \dd{x} + \bqty{\sum_{i = 1}^{n} \var{y_i} \pdv{f}{y_i'}}_{\alpha}^{\beta}.
+\]
+
+Suppose boundary conditions are identical on \(y_i\)s. Then \(\vb{y} \pqty{\vb{x}}\) optimises \(F\) if and only if
+\[
+    \pdv{f}{y_i} - \dv{x} \pdv{f}{y_i'} = 0
+\]
+for all \(i = 1, 2, \ldots, n\). This gives \(n\) second-order ODEs.
+
+\subsection{Geodesics of the Euclidean Plane}
+
+We return to \autoref{prob:shortest-path} at the start of the course, and we aim to find that is the shortest curve between two points \(A, B\) in Euclidean space.
+
+The first question we have is how to parameterise this curve. There are two choices.
+
+\paragraph{Parameterise using \(x\).} We write \(y = y\pqty{x}\), for \(x_A \leq x \leq x_B\), subject to constraints \(y\pqty{x_A} = y_A\), and \(y\pqty{x_B} = y_B\). In this case, we have the length functional satisfies
+    \[
+        L\bqty{y} = \int_{x_A}^{x_B} \sqrt{1 + \pqty{y'}^2} \dd{x}.
+    \]
+
+    We have \(f = \sqrt{1 + \pqty{y'}^2}\), and in particular, \(\pdv*{f}{y} = 0\). \autoref{eq:euler-lagrange} implies that \(\pdv{f}{y'}\) is a constant, so
+    \[
+        \frac{y'}{\sqrt{1 + \pqty{y'}^2}}
+    \]
+    is constant. Hence, \(y'\) is constant, and \(y = mx + c\) is some straight line.
+
+    Then \(m\) and \(c\) are fixed by the boundary conditions.
+
+But by doing this, we excludes certain types of curves (that does not satisfy the vertical line test). So we consider another parameterisation.
+
+\paragraph{Use arbitrary parameter \(t \in \ccintv{0}{1}\).} We have \(t = 0\) at \(A\), \(t = 1\) at \(B\), and \(x = x\pqty{t}\), \(y = y\pqty{y}\). Then we have
+\[
+    L\bqty{\vb{x}} = \int_{0}^{1} \sqrt{\dot{\vb{x}}\pqty{t}^2} \dd{t} \qqtext{where} \dot{\vb{x}} = \pqty{\dv{x}{t}, \dv{y}{t}}.
+\]
+
+The boundary conditions are \(x\pqty{0} = x_A\), \(x\pqty{1} = x_B\), and similar for \(y\). We have
+\[
+    f = \sqrt{\dot{x}^2 + \dot{y}^2},
+\]
+and \autoref{eq:euler-lagrange} on \(x\) imposes that
+\[
+    \dv{t} \pdv{f}{\dot{x}} - \pdv{f}{x} = 0.
+\]
+
+So \(\pdv{f}{\dot{x}}\) is some constant \(c\), and hence
+\[
+    \frac{\dot{x}}{\sqrt{\dot{x}^2 + \dot{y}^2}} = C
+\]
+for some constant \(C\). Similarly,
+\[
+    \frac{\dot{y}}{\sqrt{\dot{x}^2 + \dot{y}^2}} = S
+\]
+for some constant \(S\). Note \(C^2 + S^2 = 1\), so let \(C = \cos \theta\), \(S = \sin \theta\) for some \(\theta\).
+
+If we switch to use arc length \(l\) as a parameter,
+\[
+    \dv{l}{t} = \sqrt{\pqty{\dv{x}{t}}^2 + \pqty{\dv{y}{t}}^2} = \sqrt{\dot{x}^2 + \dot{y}^2}.
+\]
+
+Then
+\[
+    \dv{x}{t} = \flatfrac{\dv{x}{t}}{\dv{l}{t}} = \frac{\dot{x}}{\sqrt{\dot{x}}^2 + {\dot{y}}^2} = \cos \theta
+\]
+and similarly \(\dv*{y}{l} = \sin \theta\).
+
+So \(x = x_A + l \cos \theta\), \(y = y_A + l \sin \theta\) which is a completely arbitrary straight line.
+
+\begin{remark}
+    There is a good reason why we start with \(t\) -- since if we use \(l\) initially, then the upper limit of the integration \emph{will depend on the curve}, but our derivation of \autoref{eq:euler-lagrange} assumed that the boundaries are fixed.
+\end{remark}

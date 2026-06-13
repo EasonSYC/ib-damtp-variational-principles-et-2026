@@ -1,0 +1,151 @@
+\section{First Integrals and Fermat's Principle}
+
+\subsection{First Integrals}
+
+Recall from previous examples, that if \(\pdv*{f}{y} = 0\), then \autoref{eq:euler-lagrange} reduces to give the ``First Integral''
+\[
+    \pdv{f}{y'} = \text{constant}.
+\]
+
+This is a first-order ODE, which is simpler than a second-order ODE.
+
+\begin{proposition}[First Integral for \(x\)-independence]
+    If \(f\) has no explicit \(x\)-dependence, i.e.,
+    \[
+        \pdv{f}{x} = 0,
+    \]
+    then
+    \[
+        f - y' \pdv{f}{y'} = \text{constant}
+    \]
+    for any solution of \autoref{eq:euler-lagrange}.
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \dv{f}{x} &= \pdv{f}{x} + \pdv{f}{y} y' + \pdv{f}{y'} y'' \\
+        &= \pdv{f}{x} + y' \pqty{\pdv{f}{y} - \dv{x} \pdv{f}{y'}} + \dv{x} \pqty{y' \pdv{f}{y'}}.
+    \end{align*}
+
+    If \autoref{eq:euler-lagrange} holds, we have
+    \[
+        \dv{x} \pqty{x - y' \pdv{f}{y'}} = \pdv{f}{x},
+    \]
+    and if \(\pdv{f}{x} = 0\), we have \(f - y' \pdv*{f}{y'}\) is constant indeed.
+\end{proof}
+
+\subsection{Fermat's Principle}
+
+We consider light propagating through a medium, for example light lens.
+
+Let \(c\pqty{\vb{x}}\) be the speed of light in the medium at \(\vb{x}\), and \(c\) be the speed of light in vacuum.
+
+\begin{definition}[Refraction Index]
+    We define the \emph{refractive index} to be
+    \[
+        n\pqty{\vb{x}} = \frac{c}{c\pqty{\vb{x}}}.
+    \]
+\end{definition}
+
+Then the time functional for light to travel from \(A\) to \(B\) along path \(C\), is
+\[
+    T\bqty{C} = \int_{C} \frac{\dd{l}}{c\pqty{\vb{x}}} = \frac{1}{c} P\bqty{C},
+\]
+where
+\[
+    P\bqty{C} = \int_{C} n\pqty{\vb{x}} \dd{l}.
+\]
+
+\begin{theorem}[Fermat's Principle]
+    Light travels from \(A\) to \(B\) along a path that (locally) minimises \(P\) (or \(T\)).
+\end{theorem}
+
+\begin{example}[Fermat's Principle]
+    We find the path of a light ray in the \(\pqty{x, z}\) plane where the refraction index is
+    \[
+        n\pqty{z} = \sqrt{a - bz}, \quad a, b > 0.
+    \]
+
+    Assume our path is parameterised by \(x\), where \(x_A = \alpha \leq x \leq \beta = x_B\).
+
+    We have
+    \begin{align*}
+        P\bqty{z} &= \int_{\alpha}^{\beta} n\pqty{z} \sqrt{1 + \pqty{z'}^2} \dd{x} \\
+        &= \int_{\alpha}^{\beta} f\pqty{z, z'} \dd{x}.
+    \end{align*}
+
+    So using the First Integral, we have
+    \[
+        k = f - z' \pdv{f}{z'} = \frac{n\pqty{z}}{\sqrt{1 + \pqty{z'}^2}} = \sqrt{\frac{a - bz}{1 + \pqty{z'}^2}}
+    \]
+    for some constant \(k\). So
+    \[
+        \pqty{z'}^2 = \frac{b}{k^2} \pqty{z_0 - z}
+    \]
+    for
+    \[
+        z_0 = \frac{a - k^2}{b}.
+    \]
+
+    Hence,
+    \[
+        \frac{z'}{\sqrt{z_0 - z}} = \pm \sqrt{\frac{b}{k^2}},
+    \]
+    and integration gives
+    \[
+        z = z_0 - \frac{b}{4k^2} \pqty{x - x_0}^2
+    \]
+    which is a parabola.
+\end{example}
+
+\begin{example}[Brachistochrone Curve]
+    Suppose a bead slides on a frictionless wire in a vertical plane. What shape of the wire minimises the time for the bead to fall from rest at some pint \(A\), to a lower, horizontally displaced, point \(B\)?
+    
+    We choose axis such that \(A\) is the origin. We use \emph{Conservation of Energy} to see
+    \[
+        \frac{1}{2} m v^2 + m g y = 0,
+    \]
+    and hence
+    \[
+        v = v \pqty{y} = \sqrt{- 2 g y}
+    \]
+
+    Hence, the time functional is given by (for a curve parameterised by \(x\))
+    \begin{align*}
+        T &= \int_{A}^{B} \frac{\dd{l}}{V} \\
+        &= \frac{1}{\sqrt{2g}} \int_{A}^{B} \frac{\sqrt{\dd{x}^2 + \dd{y}^2}}{\sqrt{xy}},
+    \end{align*}
+    and in other words,
+    \[
+        T \propto \int_{0}^{x_B} \frac{\sqrt{1 + \pqty{y'}^2}}{\sqrt{-y}} \dd{x}.
+    \]
+
+    Let
+    \[
+        f = \frac{\sqrt{1 + \pqty{y'}^2}}{\sqrt{-y}}.
+    \]
+
+    Note there is no \(x\) dependence, so we have
+    \[
+        f - y' \pdv{f}{y'} = \frac{1}{\sqrt{\pqty{-y} \pqty{1 + y'^2}}}
+    \]
+    is a constant.
+
+    So
+    \[
+        \pqty{-y} \pqty{1 + y'^2} = 2c
+    \]
+    where \(c > 0\) is some positive constant (due to squaring).
+
+    If we substitute \(y = -c \pqty{1 - \cos \theta}\) for \(\theta \geq 0\) and \(x = x \pqty{\theta}\), this reduces to
+    \[
+        \dv{x}{\theta} = \pm c \pqty{1 - \cos \theta}.
+    \]
+    
+    Hence, \(x = c \pqty{\theta - \sin \theta}\) (choosing the positive solution), using \(x = 0\) at \(y = 0\) for initial conditions. These equations define an inverted \emph{cycloid}.
+
+    To require the curve to pass through \(\pqty{x_B, y_B}\), this fixes \(c\) and the value of \(\theta\) at \(B\).
+\end{example}
+
+Cycloid is the path traced out by a fixed point on the rim of a disc that rolls along a straight line. There is a related curve called the \emph{Tautochrone Curve} which is identical to the Brachistochrone Curve -- which means that starting the bead from \emph{any} point on the curve will reach the bottom at the same time!

@@ -1,0 +1,213 @@
+\section{Constraints and Lagrange Multipliers}
+
+\subsection{Motivation}
+
+Consider a smooth surface \(S\) in \(\RR^3\). If we have \(\functiondomain{f}{\RR^3}{\RR}\), how do we determine the maximum/minimum of \(f\) on \(S\)?
+
+(A real-life example might be \(S\) is a hill, and \(f\) is the temperature scalar field, and we want to find which points on \(S\) are hottest/coldest.)
+
+Let \(\pqty{u, v}\) parameterise \(S\), i.e., let
+\[
+    S: \quad \vb{x} = \vb{x} \pqty{u, v}
+\]
+
+We would like to extremise \(f\pqty{\vb{x} \pqty{u, v}}\).
+
+But this is straightfowrard -- \(f\) is now effectively in terms of \(u\) and \(v\), so we want
+\begin{align*}
+    0 &= \pdv{u} f\pqty{\vb{x}} = \pqty{\grad f} \vdot \pqty{\pdv{\vb{x}}{u}}, \\
+    0 &= \pdv{v} f\pqty{\vb{x}} = \pqty{\grad f} \vdot \pqty{\pdv{\vb{x}}{v}}.
+\end{align*}
+
+Recall from \textit{Vector Calculus} that the set
+\[
+    \Bqty{\pdv{\vb{x}}{u}, \pdv{\vb{x}}{v}}
+\]
+are linearly independent vectors tangent to \(S\). In other words, we have just shown \autoref{prop:max-min-of-function-on-surface} for a parametrisation of \(S\).
+
+\begin{proposition}[Maximum/Minimum of Function on Surface]
+    \label{prop:max-min-of-function-on-surface}%
+    \(\vb{x}_0 \in S\) is a stationary point of \(f\) on \(S\), if and only if \(\grad f\pqty{\vb{x}_0}\) is normal to \(S\).
+\end{proposition}
+
+\subsection{Lagrange Multiplier with Single Constraint}
+
+In practice, we don't always have a nice explicit parametrisation \(\vb{x}\pqty{u, v}\) of \(S\), and more commonly, \(S\) is determined more implicitly of the form
+\[
+    g\pqty{\vb{x}} = 0
+\]
+where \(\vb{x}\) is some other function on \(\RR^3\). This equation is called an \emph{constraint}, and the problem is to optimise \(f\) subject to the constraint \(g = 0\).
+
+\begin{lemma}[Gradient is Perpendicular to Level Surface]
+    \label{lem:gradient-perpendicular-level-surface}%
+    \(\grad g\) is normal to the surface \(S\).
+\end{lemma}
+
+\begin{proof}
+    Since \(g\pqty{\vb{x} \pqty{u, v}} = 0\), differentiating with respect to \(u\) and \(v\) just like above gives the result.
+\end{proof}
+
+So \autoref{prop:max-min-of-function-on-surface} is equivalent to
+\[
+    \grad f\pqty{\vb{x}_0} = \lambda \grad g\pqty{\vb{x}_0}
+\]
+for some \(\lambda\). Then, we want to solve this together with \(g\pqty{\vb{x}_0} = 0\) to find \(\vb{x}_0\) and \(\lambda\).
+
+Note that \emph{both} equations are obtained by finding an \emph{unconstrained} stationary point of
+\[
+    \function{\phi}{\RR^4}{\RR}{\pqty{\vb{x}, \lambda}}{f\pqty{\vb{x}} - \lambda g\pqty{\vb{x}}.}
+\]
+
+Optimising with respect to \(\lambda\) recovers \(g\pqty{\vb{x}} = 0\), and optimising with respect to \(\vb{x}\) recovers \(\grad f = \lambda \grad g\), by differentiation.
+
+\begin{definition}[Lagrange Multiplier]
+    \label{def:lagrange-multiplier}%
+    The \(\lambda\) defined above is a \emph{Lagrange multiplier}.
+\end{definition}
+
+Note whatever we did above generates to \(\RR^n\), but the difficulty is to determine the nature of the stationary points -- there is not a generalisation of the Hessian in this situation.
+
+\begin{example}[Lagrnage Multiplier, Easier Example]
+    Consider an open rectangular box with dimensions \(\pqty{x, y, z}\) (with the \(xy\) surface missing for the top). We want to minimise its surface area \(A\) subject to a constraint of fixed volume \(V = \flatfrac{L^3}{2}\).
+        
+    Mathematically,
+    \[
+        A = 2z \pqty{x + y} + xy
+    \]
+    with constraint
+    \[
+        xyz = \frac{L^3}{2}.
+    \]
+
+    A direct method could be eliminating the constraint by doing
+    \[
+        z = \frac{L^3}{2xy}
+    \]
+    and hence
+    \[
+        A = \frac{L^3}{x} + \frac{L^3}{y} + xy.
+    \]
+
+    Hence, \(A\) is stationary if and only if
+    \[
+        0 = \pdv{A}{x} = - \frac{L^3}{x^2} + y,
+    \]
+    and
+    \[
+        0 = \pdv{A}{y} = - \frac{L^3}{y^2} + x
+    \]
+    and hence \(x = y = L\), with \(z = \flatfrac{L}{2}\), and \(A = 3 L^2\).
+
+    By computing the Hessian of \(A\pqty{x, y}\), we indeed confirm that \(A\) is a minimum.
+
+    Using Lagrange multipliers, we consider the function
+    \[
+        \phi\pqty{x, y, z, \lambda} = A\pqty{x, y, z} - \lambda \pqty{xyz - \frac{L^3}{2}}.
+    \]
+
+    First, we look at
+    \[
+        0 = \pdv{\phi}{z} = 2\pqty{x + y} - \lambda xy,
+    \]
+    and this gives \(\lambda = \flatfrac{2 \pqty{x + y}}{xy}\).
+
+    With respect to \(x\),
+    \[
+        0 = \pdv{\phi}{x} = 2z + y - \lambda yz = 2z + y - \frac{2 \pqty{x + y} z}{x} = \frac{y}{x} \pqty{x - 2z}.
+    \]
+    
+    Hence, \(x = 2z\) or \(y = 0\), but we reject \(y = 0\) since it cannot satisfy the constraint.
+
+    By symmetry, considering the \(y\) derivative gives \(y = 2z\).
+
+    Finally, differentiating with respect to \(\lambda\), we have
+    \[
+        0 = \pdv{\phi}{\lambda} = xyz - \frac{L^3}{2}
+    \]
+    recovering the constraint, so \(z = \flatfrac{L}{2}\) and \(x = y = L\).
+\end{example}
+
+As mentioned before, the disadvantage of this method is there is no way of checking the nature of the stationary point -- you always get a saddle point from the Hessian matrix, since looking at the second derivative of \(\phi\) w.r.t \(\lambda\) gives
+\[
+    \pdv[2]{\phi}{\lambda} = 0
+\]
+so the Hessian of \(\phi\) cannot be positive/negative-definite.
+
+The main advantage of this method is it works even when the constraint is very complicated to solve explicitly (and often simpler even if the constraint can be solved).
+
+\begin{example}[Optimising Quadratic Form]
+    We find the minimum of the quadratic form on \(\RR^n\)
+    \[
+        f\pqty{\vb{x}} = x_i A_{ij} x_j
+    \]
+    on the surface \(\abs{\vb{x}}^2 = 1\), the unit sphere.
+
+    We have
+    \[
+        \phi\pqty{\vb{x}, \lambda} = x_i A_{ij} x_j - \lambda \pqty{x_i x_i - 1}.
+    \]
+
+    Differentiating w.r.t. \(x_i\), we have (using product rule and removing a factor of 2) that
+    \[
+        0 = A_{ij} x_j - \lambda x_i.
+    \]
+
+    Differentiating w.r.t. \(\lambda\) recovers \(\abs{\vb{x}}^2 = 1\).
+
+    We see that the stationary points are going to be the normalised eigenvectors of \(\vb{A}\) (which we would assume to be symmetric), and the value of the Lagrange multiplier would be the eigenvalue.
+
+    At a stationary point,
+    \[
+        f\pqty{\vb{x}} = x_i A_{ij} x_j = \lambda x_i x_i = \lambda,
+    \]
+    so the eigenvalues of \(\vb{A}\) are the values of \(f\) at the stationary points, and the minimum of \(f\) is given by the lowest eigenvalue of \(\vb{A}\).
+
+    Alternatively, we may use a rotation to diagonalise \(\vb{A}\) (which is what we did in \textit{Vectors and Matrices}). Or, we could consider the ratio
+    \[
+        \Lambda\pqty{\vb{x}} = \frac{f\pqty{\vb{x}}}{g\pqty{\vb{x}}} = \hat{x}_i A_{ij} \hat{x}_j = f\pqty{\hat{\vb{x}}}
+    \]
+    where \(\hat{\vb{x}} = \flatfrac{\vb{x}}{\abs{\vb{x}}}\), so optimising \(f\) for \(\hat{\vb{x}}\) is equivalent to optimising \(\Lambda\) for \(\vb{x}\), unconstrained.
+
+    Using the quotient rule,
+    \begin{align*}
+        0 &= \pdv{\Lambda}{x_i} \\
+        &= \frac{1}{g} \pqty{\nabla_i f - \frac{f}{g} \nabla_i g} \\
+        &= \frac{2}{g} \pqty{A_{ij} x_j - \frac{f}{g} x_i} \\
+        &= \frac{2}{g} \pqty{A_{ij} x_j - \Lambda x_i},
+    \end{align*}
+    and we recovered the eigenvalue equation again!
+\end{example}
+
+\begin{example}[Optimising Information Entropy]
+    What probability distribution \(\Bqty{p_1, \ldots, p_n}\) satisfying \(\sum_{i = 1}^{n} p_i = 1\) maximises the ``information entropy''
+    \[
+        S = - \sum_{i = 1}^{n} p_i \log_2 p_i?
+    \]
+
+    We define
+    \[
+        \phi\pqty{p_1, \ldots, p_n, \lambda} = - \sum_{i = 1}^{n} p_i \log_2 p_i - \lambda \pqty{\sum_{i = 1}^{n} p_i - 1}.
+    \]
+
+    Hence, differentiating with respect to \(p_i\) gives
+    \[
+        0 = \pdv{\phi}{p_i} = - \log_2 p_i - \frac{1}{\log 2} - \lambda.
+    \]
+
+    This means that all \(p_i\)s are equal at the extremum. By the constraint,
+    \[
+        0 = \pdv{\phi}{\lambda} = \sum_{i = 1}^{n} p_i - 1,
+    \]
+    so \(p_i = \flatfrac{1}{n}\) for all \(i\), and
+    \[
+        S_{\max} = \log_2 n.
+    \]
+\end{example}
+
+If we have multiple constraints, this is similar. Suppose we want to optimise \(\functiondomain{f}{\RR^n}{\RR}\) subject to \(m < n\) constraints of the form \(g_k \pqty{\vb{x}} = 0\), for \(k = 1, 2, \ldots m\).
+
+We introduce \(m\) Lagrange Multipliers \(\lambda_1, \ldots, \lambda_m\), and optimise
+\[
+    \phi\pqty{x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_m} = f\pqty{\vb{x}} - \sum_{k = 1}^{m} \lambda_k g_k \pqty{\vb{x}}
+\]
+with respect to \(\vb{x}\) and \(\lambda_1, \ldots, \lambda_m\) (each \(\lambda_i\) recovers the constraint \(g_i\)).

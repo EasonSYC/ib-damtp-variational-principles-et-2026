@@ -12,7 +12,7 @@
 
 \begin{definition}[Graph of Function]
     \label{def:graph-of-fn}%
-    Let \(f\) be a function with domain \(\mathcal{D}\pqty{f} \subseteq \RR^n\), i.e., \(\functiondomain{f}{\mathcal{D}\pqty{f}}{\RR}\). The \emph{graph} of \(f\) is the surface
+    Let \(f\) be a function with domain \(\dom\pqty{f} \subseteq \RR^n\), i.e., \(\functiondomain{f}{\dom\pqty{f}}{\RR}\). The \emph{graph} of \(f\) is the surface
     \[
         z = f\pqty{\vb{x}}
     \]
@@ -23,7 +23,7 @@
     \label{def:convex-function}%
     A function \(f\) is \emph{convex}, if
     \begin{itemize}
-        \item its domain \(\mathcal{D}\pqty{f}\) is convex (as a set); and
+        \item its domain \(\dom\pqty{f}\) is convex (as a set); and
         \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vb{x}, \vb{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
         \begin{equation}
             f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}} \leq t f\pqty{\vb{x}} + \pqty{1 - t} f\pqty{\vb{y}}. \label{eq:convex-condition}
@@ -95,3 +95,200 @@ Note that the first property is important, since we need the domain to be convex
         \item The function \(f\pqty{x} = \abs{x}\) is convex but not strictly convex: to show it is not strict, take for example \(x = 1\) and \(y = 2\), because some chords lie on the graph.
     \end{enumerate}
 \end{examples}
+
+\subsection{First Order Conditions}
+
+\begin{theorem}[First Order Condition]
+    \label{thm:first-order-condition}%
+    If \(f\) is differentiable, then \autoref{eq:convex-condition} is equivalent to
+    \begin{equation}
+        \forall \vb{x}, \vb{y} \in \dom\pqty{f}: f\pqty{\vb{y}} \geq f\pqty{\vb{x}} + \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}} \label{eq:first-order-condition}
+    \end{equation}
+
+    Geometrically, this means that the graph of \(f\) lies on or above any tangent plane, as shown in \autoref{fig:convex-fn-tangents} for the one-dimensional case.
+\end{theorem}
+
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(f(x)\)},
+            xmin = -1, xmax = 5,
+            ymin = -2, ymax = 9,
+            xtick = \empty,
+            ytick = \empty,
+            domain = 0:4,
+            samples = 100,
+            width = 10cm
+        ]
+
+            \addplot[no marks, thick, blue] {0.5*x^2};
+
+            \addplot[only marks, mark=*, mark size = 1pt] coordinates {(1, 0.5) (2, 2) (3, 4.5)};
+
+            \addplot[domain=0.25:4.5] {1 * (x - 1) + 0.5};
+            \addplot[domain=0.4:4.2] {2 * (x - 2) + 2};
+            \addplot[domain=0.5:4.1] {3 * (x - 3) + 4.5};
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Convex Function and its Tangents}
+    \label{fig:convex-fn-tangents}
+\end{figure}
+
+\begin{corollary}[Convex Functions have Stationary Points as Global Minimums]
+    \label{cor:stationary-point-global-minimum}%
+    If \(f\) is convex and differentiable, then any stationary point is a global minimum.
+\end{corollary}
+
+\begin{proof}
+    If \(\vb{a}\) is a stationary point, \(\grad f\pqty{\vb{a}} = \vb{0}\), so \autoref{eq:first-order-condition} implies that \(f\pqty{\vb{y}} \geq f\pqty{\vb{a}}\), for all \(\vb{y} \in \dom\pqty{f}\).
+\end{proof}
+
+Now we prove the first-order condition.
+
+\begin{proof}[that \autoref{eq:convex-condition} implies \autoref{eq:first-order-condition}]
+    Let
+    \[
+        h\pqty{t} = \pqty{1 - t} f\pqty{\vb{x}} + t f\pqty{\vb{y}} - f\pqty{\pqty{1 - t} \vb{x} + t \vb{y}}.
+    \]
+
+    Then note that
+    \[
+        h'\pqty{0} = - f\pqty{\vb{x}} + f\pqty{\vb{y}} - \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}}
+    \]
+    which is the difference of two sides in \autoref{eq:first-order-condition}.
+
+    But note that by definition,
+    \[
+        h'\pqty{0} = \lim_{t \to 0} \frac{h\pqty{t} - h\pqty{0}}{t} = \lim_{t \to 0} \frac{h\pqty{t}}{t}.
+    \]
+
+    But note that \autoref{eq:convex-condition} gives that \(h\pqty{t} \geq 0\) for all \(t \in \oointv{0}{1}\), and hence \(h'\pqty{0} \geq 0\), giving \autoref{eq:first-order-condition}.
+ 
+\end{proof}
+
+\begin{proof}[that \autoref{eq:first-order-condition} implies \autoref{eq:convex-condition}]
+    In this direction, note that \autoref{eq:first-order-condition} implies that
+    \begin{align*}
+        f\pqty{\vb{x}} &\geq f\pqty{\vb{z}} + \pqty{\vb{x} - \vb{z}} \vdot \grad f\pqty{\vb{z}} \\
+        f\pqty{\vb{y}} &\geq f\pqty{\vb{z}} + \pqty{\vb{y} - \vb{z}} \vdot \grad f\pqty{\vb{z}}
+    \end{align*}
+    for all \(\vb{x}, \vb{y}\) and \(\vb{z} \in \dom\pqty{f}\).
+
+    Taking a linear combination, we have
+    \[
+        \pqty{1 - t} f\pqty{\vb{x}} + t f \pqty{\vb{y}} \geq f\pqty{z} + \bqty{\pqty{1 - t} \vb{x} + t \vb{y} - \vb{z}} \vdot \grad f\pqty{\vb{z}}.
+    \]
+
+    We now choose \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\), which implies \autoref{eq:convex-condition}.
+\end{proof}
+
+\begin{proposition}[Alternative First Order Condition]
+    An alternative way to write \autoref{eq:first-order-condition} is that
+    \begin{equation}
+        \pqty{\vb{y} - \vb{x}} \vdot \pqty{\grad f\pqty{\vb{y}} - \grad f\pqty{\vb{x}}} \geq 0
+        \label{eq:first-order-condition-alternative}
+    \end{equation}
+    for all \(\vb{x}, \vb{y} \in \dom\pqty{f}\).
+\end{proposition}
+
+In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} states that \(\pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}} \geq 0\), which implies \(f'\pqty{y} \geq f'\pqty{x}\) if \(y \geq x\), i.e., \(f'\) is monotonically increasing.
+
+\begin{proof}[that \autoref{eq:first-order-condition} implies \autoref{eq:first-order-condition-alternative}]
+    From \autoref{eq:first-order-condition}, we have
+    \begin{align*}
+        f\pqty{\vb{y}} &\geq f\pqty{\vb{x}} + \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}}, \\
+        f\pqty{\vb{x}} &\geq f\pqty{\vb{y}} + \pqty{\vb{x} - \vb{y}} \vdot \grad f\pqty{\vb{y}}.
+    \end{align*}
+
+    Adding these give \autoref{eq:first-order-condition-alternative}.
+\end{proof}
+
+\begin{proof}[that \autoref{eq:first-order-condition-alternative} implies \autoref{eq:first-order-condition}]
+    We let \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\).
+
+    Then we have
+    \begin{align*}
+        f\pqty{\vb{y}} - f\pqty{\vb{x}} &= \bqty{f\pqty{\vb{z}}}_{t = 0}^{t = 1} \\
+        &= \int_{0}^{1} \dd{t} \dv{t} f\pqty{\vb{z}} \\
+        &= \int_{0}^{1} \dd{t} \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{z}}.
+    \end{align*}
+
+    Hence,
+    \[
+        f\pqty{\vb{y}} - f\pqty{\vb{x}} - \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}} = \int_{0}^{1} \dd{t} \Bqty{\pqty{\vb{y} - \vb{x}} \vdot \bqty{\grad f\pqty{\vb{z}} - \grad f \pqty{\vb{x}}}}.
+    \]
+
+    Replace \(\vb{y}\) with \(\vb{z}\) in \autoref{eq:first-order-condition-alternative} gives that \(t \Bqty{\cdots} \geq 0\) (by using that \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\)), and hence \(\Bqty{\cdots} \geq 0\).
+
+    Hence, the integral is non-negative, and \autoref{eq:first-order-condition} holds.
+\end{proof}
+
+\subsection{Second Order Condition}
+
+\begin{theorem}[Second Order Condition]
+    \label{thm:second-order-condition}%
+    If \(f\) is \(\contClass{2}\), then \autoref{eq:convex-condition} is equivalent to all eigenvalues of the Hessian \(\vb{H} \pqty{\vb{x}}\) is non-negative, for all \(\vb{x} \in \dom\pqty{f}\). In other words, the Hessian is positive semi-definite.
+\end{theorem}
+
+\begin{proof}[that \autoref{eq:convex-condition} implies \autoref{thm:second-order-condition}]
+    We start from \autoref{eq:first-order-condition-alternative}. Set \(\vb{Y} = \vb{x} + \vb{h}\) in \autoref{eq:first-order-condition-alternative}, we have
+    \[
+        \vb{h} \vdot \bqty{\grad f\pqty{\vb{x} + \vb{h}} - \grad f\pqty{\vb{x}}} \geq 0.
+    \]
+
+    By Taylor expanding, we have
+    \[
+        \nabla_i f\pqty{\vb{x} + \vb{h}} = \nabla_i f \pqty{\vb{x}} + h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{h^3} \geq 0
+    \]
+    and hence
+    \[
+        h_i h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{h^3} \geq 0.
+    \]
+
+    Suppose that \(\vb{H}\pqty{\vb{x}}\) has some negative eigenvalue \(\lambda\) with eigenvector \(\vb{e}\), then setting \(\vb{h} = h \vb{e}\) gives that
+    \[
+        \lambda h^2 \vb{e}^2 + \bigO \pqty{h^3} \geq 0
+    \]
+    but the left-hand side is negative for sufficiently small \(h\) (since \(\lambda < 0\)), which is a contradiction.
+\end{proof}
+
+\begin{proof}[ththat \autoref{thm:second-order-condition} implies \autoref{eq:convex-condition}]
+    We only prove in the case \(n = 1\) in this case, and we have \(H\pqty{x} = f''\pqty{x}\) and hence \(f''\pqty{x} \geq 0\) for all x.
+
+    We have
+    \[
+        0 \leq \sign \pqty{y - x} \int_{x}^{y} f'' \pqty{x} \dd{x} = \sign \pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}}
+    \]
+    and hence multiply by \(\abs{y - x}\), we have
+    \[
+        0 \leq \pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}}
+    \]
+    which gives the result for \autoref{eq:first-order-condition-alternative}, hence \autoref{eq:first-order-condition}.
+\end{proof}
+
+\begin{example}[Using Second Order Conditions]
+    Consider the function \(f\pqty{x, y} = \flatfrac{1}{xy}\), and \(\dom\pqty{f} = \set{\pqty{x, y}}{x > 0, y > 0}\). The Hessian is given by
+    \[
+        \vb{H} = \frac{1}{xy} \pmqty{\frac{2}{x^2} & \frac{1}{xy} \\ \frac{1}{xy} & \frac{2}{y^2}},
+    \]
+    and we have
+    \[
+        \det \vb{H} = \frac{3}{x^4 y^4} > 0
+    \]
+    and
+    \[
+        \tr \vb{H} = \frac{2}{xy} \pqty{\frac{1}{x^2} + \frac{1}{y^2}} > 0.
+    \]
+
+    This means the eigenvalues of \(\vb{H}\) is strictly true in \(\dom\pqty{f}\), and hence \(f\) is strictly convex.
+
+    Note that if we take the domain to be
+    \[
+        \dom\pqty{f} = \set{\pqty{x, y}}{xy > 0},
+    \]
+    it seems like \(f\) would still be convex -- but that is not the case, because \(D\pqty{f}\) is not convex, and hence \(f\) is not convex,
+\end{example}

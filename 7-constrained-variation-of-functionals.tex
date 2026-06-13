@@ -1,0 +1,72 @@
+\section{Constrained Variation of Functionals}
+
+To optimise a functional \(F\bqty{y}\) subject to a functional constraint \(P\bqty{y} = c\), some constant, we can introduce a Lagrange multiplier
+\[
+    \Phi_\lambda \bqty{y} = F\bqty{y} - \lambda \pqty{P\bqty{y} - c}.
+\]
+
+If we optimise with respect to \(y\), we have
+\[
+    \fdv{F}{y} - \lambda \fdv{P}{y} = 0,
+\]
+and optimising with respect to \(\lambda\), we have
+\[
+    P\bqty{y} = c.
+\]
+
+\begin{example}
+    We determine the \(y\pqty{x}\) that minimises
+    \[
+        \int_{0}^{1} \frac{1}{2} \pqty{y'}^2 \dd{x}
+    \]
+    subject to the constraint
+    \[
+        \int_{0}^{1} y\pqty{x} = 1
+    \]
+    in the class of smooth functions on \(\ccintv{0}{1}\) with \(y\pqty{0} = y\pqty{1} = 0\). We have
+    \begin{align*}
+        \Phi_\lambda \bqty{y} &= \int_{0}^{1} \frac{1}{2} y'^2 \dd{x} - \lambda \pqty{\int_{0}^{1} y \dd{x} - 1} \\
+        &= \int_{0}^{1} \pqty{\frac{1}{2} y'^2 - \lambda y} \dd{x} + \lambda.
+    \end{align*}
+
+    Let \(f = \frac{1}{2} y'^2 - \lambda y\). Euler--Lagrange Equation gives
+    \[
+        0 = \pdv{f}{y} - \dv{x}\pdv{f}{y'} = -\lambda - y'',
+    \]
+    and integrating twice gives
+    \[
+        y = - \frac{1}{2} \lambda x^2 + Ax + B
+    \]
+    for some constant \(A, B = 0\).
+
+    Boundary conditions on \(y\) gives \(B = 0\) and \(A = \frac{1}{2} \lambda\). The constraint gives us
+    \[
+        1 = \int_{0}^{1} y \dd{x} = \bqty{- \frac{1}{6} \lambda x^3 + \frac{1}{2} \pqty{\frac{1}{2} \lambda} x^2}_{0}^{1} = \frac{\lambda}{!2}
+    \]
+    so \(\lambda = 12\), and \(y = 6x \pqty{1 - x}\).
+\end{example}
+
+\begin{example}[Dido's Problem]
+    If we have a wall along the \(x\)-axis, and we build a fence around that wall, but we only have a fixed total length of fence \(L\), what shape should the fence to be to maximise the area enclosed? (See Example Sheet 1.)
+\end{example}
+
+\begin{example}[Isoperimetric Problem]
+    A simple closed curve has length \(L\). What shape should it be to maximise its enclosed area? (See Example Sheet 2)
+\end{example}
+
+\subsection{Sturm--Liouville Problem}
+
+Consider the class of functions
+\[
+    \contClass = \set{\functiondomain{y}{\ccintv{\alpha}{\beta}}{\RR}}{y \text{ is }\contClass{2}\text{ and }y\pqty{\alpha} = y\pqty{\beta} = 0}.
+\]
+
+Let
+\[
+    F\bqty{y} = \int_{\alpha}^{\beta} \bqty{\rho y'^2 + \sigma y^2} \dd{x}
+\]
+and
+\[
+    G\bqty{y} = \int_{\alpha}^{\beta} w y^2 \dd{X}
+\]
+where \(\rho, w > 0\) on \(\oointv{\alpha}{\beta}\), and all of \(\rho, \sigma, w\) are functions on \(\ccintv{\alpha}{\beta}\). We want to minimise \(F\bqty{y}\) in \(\contClassSymb\) subject to constraint \(G\bqty{y} = 1\).
