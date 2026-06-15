@@ -1,0 +1,86 @@
+\section{Jacobi Condition}
+
+We want to study the converse of the Legendre Condition (\autoref{thm:legendre-condition}) in the previous section.
+
+Using the same setups in the previous section, let \(y_0 \in \contClassSymb\) satisfy the Euler--Lagrange equation for the functional \(F\).
+
+Consider the integral
+\[
+    \int_{\alpha}^{\beta} \pqty{\phi \xi^2}' \dd{x} = 0
+\]
+since it is a total derivative. Then expanding gives
+\[
+    0 = \int_{\alpha}^{\beta} \pqty{2 \phi \xi \xi' + \phi' \xi^2} \dd{x}
+\]
+and this holds for any differentiable \(\phi\).
+
+Adding this to \autoref{eq:second-variation-parameter}, we have
+\[
+    \var[2]{F\bqty{y_0, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \pqty{\rho \pqty{\xi'}^2 + 2 \phi \xi \xi' + \pqty{\sigma + \phi'} \xi^2} \dd{x}.
+\]
+
+Suppose that \autoref{thm:legendre-condition} (Legendre Condition) is satisfied, and even stronger, \(\rho > 0\) for all \(\alpha \leq x \leq \beta\). Completing the square on \(\xi'\), we have
+\[
+    \var[2]{F\bqty{y_0, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \bqty{\rho \pqty{\xi ' + \frac{\phi}{\rho} \xi}^2 + \pqty{\sigma + \phi ' - \frac{\phi^2}{\rho}} \xi^2} \dd{x}
+\]
+
+If we can choose \(\phi\) to satisfy the \emph{Ricatti Equation}
+\begin{equation}
+    \label{eq:ricatti}%
+    \phi' + \sigma = \frac{\phi^2}{\rho}
+\end{equation}
+then we see
+\[
+    \var[2]{F\bqty{y_0, \xi}} \geq 0
+\]
+and vanishes iff
+\[
+    \xi' + \frac{\phi}{\rho} \xi = 0.
+\]
+
+This solves to
+\[
+    \xi \pqty{x} = C \exp \bqty{- \int_{a}^{x} \frac{\phi\pqty{s}}{\rho\pqty{s}} \dd{s}}.
+\]
+
+But \(\xi\pqty{\alpha} = 0\) gives \(C = 0\), so \(\xi = 0\) is trivial. So we have
+\[
+    \var[2]{F\bqty{y_0, \xi}} > 0
+\]
+for any non-trivial, allowed \(\xi\).
+
+In other words, we have shown that \(y_0\) is a local minimum, if there exists a solution to \autoref{eq:ricatti} on \(\ccintv{\alpha}{\beta}\). Considering a substitution
+\[
+    \phi = - \rho \frac{u'}{u}
+\]
+for non-zero \(u\). Then from \autoref{eq:ricatti}, we have
+\[
+    - \pqty{\rho \frac{u'}{u}}' + \sigma = \rho \pqty{\frac{u'}{u}}^2.
+\]
+
+Then
+\begin{equation}
+    \label{eq:jacobi-accessory-eq}%
+    - \pqty{\rho u'}' + \sigma u = 0
+\end{equation}
+is the \emph{Jacobi accessory equation}.
+
+\begin{theorem}[Jacobi Condition]
+    If there exists a solution to \autoref{eq:jacobi-accessory-eq} with \(u \neq 0\) on \(\ccintv{\alpha}{\beta}\), then  \(y_0\) is a local minimum.
+\end{theorem}
+
+\begin{remark}
+    \autoref{eq:jacobi-accessory-eq} can always be solved, but not necessarily with \(u \neq 0\).
+\end{remark}
+
+\begin{example}[Alternative solution to \autoref{ex:sturm-liouville-application-second-variation} using Jacobi Condition]
+    Recall \autoref{ex:sturm-liouville-application-second-variation}. Then \autoref{eq:jacobi-accessory-eq} reduces to
+    \[
+        - u'' - u = 0
+    \]
+    which solves to
+    \[
+        u = A \sin \pqty{x - x_0}
+    \]
+    which oscillates with period \(2 \pi\). Therefore, we can find a solution with \(u \neq 0\) on \(\ccintv{0}{1}\), if and only if \(a < \pi\). This is consistent with the Sturm--Liouville approach. However, unlike the Sturm--Liouville approach, this method does not let us prove that the solution is not a local minimum for larger \(a\).
+\end{example}

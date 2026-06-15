@@ -9,15 +9,15 @@ We first want to understand what is a symmetry of an action. Consider a smooth m
 
 If given a curve \(\vb{q} \pqty{t}\) in the configuration space, define
 
-\begin{definition}[Mapping a Curve under Symmetry]
+\begin{definition}[Mapping a Curve under (Spacial) Symmetry]
     We define
     \begin{equation}
-        \label{eq:mapping-curve-symmetry}%
+        \label{eq:mapping-curve-spacial-symmetry}%
         \vb{q}^{\ast}\pqty{t} = \vb{Q} \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t}.
     \end{equation}
 \end{definition}
 
-\begin{definition}[Symmetry of the Action]
+\begin{definition}[(Spacial) Symmetry of the Action]
     We say the smooth map \(\vb{Q}\) is a \emph{symmetry of the action} if and only if for all curves \(\vb{q} \pqty{t}\) and starting/end times \(t_A, t_B\), we have
     \begin{equation}
         \label{eq:symmetry-of-action}%
@@ -34,12 +34,12 @@ and assume \(\vb{Q} = \vb{q}\) if \(s = 0\).
 For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), giving
 \begin{equation}
     \label{eq:image-curve-taylor}%
-    \vb{q}^{\ast} = \vb{q} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \bigO \pqty{s^2}
+    \vb{q}^{\ast} = \vb{q} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \bigO \pqty{s^2}.
 \end{equation}
 
 \begin{theorem}[Noether's Theorem, Version 1]
     \label{thm:noether-thm-ver-1}%
-    If there exists an \(1\)-parameter family of symmetries of the action (i.e., continuous symmetry of the action), then any solution of the Euler--Lagrange equations has a conserved quantity (i.e. a first integral) of the form
+    If there exists an \(1\)-parameter family of (spacial) symmetries of the action (i.e., continuous symmetry of the action), then any solution of the Euler--Lagrange equations has a conserved quantity (i.e. a first integral) of the form
     \[
         \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} = \text{constant}.
     \]
@@ -69,7 +69,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 
     Hence,
     \[
-        q^{\ast}_1 = q_1 + s, \quad q^{\ast}_2 = q_2, \ldots, q^{\ast}_{3N} = q_{3N},
+        q^{\ast}_1 = q_1 + s, \quad q^{\ast}_2 = q_2, \quad \ldots, \quad q^{\ast}_{3N} = q_{3N},
     \]
     while all the velocities remain identical. But \(L\) does not depend on \(q_1\), so this is indeed a symmetry of the action.
 
@@ -78,4 +78,198 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
         \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} = \pdv{L}{\dot{q}_1} = p_1
     \]
     which is the conjugate momentum, as in \autoref{eq:conjugate-momentum}.
+\end{example}
+
+\begin{example}[Conservation of Total Momentum]
+    Consider coordinates \(\vb{q} = \pqty{\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N}\) where \(\vb{x}_i\) are in Cartesian. Assume \(L\) only depends on \(\vb{x}_i\) via their pairwise differences \(\vb{x}_i - \vb{x}_j\). Let the map be
+    \[
+        \vb{Q} = \pqty{\vb{x}_1 + s \vb{a}, \vb{x}_2 + s \vb{a}, \ldots, \vb{x}_N + s \vb{a}}
+    \]
+    where \(\vb{a}\) is a constant vector (i.e. spacial translation). Then we have
+    \[
+        \vb{x}^{\ast}_i - \vb{x}^{\ast}_j = \vb{x}_i - \vb{x}_j
+    \]
+    and hence
+    \[
+        L \pqty{\vb{q}^{\ast}, \dot{\vb{q}}^{\ast}, t} = L \pqty{\vb{q}, \dot{\vb{q}}, t}
+    \]
+    so \autoref{eq:symmetry-of-action} holds. This means there is a conserved quantity of the form
+    \begin{align*}
+        \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} &= \vb{a} \vdot \sum_{i = 1}^{N} \pdv{L}{\dot{\vb{x}}_i} \\
+        &= \vb{a} \vdot \sum_{i = 1}^{N} \vb{p}_i \\
+        &= \vb{a} \vdot \vb{P}
+    \end{align*}
+    where \(\vb{P}\) is the total momentum of the system. This holds for arbitrary vectors \(\vb{a}\), hence \(\vb{P}\) must be conserved.
+
+    \textit{The invariance of physical laws under spatial translations implies conservation of momentum.}
+\end{example}
+
+\begin{example}[Conservation of Total Angular Momentum]
+    We work in Cartesian again \(\vb{q} = \pqty{\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N}\), and let \(R\) be a rotation in \(\RR^3\) acting on individual \(\vb{x}_i\)s to give \(\vb{q}_R\). Suppose \(L\) is invariant under rotations, then
+    \[
+        L\pqty{\vb{q}_R, \dot{\vb{q}}_R, t} = L \pqty{\vb{q}, \dot{\vb{q}}_R, t}.
+    \]
+
+    We consider \(\vb{Q} = \vb{q}_{R\pqty{s}}\), where we rotate through an angle \(s\) about some fixed unit vector \(\unitv{n}\).
+
+    For infinitesimal \(s\), we have
+    \[
+        R\pqty{s} \vb{x} = \vb{x} + s \unitv{n} \cross \vb{x},
+    \]
+    so
+    \[
+        \pqty{\pdv{\vb{Q}}{s}}_{s = 0} = \pqty{\unitv{n} \cross \vb{x}_1, \unitv{n} \cross \vb{x}_2, \ldots, \unitv{n} \cross \vb{x}_N}.
+    \]
+    
+    By Noether's Theorem,
+    \begin{align*}
+        \sum_{i = 1}^{N} \sum_{a = 1}^{3} \pdv{L}{\pqty{\dot{x}_i}_a} \pqty{\unitv{n} \cross \vb{x}_i}_{a} &= \sum_{i = 1}^{N} \vb{p}_i \vdot \pqty{\unitv{n} \cross \vb{x}_i} \\
+        &= \unitv{n} \vdot \sum_{i = 1}^{N} \vb{x}_i \cross \vb{p}_i \\
+        &= \unitv{n} \vdot \vb{L}
+    \end{align*}
+    where \(\vb{L}\) is the total angular momentum of the system. Since \(\unitv{n}\) is arbitrary, \(\vb{L}\) must be conserved.
+
+        \textit{The invariance of physical laws under rotations implies conservation of angular momentum.}
+\end{example}
+
+We can generalise the definition of a 1-parameter family of symmetries to allow for boundary term.
+
+\begin{corollary}[Noether's Theorem, Version 1, with Bondary Term]
+    If \autoref{thm:noether-thm-ver-1} has the condition of \autoref{eq:symmetry-of-action} changed such that
+    \begin{equation}
+        \label{eq:conserved-symmetry-with-boundary-term}%
+        \int_{t_A}^{t_B} L \pqty{\vb{q}^{\ast}, \dot{\vb{q}}^{\ast}, t} \dd{t} = \int_{t_A}^{t_B} L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} + \bqty{s K \pqty{\vb{q}, \dot{\vb{q}}, t}}_{t_A}^{t_B}
+    \end{equation}
+    for small \(s\), for some \(K\), then there is a conserved quantity of the form
+    \[
+        \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} - K.
+    \]
+\end{corollary}
+
+\begin{example}[Conservation of Momentum under Galilean Boost]
+    We suppose
+    \[
+        L = \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N}.
+    \]
+
+    Suppose similarly, that \(V\) only depend on the relative separations \(\vb{x}_i - \vb{x}_j\). Consider a Galilean boost \(\vb{x}^{\ast} = \vb{x} - \vb{v} t\) where \(\vb{v} = \unitv{n} s\).
+
+    Then
+    \[
+        \vb{Q} = \pqty{\vb{x}_1 - \unitv{n}st, \vb{x}_2 - \unitv{n}st, \ldots, \vb{x}_N - \unitv{n}st},
+    \]
+    with
+    \[
+        \vb{x}_i^{\ast} = \vb{x}_i - \unitv{n}st
+    \]
+    and
+    \[
+        \dot{\vb{x}}_i^{\ast} = \dot{\vb{x}}_i - \unitv{n}s
+    \]
+
+    Now, we have
+    \begin{align*}
+        L \pqty{\vb{x}^{\ast}, \dot{\vb{x}}^{\ast}, t} &= \sum_{i = 1}^{N} \frac{1}{2} m_i \pqty{\dot{\vb{x}}_i - \unitv{n}s}^2 - V \pqty{\vb{x}_1^{\ast}, \ldots, \vb{x}_N^{\ast}} \\
+        &= \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N} - s \unitv{n} \vdot \sum_{n = 1}^{N} m_i \dot{\vb{x}}_i + \bigO \pqty{s^2} \\
+        &= L\pqty{\vb{x}, \dot{\vb{x}}, t} - \dv{t} \pqty{s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i}.
+    \end{align*}
+
+    So \autoref{eq:conserved-symmetry-with-boundary-term} holds with
+    \[
+        K = - \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i = - \unitv{n} \vdot \pqty{M \vb{R}}
+    \]
+    where \(M\) is the total mass, and \(\vb{R}\) is the centre of mass. Then the conserved quantity is
+    \[
+        \sum_{i = 1}^{N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} - K = \sum_{i = 1}^{N} \vb{p}_i \vdot \pqty{\vb{n} t} + M \vb{n} \vdot \vb{R} = \unitv{n} \vdot \pqty{M \vb{R} - \vb{P} t}
+    \]
+    and since \(\unitv{n}\) is arbitrary, \(M \vb{R} - \vb{P} t\) is conserved.
+\end{example}
+
+A different type of symmetry of the action involves transforming the time coordinate \(t^{\ast} = T \pqty{t}\) for invertible \(T\).
+
+\begin{definition}[Mapping a Curve under (Time) Symmetry]
+    We define
+    \[
+        \vb{q}^{\ast} \pqty{t^{\ast}} = \vb{q} \pqty{t} = \vb{q} \pqty{T \inverse \pqty{t^{\ast}}}.
+    \]
+\end{definition}
+
+\begin{definition}[(Time) symmetry of an Action]
+    We say such smooth map \(T\) is a \emph{symmetry of the action} if and only if for all curves \(\vb{q} \pqty{t}\) and starting/end times \(t_A\), \(t_B\), we have
+    \begin{equation}
+        \label{eq:symmetry-of-action-time}%
+        \int_{t_A^{\ast}}^{t_B^{\ast}} L\pqty{\vb{q}^{\ast} \pqty{t^{\ast}}, \dv{\vb{q}^{\ast}}{t^\ast} \pqty{t^{\ast}}, t^{\ast}} \dd{t^{\ast}} = \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t} \dd{t}.
+    \end{equation}
+\end{definition}
+
+Consider, similarly, a 1-parameter family of such symmetries \(T\pqty{t, s}\) where \(T\pqty{t, 0} = t\), then
+\[
+    t^{\ast} = t + s \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}.
+\]
+
+\begin{theorem}[Noether's Theorem, Version 2]
+    \label{thm:noether-thm-ver-2}%
+    If there exists an \(1\)-parameter family of (time) symmetries of the action (i.e., continuous symmetry of the action), then any solution of the Euler--Lagrange equations has a conserved quantity (i.e. a first integral) of the form
+    \[
+        \pqty{L - \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i}} \pqty{\pdv{T}{s}}_{s = 0} = \text{constant}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We have
+    \[
+        \dv{t^{\ast}}{t} = 1 + s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}
+    \]
+    and hence by Binomial Theorem,
+    \[
+        \dv{t}{t^{\ast}} = 1 - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}
+    \]
+
+    Let \(I^{\ast}, I\) be the two sides of \autoref{eq:symmetry-of-action-time}. We change the integral of \(t^{\ast}\) to \(t\), gives
+    \begin{align*}
+        I^{\ast} &= \int_{t_A}^{t_B} L \pqty{\vb{q}\pqty{t}, \dv{t}{t^{\ast}} \dv{t} \vb{q} \pqty{t}, T\pqty{t}} \dv{t^{\ast}}{t} \dd{t} \\
+        &= \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t} - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} \dot{\vb{q}} \pqty{t} + \cdots, t + s \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \\
+        &\phantom{=} \times \pqty{1 + s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \dd{t} \\
+        &= \int_{t_A}^{t_B} \Bqty{L\pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t} - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} \dot{q}_i \pdv{L}{\dot{q}_i} + s \pqty{\pdv{T}{s}}_{s = 0} \pdv{L}{t} + sL \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}} \dd{t} \\
+        &= I + \int_{t_A}^{t_B} \Bqty{\dv{t} \pqty{\pdv{T}{s}}_{s = 0} \pqty{-s \dot{q}_i \pdv{L}{\dot{q}_i} + sL} + s \pqty{\pdv{T}{s}}_{s = 0} \pdv{L}{t}} \dd{t} \\
+        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \int_{t_A}^{t_B} s \pqty{\pdv{T}{s}}_{s = 0} \bqty{- \dv{t} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} + \pdv{L}{t}} \dd{t} \\
+        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B}
+    \end{align*}
+    recalling that \autoref{prop:time-independence-conserved-energy} gives the final term in the brackets to be zero.
+
+    Since \(I^{\ast} = I\), the terms in the square brackets must therefore vanish for all \(t_A\) and \(t_B\), hence is time-independent.
+
+    Hence, differentiating by \(s\) gives us
+    \[
+        \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}
+    \]
+    is independent of \(t\).
+\end{proof}
+
+We can combine the two versions of Noether's theorem together, but the proof will just be longer (and more complicated).
+
+\begin{example}[Conservation of Total Energy]
+    Suppose \(L\) has no time-dependence, and set \(T\pqty{t, s} = t + s\) (so \(T\pqty{t, 0} = t\)). Then \(t^{\ast} = t + s\), so
+    \[
+        \vb{q}^{\ast} \pqty{t^{\ast}} = \vb{q} \pqty{t} = \vb{q} \pqty{t^{\ast} - s}.
+    \]  
+
+    Therefore,
+    \[
+        \dv{\vb{q}^{\ast}}{t^{\ast}} = \dot{\vb{q}} \pqty{t^{\ast} - s}.
+    \]
+
+    Hence,
+    \begin{align*}
+        \int_{t_A^{\ast}}^{t_B^{\ast}} L\pqty{\vb{q}^{\ast} \pqty{t^{\ast}}, \pdv{\vb{q}^{\ast}}{t^{\ast}} \pqty{t^{\ast}}} \dd{t^{\ast}} &= \int_{t_A + s}^{t_B + s} L\pqty{\vb{q} \pqty{t^{\ast} - s}, \dot{\vb{q}} \pqty{t^{\ast} - s}} \dd{t^{\ast}} \\
+        &= \int_{t_A}^{t_B} L\pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}} \dd{t}
+    \end{align*}
+
+    Then the conserved quantity is
+    \[
+        \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} = L - \dot{q}_i \pdv{L}{\dot{q}_i} = -E
+    \]
+    is conservation of energy, recovering \autoref{prop:time-independence-conserved-energy} due to translation in time.
+
+    \textit{The invariance of physical laws under time translations implies conservation of energy.}
 \end{example}
