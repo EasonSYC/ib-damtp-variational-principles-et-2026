@@ -16,12 +16,19 @@ Similarly, we studying the variation of the functional, but here we using diverg
 
 Consider surfaces spanning a closed curve \(\mathcal{C}\) in \(\RR^3\). Which surface has the minimal area?
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\linewidth]{fig/minimal-surface.png}
+    \caption{Minimal Surface Problem}
+    \label{fig:minimal-surface}%
+\end{figure}
+
 \begin{example}[Derivation of Minimal Surface Equation]
     For simplicity, we consider surfaces of the form
     \[
         z = h \pqty{x, y}
     \]
-    for \(\pqty{x, y} \in \mathcal{D}\), with \(\mathcal{C}\) being the boundary of the graph, i.e. maps \(\partial \mathcal{D}\) to \(\mathcal{C}\). In particular, this means that \(h\) is fixed on \(\partial \mathcal{D}\).
+    for \(\pqty{x, y} \in \mathcal{D}\), with \(\mathcal{C}\) being the boundary of the graph, i.e. maps \(\partial \mathcal{D}\) to \(\mathcal{C}\). In particular, this means that \(h\) is fixed on \(\partial \mathcal{D}\). This is shown in \autoref{fig:minimal-surface}.
 
     This allows us to parameterise surface with \(\pqty{x, t}\), with
     \[
@@ -95,8 +102,15 @@ describing a plane. But does this satisfy the boundary condition? This only sati
     \[
         r = r_0 \cosh \pqty{\frac{z - z_0}{r_0}},
     \]
-    which is a \emph{catenoid}.
+    which is a \emph{catenoid}, as in \autoref{fig:catenoid}.
 \end{example}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.4\linewidth]{fig/catenoid.png}
+    \caption{Catenoid}
+    \label{fig:catenoid}
+\end{figure}
 
 Another example is a \emph{helicoid} which is in Example Sheet 2.
 
