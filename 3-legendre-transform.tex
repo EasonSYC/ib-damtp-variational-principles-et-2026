@@ -43,7 +43,7 @@
     We have \(\dom \pqty{F_{\vb{p}}} = \dom \pqty{f}\). Note
     \begin{align*}
         F_{\vb{p}} \pqty{\pqty{1 - t} \vb{x} + t \pqty{\vb{y}}} &= f\pqty{\pqty{1 - t} \vb{x} + t \vb{y}} - \vb{p} \vdot \pqty{\pqty{1 - t} \vb{x} + t \vb{y}} \\
-        &\leq \pqty{1 - t} f \pqty{\vb{x}} + t f \pqty{\vb{y}} - \vb{p} \vdot f\pqty{\pqty{1 - t} \vb{x} + t \vb{y}} \\
+        &\leq \pqty{1 - t} f \pqty{\vb{x}} + t f \pqty{\vb{y}} - \vb{p} \vdot \pqty{\pqty{1 - t} \vb{x} + t \vb{y}} \\
         &= \pqty{1 - t} F_{\vb{p}} \pqty{\vb{x}} + t F_{\vb{p}} \pqty{\vb{y}}.
     \end{align*}
 \end{proof}
@@ -256,11 +256,11 @@ What is below is an overview of the Legendre Transforms -- details can be found 
         P &= - \pqty{\pdv{F}{V}}_{T}.
     \end{align*}
 
-    In Part II, we will see that \(F\) is useful when considering an \emph{non-isolated} system in equilibrium with an \emph{enviroment} ad temperature \(T\), for example gas in an uninsulated box.
+    In Part II, we will see that \(F\) is useful when considering an \emph{non-isolated} system in equilibrium with an \emph{environment} and temperature \(T\), for example gas in an uninsulated box.
 \end{example}
 
 \begin{example}[Legendre Transforms for Pressure -- Enthalpy]
-    Similarly, we forget \autoref{eq:pressure} (for pressure). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(V\) at fixed \(S\), with parameter \(-P\). We call this \(-H\), i/e/,
+    Similarly, we forget \autoref{eq:pressure} (for pressure). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(V\) at fixed \(S\), with parameter \(-P\). We call this \(-H\), i.e.,
     \[
         -H \pqty{S, P} = \sup_{V} \Bqty{- {V - E \pqty{S, V}}}
     \]
