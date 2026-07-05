@@ -58,11 +58,11 @@ So \(\var{F\bqty{y}}\) vanishes to first order for \emph{arbitrary} \(\var{y\pqt
 the \emph{Euler--Lagrange Equation}. This is an second order ODE for \(y\pqty{x}\).
 
 \begin{theorem}[Euler--Lagrange Equation]
-    Let \(\functiondomain{f}{\RR^3}{\RR}\) be a function, and \(\contClassSymb\) be smooth on \(\ccintv{\alpha}{\beta}\) such that the boundary equation
+    Let \(\functiondomain{f}{\RR^3}{\RR}\) be a function, and \(\contClassSymb\) be a class of functions that are smooth on \(\ccintv{\alpha}{\beta}\), and such that the boundary equation
     \[
         \bqty{\var{y} \pdv{f}{y'}}_{\alpha}^{\beta} = 0
     \]
-    holds for all \(\var{y}, y \in \contClassSymb\). Then a function \(y \in \contClassSymb\) minimises the functional
+    holds for all \(\var{y} = y_1 - y_2\) for \(y_1, y_2 \in \contClassSymb\). Then a function \(y \in \contClassSymb\) optimises the functional
     \[
         F\bqty{y} = \int_{\alpha}^{\beta} f\pqty{y, y', x} \dd{x}
     \]
@@ -79,10 +79,10 @@ for \(x \in \ccintv{\alpha}{\beta}\), i.e., \(\functiondomain{\vb{y}}{\ccintv{\a
 \]
 and we have
 \[
-    \var{F\bqty{y}} = \int_{\alpha}^{\beta} \sum_{i = 1}^{n} \var{y_i \pqty{x}} \pqty{\pdv{f}{y_i} - \dv{x} \pdv{f}{y'_i}} \dd{x} + \bqty{\sum_{i = 1}^{n} \var{y_i} \pdv{f}{y_i'}}_{\alpha}^{\beta}.
+    \var{F\bqty{\vb{y}}} = \int_{\alpha}^{\beta} \sum_{i = 1}^{n} \var{y_i \pqty{x}} \pqty{\pdv{f}{y_i} - \dv{x} \pdv{f}{y'_i}} \dd{x} + \bqty{\sum_{i = 1}^{n} \var{y_i} \pdv{f}{y_i'}}_{\alpha}^{\beta}.
 \]
 
-Suppose boundary conditions are identical on \(y_i\)s. Then \(\vb{y} \pqty{\vb{x}}\) optimises \(F\) if and only if
+Suppose boundary conditions are identical on \(y_i\)s. Then \(\vb{y} \pqty{x}\) optimises \(F\) if and only if
 \[
     \pdv{f}{y_i} - \dv{x} \pdv{f}{y_i'} = 0
 \]
@@ -90,7 +90,7 @@ for all \(i = 1, 2, \ldots, n\). This gives \(n\) second-order ODEs.
 
 \subsection{Geodesics of the Euclidean Plane}
 
-We return to \autoref{prob:shortest-path} at the start of the course, and we aim to find that is the shortest curve between two points \(A, B\) in Euclidean space.
+We return to \autoref{prob:shortest-path} at the start of the course, and we aim to find the shortest curve between two points \(A, B\) in Euclidean space.
 
 The first question we have is how to parameterise this curve. There are two choices.
 
@@ -107,9 +107,9 @@ The first question we have is how to parameterise this curve. There are two choi
 
     Then \(m\) and \(c\) are fixed by the boundary conditions.
 
-But by doing this, we excludes certain types of curves (that does not satisfy the vertical line test). So we consider another parameterisation.
+But by doing this, we excluded certain types of curves (which do not satisfy the vertical line test). So we consider another parametrisation.
 
-\paragraph{Use arbitrary parameter \(t \in \ccintv{0}{1}\).} We have \(t = 0\) at \(A\), \(t = 1\) at \(B\), and \(x = x\pqty{t}\), \(y = y\pqty{y}\). Then we have
+\paragraph{Use arbitrary parameter \(t \in \ccintv{0}{1}\).} We have \(t = 0\) at \(A\), \(t = 1\) at \(B\), and \(x = x\pqty{t}\), \(y = y\pqty{t}\). Then we have
 \[
     L\bqty{\vb{x}} = \int_{0}^{1} \sqrt{\dot{\vb{x}}\pqty{t}^2} \dd{t} \qqtext{where} \dot{\vb{x}} = \pqty{\dv{x}{t}, \dv{y}{t}}.
 \]
@@ -140,7 +140,7 @@ If we switch to use arc length \(l\) as a parameter,
 
 Then
 \[
-    \dv{x}{t} = \flatfrac{\dv{x}{t}}{\dv{l}{t}} = \frac{\dot{x}}{\sqrt{\dot{x}}^2 + {\dot{y}}^2} = \cos \theta
+    \dv{x}{t} = \flatfrac{\dv{x}{t}}{\dv{l}{t}} = \frac{\dot{x}}{\sqrt{{\dot{x}}^2 + {\dot{y}}^2}} = \cos \theta
 \]
 and similarly \(\dv*{y}{l} = \sin \theta\).
 

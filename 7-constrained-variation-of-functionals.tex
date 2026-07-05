@@ -1,6 +1,6 @@
 \section{Constrained Variation of Functionals}
 
-To optimise a functional \(F\bqty{y}\) subject to a functional constraint \(P\bqty{y} = c\), some constant, we can introduce a Lagrange multiplier
+To optimise a functional \(F\bqty{y}\) subject to a functional constraint \(P\bqty{y} = c\), some constant, we can introduce a Lagrange multiplier \(\lambda\), and optimise the new functional
 \[
     \Phi_\lambda \bqty{y} = F\bqty{y} - \lambda \pqty{P\bqty{y} - c}.
 \]
@@ -37,11 +37,11 @@ and optimising with respect to \(\lambda\), we have
     \[
         y = - \frac{1}{2} \lambda x^2 + Ax + B
     \]
-    for some constant \(A, B = 0\).
+    for some constant \(A, B\).
 
-    Boundary conditions on \(y\) gives \(B = 0\) and \(A = \frac{1}{2} \lambda\). The constraint gives us
+    Boundary conditions on \(y\) give \(B = 0\) and \(A = \frac{1}{2} \lambda\). The constraint gives us
     \[
-        1 = \int_{0}^{1} y \dd{x} = \bqty{- \frac{1}{6} \lambda x^3 + \frac{1}{2} \pqty{\frac{1}{2} \lambda} x^2}_{0}^{1} = \frac{\lambda}{!2}
+        1 = \int_{0}^{1} y \dd{x} = \bqty{- \frac{1}{6} \lambda x^3 + \frac{1}{2} \pqty{\frac{1}{2} \lambda} x^2}_{0}^{1} = \frac{\lambda}{12}
     \]
     so \(\lambda = 12\), and \(y = 6x \pqty{1 - x}\).
 \end{example}
@@ -68,7 +68,7 @@ Let
         F\bqty{y} = \int_{\alpha}^{\beta} \bqty{\rho y'^2 + \sigma y^2} \dd{x}
     \end{equation}
     \begin{equation}
-        G\bqty{y} = \int_{\alpha}^{\beta} w y^2 \dd{X}
+        G\bqty{y} = \int_{\alpha}^{\beta} w y^2 \dd{xc}
     \end{equation}
 \end{subequations}
 where \(\rho, w > 0\) on \(\oointv{\alpha}{\beta}\), and all of \(\rho, \sigma, w\) are functions on \(\ccintv{\alpha}{\beta}\). We want to minimise \(F\bqty{y}\) in \(\contClassSymb\) subject to constraint \(G\bqty{y} = 1\).

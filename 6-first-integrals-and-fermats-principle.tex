@@ -31,7 +31,7 @@ This is a first-order ODE, which is simpler than a second-order ODE.
 
     If \autoref{eq:euler-lagrange} holds, we have
     \[
-        \dv{x} \pqty{x - y' \pdv{f}{y'}} = \pdv{f}{x},
+        \dv{x} \pqty{f - y' \pdv{f}{y'}} = \pdv{f}{x},
     \]
     and if \(\pdv*{f}{x} = 0\), we have \(f - y' \pdv*{f}{y'}\) is constant indeed.
 \end{proof}
@@ -102,9 +102,9 @@ where
 
 \begin{example}[Brachistochrone Curve]
     \label{ex:brachistochrone-curve}%
-    Suppose a bead slides on a frictionless wire in a vertical plane. What shape of the wire minimises the time for the bead to fall from rest at some pint \(A\), to a lower, horizontally displaced, point \(B\)?
+    Suppose a bead slides on a frictionless wire in a vertical plane. What shape of the wire minimises the time for the bead to fall from rest at some point \(A\), to a lower point \(B\) (horizontally displaced)?
     
-    We choose axis such that \(A\) is the origin. We use \emph{Conservation of Energy} to see
+    We choose axes such that \(A\) is the origin. We use \emph{Conservation of Energy} to see
     \[
         \frac{1}{2} m v^2 + m g y = 0,
     \]
@@ -115,8 +115,8 @@ where
 
     Hence, the time functional is given by (for a curve parameterised by \(x\))
     \begin{align*}
-        T &= \int_{A}^{B} \frac{\dd{l}}{V} \\
-        &= \frac{1}{\sqrt{2g}} \int_{A}^{B} \frac{\sqrt{\dd{x}^2 + \dd{y}^2}}{\sqrt{xy}},
+        T &= \int_{A}^{B} \frac{\dd{l}}{v} \\
+        &= \frac{1}{\sqrt{2g}} \int_{A}^{B} \frac{\sqrt{\dd{x}^2 + \dd{y}^2}}{\sqrt{-y}},
     \end{align*}
     and in other words,
     \[
@@ -150,4 +150,4 @@ where
     To require the curve to pass through \(\pqty{x_B, y_B}\), this fixes \(c\) and the value of \(\theta\) at \(B\).
 \end{example}
 
-Cycloid is the path traced out by a fixed point on the rim of a disc that rolls along a straight line. There is a related curve called the \emph{Tautochrone Curve} which is identical to the Brachistochrone Curve -- which means that starting the bead from \emph{any} point on the curve will reach the bottom at the same time!
+A cycloid is the path traced out by a fixed point on the rim of a disc that rolls along a straight line. There is a related curve called the \emph{Tautochrone Curve} which is identical to the Brachistochrone Curve -- which means that starting the bead from \emph{any} point on the curve will reach the bottom at the same time!
