@@ -133,8 +133,8 @@ Another example is a \emph{helicoid} which is in Example Sheet 2.
     
     Varying \(y\) to \(y + \var{y}\), we get
     \begin{align*}
-        \var{I} &= \int_{t_0}^{t_1} \dd{t} \int_{0}^{a} \dd{x} \pqty{p \dot{y} \var{\dot{y}} - T y' \var{y}'} \\
-        &= \int_{t_0}^{t_1} \dd{t} \int_{0}^{a} \dd{x} \Bqty{\pdv{t} \pqty{\rho \dot{t} \var{y}} - \pdv{x} \pqty{T y' \var{y}} + \pqty{- \rho \ddot{y} + T y''} \var{y}}.
+        \var{I} &= \int_{t_0}^{t_1} \dd{t} \int_{0}^{a} \dd{x} \pqty{\rho \dot{y} \var{\dot{y}} - T y' \var{y}'} \\
+        &= \int_{t_0}^{t_1} \dd{t} \int_{0}^{a} \dd{x} \Bqty{\pdv{t} \pqty{\rho \dot{y} \var{y}} - \pdv{x} \pqty{T y' \var{y}} + \pqty{- \rho \ddot{y} + T y''} \var{y}}.
     \end{align*}
     
     The boundary terms integrate to zero, if \(\var{y} = 0\) on the boundary. So \(\var{I} = 0\) iff we have
@@ -182,7 +182,7 @@ for some \(\phi\pqty{t, \vb{x}}\). They are called the \emph{magnetic potential}
     We vary \(\vb{A}\) and \(\phi\). We have
     \begin{align*}
         \var{I} &= \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\epsilon_0 \vb{E} \vdot \pqty{- \grad \var{\phi} - \pdv{t} \var{\vb{A}}} - \frac{1}{\mu_0} \vb{B} \vdot \pqty{\curl \var{\vb{A}}} + \var{\vb{A}} \vdot \vb{j} - \var{\phi} \rho} \\
-        &= \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\epsilon_0 \vb{E} \bqty{- \div \pqty{\vb{E} \var{\phi}} + \pqty{\div \vb{E}} \var{\phi} - \pdv{t} \pqty{\vb{E} \vdot \var{\vb{A}}} + \pqty{\pdv{t} \vb{E}} \vdot \var{\vb{A}}}} \\
+        &= \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\epsilon_0 \bqty{- \div \pqty{\vb{E} \var{\phi}} + \pqty{\div \vb{E}} \var{\phi} - \pdv{t} \pqty{\vb{E} \vdot \var{\vb{A}}} + \pqty{\pdv{t} \vb{E}} \vdot \var{\vb{A}}}} \\
         &\phantom{=} \Bqty{- \frac{1}{\mu_0} \bqty{\pdv{x_j} \pqty{\levicivita_{ijk} B_i \var{A_k} - \pqty{\levicivita_{ijk} \pdv{x_j} B_i} \var{A_k}}} + \var{\vb{A}} \vdot \vb{j} - \var{\phi} \rho} \\
         &= \text{boundary terms} + \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\pqty{\epsilon_0 \div \vb{E} - \rho} \var{\phi} + \pqty{- \frac{\curl \vb{B}}{\mu_0} + \epsilon_0 \pdv{t} \vb{E} + \vb{j}} \vdot \var{\vb{A}}}.
     \end{align*}
