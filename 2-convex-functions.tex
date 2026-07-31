@@ -149,7 +149,7 @@ Note that the first property is important, since we need the domain to be convex
 
 Now we prove the first-order condition.
 
-\begin{proof}[that \autoref{eq:convex-condition} implies \autoref{eq:first-order-condition}]
+\begin{proof}[\proofname\ that \autoref{eq:convex-condition} implies \autoref{eq:first-order-condition}]
     Let
     \[
         h\pqty{t} = \pqty{1 - t} f\pqty{\vb{x}} + t f\pqty{\vb{y}} - f\pqty{\pqty{1 - t} \vb{x} + t \vb{y}}.
@@ -170,7 +170,7 @@ Now we prove the first-order condition.
  
 \end{proof}
 
-\begin{proof}[that \autoref{eq:first-order-condition} implies \autoref{eq:convex-condition}]
+\begin{proof}[\proofname\ that \autoref{eq:first-order-condition} implies \autoref{eq:convex-condition}]
     In this direction, note that \autoref{eq:first-order-condition} implies that
     \begin{align*}
         f\pqty{\vb{x}} &\geq f\pqty{\vb{z}} + \pqty{\vb{x} - \vb{z}} \vdot \grad f\pqty{\vb{z}} \\
@@ -197,7 +197,7 @@ Now we prove the first-order condition.
 
 In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} states that \(\pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}} \geq 0\), which implies \(f'\pqty{y} \geq f'\pqty{x}\) if \(y \geq x\), i.e., \(f'\) is monotonically increasing.
 
-\begin{proof}[that \autoref{eq:first-order-condition} implies \autoref{eq:first-order-condition-alternative}]
+\begin{proof}[\proofname\ that \autoref{eq:first-order-condition} implies \autoref{eq:first-order-condition-alternative}]
     From \autoref{eq:first-order-condition}, we have
     \begin{align*}
         f\pqty{\vb{y}} &\geq f\pqty{\vb{x}} + \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}}, \\
@@ -207,7 +207,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
     Adding these give \autoref{eq:first-order-condition-alternative}.
 \end{proof}
 
-\begin{proof}[that \autoref{eq:first-order-condition-alternative} implies \autoref{eq:first-order-condition}]
+\begin{proof}[\proofname\ that \autoref{eq:first-order-condition-alternative} implies \autoref{eq:first-order-condition}]
     We let \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\).
 
     Then we have
@@ -234,7 +234,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
     If \(f\) is \(\contClass{2}\), then \autoref{eq:convex-condition} is equivalent to all eigenvalues of the Hessian \(\vb{H} \pqty{\vb{x}}\) is non-negative, for all \(\vb{x} \in \dom\pqty{f}\). In other words, the Hessian is positive semi-definite.
 \end{theorem}
 
-\begin{proof}[that \autoref{eq:convex-condition} implies \autoref{thm:second-order-condition}]
+\begin{proof}[\proofname\ that \autoref{eq:convex-condition} implies \autoref{thm:second-order-condition}]
     We start from \autoref{eq:first-order-condition-alternative}. Set \(\vb{Y} = \vb{x} + \vb{h}\) in \autoref{eq:first-order-condition-alternative}, we have
     \[
         \vb{h} \vdot \bqty{\grad f\pqty{\vb{x} + \vb{h}} - \grad f\pqty{\vb{x}}} \geq 0.
@@ -256,7 +256,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
     but the left-hand side is negative for sufficiently small \(h\) (since \(\lambda < 0\)), which is a contradiction.
 \end{proof}
 
-\begin{proof}[that \autoref{thm:second-order-condition} implies \autoref{eq:convex-condition}]
+\begin{proof}[\proofname\ that \autoref{thm:second-order-condition} implies \autoref{eq:convex-condition}]
     We only prove in the case \(n = 1\) in this case, and we have \(H\pqty{x} = f''\pqty{x}\) and hence \(f''\pqty{x} \geq 0\) for all x.
 
     We have
