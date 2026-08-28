@@ -235,15 +235,15 @@ Consider, similarly, a 1-parameter family of such symmetries \(T\pqty{t, s}\) wh
         &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \int_{t_A}^{t_B} s \pqty{\pdv{T}{s}}_{s = 0} \bqty{- \dv{t} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} + \pdv{L}{t}} \dd{t} + \bigO \pqty{s^2} \\
         &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \bigO \pqty{s^2}
     \end{align*}
-    recalling that \autoref{prop:time-independence-conserved-energy} gives the term in the brackets to be zero.
-
-    Since \(I^{\ast} = I\), the terms in the square brackets must therefore vanish for all \(t_A\) and \(t_B\), hence is time-independent.
-
-    Hence, differentiating by \(s\) and taking \(s = 0\) gives us
+    recalling that \autoref{prop:time-independence-conserved-energy} gives the term in the brackets to be zero. Hence, we rearrange to give
     \[
-        \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}
+        0 = I^{\ast} - I = \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \bigO \pqty{s^2}
     \]
-    is independent of \(t\).
+    since \(I^{\ast} = I\). Hence, differentiating by \(s\) and setting \(s = 0\) tells us
+    \[
+        0 = \bqty{\pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B}
+    \]
+    for all \(t_A\) and \(t_B\), which gives the time-independence of the term in the brackets, as desired.
 \end{proof}
 
 We may combine the two versions of Noether's theorem together, but the proof will just be longer (and more complicated).
