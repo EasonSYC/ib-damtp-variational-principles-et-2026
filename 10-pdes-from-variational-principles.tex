@@ -10,7 +10,7 @@ for \(m > 1\), and functionals of the form
 \]
 where \(V \subseteq \RR^m\), and the gradient is a \(m \times n\) matrix.
 
-Similarly, we studying the variation of the functional, but here we using divergence theorem instead of a one-dimensional integration by parts. This leads to a generalisation of Euler--Lagrange equations, provided that the boundary conditions implies that the boundary term (surface integral) all vanishes.
+Similarly, we now study the variation of the functional, but here we use divergence theorem instead of a one-dimensional integration by parts. This leads to a generalisation of Euler--Lagrange equations, provided that the boundary conditions implies that the boundary term (surface integral) all vanishes.
 
 \subsection{Minimal Surfaces}
 
@@ -30,7 +30,7 @@ Consider surfaces spanning a closed curve \(\mathcal{C}\) in \(\RR^3\). Which su
     \]
     for \(\pqty{x, y} \in \mathcal{D}\), with \(\mathcal{C}\) being the boundary of the graph, i.e. maps \(\partial \mathcal{D}\) to \(\mathcal{C}\). In particular, this means that \(h\) is fixed on \(\partial \mathcal{D}\). This is shown in \autoref{fig:minimal-surface}.
 
-    This allows us to parameterise surface with \(\pqty{x, t}\), with
+    This allows us to parameterise surface with \(\pqty{x, y}\), with
     \[
         \vb{x} \pqty{x, y} = \pqty{x, y, h\pqty{x, y}}.
     \]
@@ -61,7 +61,7 @@ Consider surfaces spanning a closed curve \(\mathcal{C}\) in \(\RR^3\). Which su
         &= \iint_{\mathcal{D}} \Bqty{\pqty{\frac{h_x \var{h}}{\sqrt{\cdots}}}_x + \pqty{\frac{h_x \var{h}}{\sqrt{\cdots}}}_y - \bqty{\pqty{\frac{h_x}{\sqrt{\cdots}}}_x + \pqty{\frac{h_y}{\sqrt{\cdots}}}_y} \var{h}} \dd{x} \dd{y}.
     \end{align*}
     
-    Using Green's Theorem on a plane for the boundary term, we see the first divergence term vanishes, since \(\var{h} = 0\) on \(\partial \mathcal{D}\). Hence, \(A\) is extremisms if \(\var{A} = 0\) for all \(\var{h}\), and hence
+    Using Green's Theorem on a plane for the boundary term, we see the first divergence term vanishes, since \(\var{h} = 0\) on \(\partial \mathcal{D}\). Hence, \(A\) is optimised if \(\var{A} = 0\) for all \(\var{h}\), and hence
     \[
         \pqty{\frac{h_x}{\sqrt{1 + h_x^2 + h_y^2}}}_x + \pqty{\frac{h_y}{\sqrt{1 + h_x^2 + h_y^2}}}_y = 0.
     \]
@@ -94,7 +94,7 @@ describing a plane. But does this satisfy the boundary condition? This only sati
     \]
     and hence
     \[
-        A\bqty{z} = 2 \pi \int r \sqrt{1 + z'^2} \dd{r},
+        A\bqty{z} = 2 \pi \int_0^R r \sqrt{1 + z'^2} \dd{r},
     \]
     in this case assuming that the region \(\mathcal{D}\) is a circle with radius \(R\).
     
@@ -182,12 +182,12 @@ for some \(\phi\pqty{t, \vb{x}}\). They are called the \emph{magnetic potential}
     We vary \(\vb{A}\) and \(\phi\). We have
     \begin{align*}
         \var{I} &= \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\epsilon_0 \vb{E} \vdot \pqty{- \grad \var{\phi} - \pdv{t} \var{\vb{A}}} - \frac{1}{\mu_0} \vb{B} \vdot \pqty{\curl \var{\vb{A}}} + \var{\vb{A}} \vdot \vb{j} - \var{\phi} \rho} \\
-        &= \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\epsilon_0 \bqty{- \div \pqty{\vb{E} \var{\phi}} + \pqty{\div \vb{E}} \var{\phi} - \pdv{t} \pqty{\vb{E} \vdot \var{\vb{A}}} + \pqty{\pdv{t} \vb{E}} \vdot \var{\vb{A}}}} \\
-        &\phantom{=} \Bqty{- \frac{1}{\mu_0} \bqty{\pdv{x_j} \pqty{\levicivita_{ijk} B_i \var{A_k} - \pqty{\levicivita_{ijk} \pdv{x_j} B_i} \var{A_k}}} + \var{\vb{A}} \vdot \vb{j} - \var{\phi} \rho} \\
+        &= \int \dd{t} \iiint \dd[3]{\vb{x}} \left\{\epsilon_0 \bqty{- \div \pqty{\vb{E} \var{\phi}} + \pqty{\div \vb{E}} \var{\phi} - \pdv{t} \pqty{\vb{E} \vdot \var{\vb{A}}} + \pqty{\pdv{t} \vb{E}} \vdot \var{\vb{A}}} \right. \\
+        &\phantom{=} \hspace{10em} \left. - \frac{1}{\mu_0} \bqty{\pdv{x_j} \pqty{\levicivita_{ijk} B_i \var{A_k} - \pqty{\levicivita_{ijk} \pdv{x_j} B_i} \var{A_k}}} + \var{\vb{A}} \vdot \vb{j} - \var{\phi} \rho \right\} \\
         &= \text{boundary terms} + \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\pqty{\epsilon_0 \div \vb{E} - \rho} \var{\phi} + \pqty{- \frac{\curl \vb{B}}{\mu_0} + \epsilon_0 \pdv{t} \vb{E} + \vb{j}} \vdot \var{\vb{A}}}.
     \end{align*}
     
-    Assuming boundary terms vanish, we can read that \(\var{I}\) is zero for arbitrary \(\var{\vb{A}}\) and \(\vb{\phi}\), if and only if
+    Assuming boundary terms vanish, we can read that \(\var{I}\) is zero for arbitrary \(\var{\vb{A}}\) and \(\var{\phi}\), if and only if
     \begin{subequations}
         \begin{equation}
             \div \vb{E} = \frac{\rho}{\epsilon_0}

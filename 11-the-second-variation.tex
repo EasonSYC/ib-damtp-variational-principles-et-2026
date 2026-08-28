@@ -29,7 +29,7 @@ Consider \(y + \epsilon \xi\) where \(\xi\) is now our variation, with \(y + \ep
 
 This gives
 \[
-    F\bqty{y + \epsilon \xi} - F\bqty{y} = \epsilon \int_{\alpha}^{\beta} \xi \fdv{F}{t} \dd{x} + \epsilon^2 \var[2]{F\bqty{y, \xi}} + \bigO\pqty{\epsilon^3}
+    F\bqty{y + \epsilon \xi} - F\bqty{y} = \epsilon \int_{\alpha}^{\beta} \xi \fdv{F}{y} \dd{x} + \epsilon^2 \var[2]{F\bqty{y, \xi}} + \bigO\pqty{\epsilon^3}
 \]
 where the boundary term vanishes due to our initial conditions in \autoref{eq:boundary-eqn}, and where we denote
 \[
@@ -57,7 +57,7 @@ Recall that if \(\vb{H} \pqty{\vb{x}}\) is positive-definite for \emph{all} \(\v
 \begin{theorem}[``Convexity'' Condition and Stationary Points for Functionals]
     If
     \[
-        \var[2]{f\bqty{y, \xi}} \geq 0
+        \var[2]{F\bqty{y, \xi}} \geq 0
     \]
     for \emph{all} \(y \in \contClassSymb\) and all ``allowed'' \(\xi\pqty{x}\) (i.e. \(y + \xi \in \contClassSymb\), in other words, \(\xi\) is \(\contClass{2}\) and \(\xi\pqty{\alpha} = \xi\pqty{\beta} = 0\)), then \(y = y_0\) is a global minimum of \(F\) in \(\contClassSymb\), if \(y_0 \in \contClassSymb\) satisfies the Euler--Lagrange equation.
 \end{theorem}
@@ -106,7 +106,7 @@ But usually our functionals does not have this \emph{global} condition. Now, sup
 \begin{example}[Geodesics on the Sphere]
     The geodesics between points \(A\) and \(B\) on the sphere is a segment of a great circle (i.e. diameter) through the points \(A\) and \(B\).
 
-    Note there are in fact two segments, as shown in \autoref{fig:geodesics-on-the-sphere}, and the shorter path has \(\var[2]{F} > 0\) for all non-trivial \(\xi\), giving a local minimum. In fact, this is a global minimum, but from this criteria alone we cannot conclude that.
+    Note there are in fact two segments, as shown in \autoref{fig:geodesics-on-the-sphere}, and the shorter path has \(\var[2]{F} > 0\) for all non-trivial \(\xi\), giving a local minimum. In fact, this is a global minimum, but from this criterion alone we cannot conclude that.
 
     The longer path has \(\var[2]{F} < 0\) for some \(\xi\), so it cannot be a local minimum.
 
@@ -250,7 +250,7 @@ The converse is true as well.
 \end{proposition}
 
 \begin{proof}
-    Let \(\lambda_i\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) is the \(n\)th eigenfunction to the problem \autoref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\Bqty{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
+    Let \(\lambda_n\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) be the \(n\)th eigenfunction to the problem \autoref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\Bqty{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
     \[
         \eta\pqty{x} = \sum_{n} a_n y_n \pqty{x}
     \]
@@ -258,11 +258,11 @@ The converse is true as well.
     \[
         \int_{\alpha}^{\beta} w y_m y_n \dd{x} = 0
     \]
-    for \(m \neq n\). (This is a generalisation of matrices to infinite dimensions.)
+    for \(m \neq n\). (This is, effectively, a generalisation of properties of Hermitian matrices to infinite dimensions.)
 
     Then substituting into the second variation functional, we have
     \begin{align*}
-        \var[2]{F\bqty{y_0, \eta}} &= \frac{1}{2} \sum_{m, n} a_m a_n \lambda n \int_{\alpha}^{\beta} w y_m y_n \dd{x} \\
+        \var[2]{F\bqty{y_0, \eta}} &= \frac{1}{2} \sum_{m, n} a_m a_n \lambda_n \int_{\alpha}^{\beta} w y_m y_n \dd{x} \\
         &= \frac{1}{2} \sum_{m} \lambda_m a_m^2 \int_{\alpha}^{\beta} w y_m^2 \dd{x} \\
         &\geq 0,
     \end{align*}
@@ -309,7 +309,7 @@ The converse is true as well.
         \eta = A \sin \pqty{\sqrt{\lambda + 1} x} + B \cos \pqty{\sqrt{\lambda + 1} x}.
     \]
 
-    Imposing the boundary condition \(\eta\pqty{0} = 0\) give \(B = 0\), and imposing \(\eta\pqty{a} = 0\) gives
+    Imposing the boundary condition \(\eta\pqty{0} = 0\) gives \(B = 0\), and imposing \(\eta\pqty{a} = 0\) gives
     \[
         A \sin \pqty{\sqrt{\lambda + 1} a} = 0.
     \]

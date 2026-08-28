@@ -1,13 +1,13 @@
 \section{Symmetries and Noether's Theorem}
 
-\textit{Continuous symmetries of the action corresponds to first integrals of the Euler--Lagrange Equations.}
+\textit{Continuous symmetries of the action correspond to first integrals of the Euler--Lagrange Equations.}
 
 We first want to understand what is a symmetry of an action. Consider a smooth map
 \[
     \functiondomain{\vb{Q}}{\RR^{6N + 1}}{\RR^{3N}}.
 \]
 
-If given a curve \(\vb{q} \pqty{t}\) in the configuration space, define
+If given a curve \(\vb{q} \pqty{t}\) in the configuration space, we define the following notation.
 
 \begin{definition}[Mapping a Curve under (Spacial) Symmetry]
     We define
@@ -48,7 +48,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 \begin{proof}
     For any small \(s\), we substitute \autoref{eq:image-curve-taylor} into \autoref{eq:symmetry-of-action}. Subtracting gives
     \begin{align*}
-        0 &= \int_{t_A}^{t_B} \bqty{L \pqty{\vb{q} \pqty{t} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, \dot{\vb{q}} \pqty{t} + s \dv{t} \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots}, t} - L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} \\
+        0 &= \int_{t_A}^{t_B} \bqty{L \pqty{\vb{q} \pqty{t} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, \dot{\vb{q}} \pqty{t} + s \dv{t} \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, t}} - L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} \\
         &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{q_i} + s \dv{t} \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} + \cdots} \dd{t} \\
         &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pqty{\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i}} + s \dv{t} \pqty{\pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0}} + \cdots} \dd{t} \\
         &= \bqty{s \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{t = 0}}_{t_A}^{t_B} + \bigO\pqty{s^2}.
@@ -107,7 +107,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 \begin{example}[Conservation of Total Angular Momentum]
     We work in Cartesian again \(\vb{q} = \pqty{\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N}\), and let \(R\) be a rotation in \(\RR^3\) acting on individual \(\vb{x}_i\)s to give \(\vb{q}_R\). Suppose \(L\) is invariant under rotations, then
     \[
-        L\pqty{\vb{q}_R, \dot{\vb{q}}_R, t} = L \pqty{\vb{q}, \dot{\vb{q}}_R, t}.
+        L\pqty{\vb{q}_R, \dot{\vb{q}}_R, t} = L \pqty{\vb{q}, \dot{\vb{q}}, t}.
     \]
 
     We consider \(\vb{Q} = \vb{q}_{R\pqty{s}}\), where we rotate through an angle \(s\) about some fixed unit vector \(\unitv{n}\).
@@ -152,7 +152,7 @@ We can generalise the definition of a 1-parameter family of symmetries to allow 
         L = \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N}.
     \]
 
-    Suppose similarly, that \(V\) only depend on the relative separations \(\vb{x}_i - \vb{x}_j\). Consider a Galilean boost \(\vb{x}^{\ast} = \vb{x} - \vb{v} t\) where \(\vb{v} = \unitv{n} s\).
+    Suppose similarly, that \(V\) only depends on the relative separations \(\vb{x}_i - \vb{x}_j\). Consider a Galilean boost \(\vb{x}^{\ast} = \vb{x} - \vb{v} t\) where \(\vb{v} = \unitv{n} s\).
 
     Then
     \[
@@ -171,7 +171,7 @@ We can generalise the definition of a 1-parameter family of symmetries to allow 
     \begin{align*}
         L \pqty{\vb{x}^{\ast}, \dot{\vb{x}}^{\ast}, t} &= \sum_{i = 1}^{N} \frac{1}{2} m_i \pqty{\dot{\vb{x}}_i - \unitv{n}s}^2 - V \pqty{\vb{x}_1^{\ast}, \ldots, \vb{x}_N^{\ast}} \\
         &= \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N} - s \unitv{n} \vdot \sum_{n = 1}^{N} m_i \dot{\vb{x}}_i + \bigO \pqty{s^2} \\
-        &= L\pqty{\vb{x}, \dot{\vb{x}}, t} - \dv{t} \pqty{s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i}.
+        &= L\pqty{\vb{x}, \dot{\vb{x}}, t} - \dv{t} \pqty{s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i} + \bigO \pqty{s^2}.
     \end{align*}
 
     So \autoref{eq:conserved-symmetry-with-boundary-term} holds with
@@ -180,7 +180,7 @@ We can generalise the definition of a 1-parameter family of symmetries to allow 
     \]
     where \(M\) is the total mass, and \(\vb{R}\) is the centre of mass. Then the conserved quantity is
     \[
-        \sum_{i = 1}^{N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} - K = \sum_{i = 1}^{N} \vb{p}_i \vdot \pqty{\vb{n} t} + M \vb{n} \vdot \vb{R} = \unitv{n} \vdot \pqty{M \vb{R} - \vb{P} t}
+        \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} - K = \sum_{i = 1}^{N} \vb{p}_i \vdot \pqty{- \vb{n} t} + M \vb{n} \vdot \vb{R} = \unitv{n} \vdot \pqty{M \vb{R} - \vb{P} t},
     \]
     and since \(\unitv{n}\) is arbitrary, \(M \vb{R} - \vb{P} t\) is conserved.
 \end{example}
@@ -194,8 +194,8 @@ A different type of symmetry of the action involves transforming the time coordi
     \]
 \end{definition}
 
-\begin{definition}[(Time) symmetry of an Action]
-    We say such smooth map \(T\) is a \emph{symmetry of the action} if and only if for all curves \(\vb{q} \pqty{t}\) and starting/end times \(t_A\), \(t_B\), we have
+\begin{definition}[(Time) Symmetry of an Action]
+    We say such a smooth map \(T\) is a \emph{symmetry of the action} if and only if for all curves \(\vb{q} \pqty{t}\) and starting/end times \(t_A\), \(t_B\), we have
     \begin{equation}
         \label{eq:symmetry-of-action-time}%
         \int_{t_A^{\ast}}^{t_B^{\ast}} L\pqty{\vb{q}^{\ast} \pqty{t^{\ast}}, \dv{\vb{q}^{\ast}}{t^\ast} \pqty{t^{\ast}}, t^{\ast}} \dd{t^{\ast}} = \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t} \dd{t}.
@@ -229,24 +229,24 @@ Consider, similarly, a 1-parameter family of such symmetries \(T\pqty{t, s}\) wh
     \begin{align*}
         I^{\ast} &= \int_{t_A}^{t_B} L \pqty{\vb{q}\pqty{t}, \dv{t}{t^{\ast}} \dv{t} \vb{q} \pqty{t}, T\pqty{t}} \dv{t^{\ast}}{t} \dd{t} \\
         &= \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t} - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} \dot{\vb{q}} \pqty{t} + \cdots, t + s \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \\
-        &\phantom{=} \times \pqty{1 + s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \dd{t} \\
+        &\phantom{=} \hspace{24em} \times \pqty{1 + s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \dd{t} \\
         &= \int_{t_A}^{t_B} \Bqty{L\pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t}, t} - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} \dot{q}_i \pdv{L}{\dot{q}_i} + s \pqty{\pdv{T}{s}}_{s = 0} \pdv{L}{t} + sL \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}} \dd{t} \\
-        &= I + \int_{t_A}^{t_B} \Bqty{\dv{t} \pqty{\pdv{T}{s}}_{s = 0} \pqty{-s \dot{q}_i \pdv{L}{\dot{q}_i} + sL} + s \pqty{\pdv{T}{s}}_{s = 0} \pdv{L}{t}} \dd{t} \\
-        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \int_{t_A}^{t_B} s \pqty{\pdv{T}{s}}_{s = 0} \bqty{- \dv{t} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} + \pdv{L}{t}} \dd{t} \\
-        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B}
+        &= I + \int_{t_A}^{t_B} \Bqty{\dv{t} \pqty{\pdv{T}{s}}_{s = 0} \pqty{-s \dot{q}_i \pdv{L}{\dot{q}_i} + sL} + s \pqty{\pdv{T}{s}}_{s = 0} \pdv{L}{t}} \dd{t} + \bigO \pqty{s^2} \\
+        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \int_{t_A}^{t_B} s \pqty{\pdv{T}{s}}_{s = 0} \bqty{- \dv{t} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} + \pdv{L}{t}} \dd{t} + \bigO \pqty{s^2} \\
+        &= I + \bqty{s \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}}_{t_A}^{t_B} + \bigO \pqty{s^2}
     \end{align*}
-    recalling that \autoref{prop:time-independence-conserved-energy} gives the final term in the brackets to be zero.
+    recalling that \autoref{prop:time-independence-conserved-energy} gives the term in the brackets to be zero.
 
     Since \(I^{\ast} = I\), the terms in the square brackets must therefore vanish for all \(t_A\) and \(t_B\), hence is time-independent.
 
-    Hence, differentiating by \(s\) gives us
+    Hence, differentiating by \(s\) and taking \(s = 0\) gives us
     \[
         \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}}
     \]
     is independent of \(t\).
 \end{proof}
 
-We can combine the two versions of Noether's theorem together, but the proof will just be longer (and more complicated).
+We may combine the two versions of Noether's theorem together, but the proof will just be longer (and more complicated).
 
 \begin{example}[Conservation of Total Energy]
     Suppose \(L\) has no time-dependence, and set \(T\pqty{t, s} = t + s\) (so \(T\pqty{t, 0} = t\)). Then \(t^{\ast} = t + s\), so
@@ -269,7 +269,7 @@ We can combine the two versions of Noether's theorem together, but the proof wil
     \[
         \pqty{\pdv{T}{s}}_{s = 0} \pqty{L - \dot{q}_i \pdv{L}{\dot{q}_i}} = L - \dot{q}_i \pdv{L}{\dot{q}_i} = -E
     \]
-    is conservation of energy, recovering \autoref{prop:time-independence-conserved-energy} due to translation in time.
+    which is energy, recovering \autoref{prop:time-independence-conserved-energy} due to translation in time.
 
     \textit{The invariance of physical laws under time translations implies conservation of energy.}
 \end{example}

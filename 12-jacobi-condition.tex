@@ -74,7 +74,13 @@ is the \emph{Jacobi accessory equation}.
 \end{remark}
 
 \begin{example}[Alternative solution to \autoref{ex:sturm-liouville-application-second-variation} using Jacobi Condition]
-    Recall \autoref{ex:sturm-liouville-application-second-variation}. Then \autoref{eq:jacobi-accessory-eq} reduces to
+    Recall \autoref{ex:sturm-liouville-application-second-variation}, where we considered the functional
+    \[
+        F\bqty{y} = \frac{1}{2} \int_{0}^{a} \pqty{\pqty{y'}^2 - y^2} \dd{x}
+    \]
+    with the boundary conditions \(y\pqty{0} = y_0, y\pqty{a} = y_1\).
+    
+    Then \autoref{eq:jacobi-accessory-eq} reduces to
     \[
         - u'' - u = 0
     \]
@@ -82,5 +88,5 @@ is the \emph{Jacobi accessory equation}.
     \[
         u = A \sin \pqty{x - x_0}
     \]
-    which oscillates with period \(2 \pi\). Therefore, we can find a solution with \(u \neq 0\) on \(\ccintv{0}{1}\), if and only if \(a < \pi\). This is consistent with the Sturm--Liouville approach. However, unlike the Sturm--Liouville approach, this method does not let us prove that the solution is not a local minimum for larger \(a\).
+    which oscillates with period \(2 \pi\). Therefore, we can find a solution with \(u \neq 0\) on \(\ccintv{0}{a}\), if and only if \(a < \pi\). This is consistent with the Sturm--Liouville approach. However, unlike the Sturm--Liouville approach, this method does not let us prove that the solution is not a local minimum for larger \(a\).
 \end{example}

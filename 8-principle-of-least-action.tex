@@ -37,7 +37,7 @@ Since \(\vb{q}_A\) and \(\vb{q}_B\) are fixed, the boundary term in \(\var{I}\) 
 \[
     \pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i} = 0,
 \]
-for \(i = 1, 2, \ldots, N\).
+for \(i = 1, 2, \ldots, 3N\).
 
 \begin{example}[Lagrangian for One-Dimensional Central Potential]
     We take \(N = 1\) and \(\vb{q} = \vb{x}\) in Cartesian. Then we have
@@ -79,7 +79,7 @@ The following result is a consequence of \autoref{prop:first-integral-x-inidepen
         &= \pdv{L}{t} + \sum_{i = 1}^{3N} \dot{q}_i \pqty{\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i}} + \dv{t} \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i}.
     \end{align*}
 
-    By the Euler-Lagrange equations, the first term (the term in the brackets) vanishes, and hence
+    By the Euler--Lagrange equations, the term in the brackets vanishes, and hence
     \[
         \dv{t} \pqty{L - \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i}} = \pdv{L}{t}.
     \]
@@ -123,7 +123,7 @@ Assume that we have a central potential \(V = V\pqty{r}\). Then the Lagrangian i
     \]
     and hence writing this out gives
     \[
-        m r^2 \phi = \text{constant},
+        m r^2 \dot{\phi} = \text{constant},
     \]
     or more commonly seen, the \emph{angular momentum} per unit mass \(h\) is conserved
     \[
@@ -159,9 +159,9 @@ Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function 
 
 Using \autoref{eq:legendre-transform-of-convex-function}, we have
 \[
-    H\pqty{\vb{q}, \vb{p}, t} = \bqty{\vb{p} \vdot \dot{\vb{q}} - L\pqty{\vb{q}, \dot{\vb{q}}, t}}
+    H\pqty{\vb{q}, \vb{p}, t} = \vb{p} \vdot \dot{\vb{q}} - L\pqty{\vb{q}, \dot{\vb{q}}, t}
 \]
-for the stationary point of the brackets in \(\dot{q}_i\), i.e.,
+for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\) satisfies
 \begin{equation}
     \label{eq:conjugate-momentum}%
     p_i = \pdv{L}{\dot{q}_i}
@@ -183,7 +183,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e.,
     \]
     is the \emph{momentum} of the particle. Using \autoref{eq:hamiltonian}, we have
     \[
-        H = \vb{p} \vdot \frac{\vb{p}}{m} - \pqty{\frac{\vb{p}^2}{2m} + V} = \frac{\vb{p}^2}{2m} + V
+        H = \vb{p} \vdot \frac{\vb{p}}{m} - \pqty{\frac{\vb{p}^2}{2m} - V} = \frac{\vb{p}^2}{2m} + V
     \]
     is the \emph{total energy}.
 \end{example}
@@ -215,23 +215,24 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e.,
 
     Then we have from \autoref{eq:hamiltonian} that
     \[
-        H = p_r \dot{r} + p_\phi \dot{\phi} - L = \frac{p_r^2}{2m} + \frac{p_\phi^2}{2 m r^2} + V\pqty{r} \dot{\phi}    \]
+        H = p_r \dot{r} + p_\phi \dot{\phi} - L = \frac{p_r^2}{2m} + \frac{p_\phi^2}{2 m r^2} + V\pqty{r}
+    \]
     is indeed the total energy of the particle.
 \end{examples}
 
 \begin{definition}[Conjugate Momentum]
-    We call the variable \(p_i\) as the \emph{conjugate momentum} to \(q_i\).
+    We call the variable \(p_i\) the \emph{conjugate momentum} to \(q_i\).
 \end{definition}
 
 The Hamiltonian \(H\) is just the total energy
 \[
-    H = \sum_{i = 1}^{N} \dot{q}_i \pdv{L}{\dot{q}_i} - L,
+    H = \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i} - L,
 \]
 but since \(H = H\pqty{\vb{q}, \vb{p}, t}\), we would have \(\dot{\vb{q}}\) eliminated in favour of \(\vb{q}, \vb{p}\) and \(t\), using \autoref{eq:conjugate-momentum}.
 
 Therefore, the Hamiltonian is conserved if \(\pdv*{L}{t} = 0\).
 
-We can now `forget' about the Lagrangian formalism, and write the equations of motions in terms of \(H\).
+We can now `forget' about the Lagrangian formalism, and write the equations of motion in terms of \(H\).
 
 \begin{proposition}[Differentiating Hamiltonian w.r.t Conjugate Momentum]
     \label{prop:hamiltonian-diff-conjugate-momentum}%
@@ -244,7 +245,7 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
 \begin{proof}
     We have
     \begin{align*}
-        \pqty{\pdv{H}{p_i}}_{\vb{q}} &= \dot{q}_i + \sum_{j = 1}^{N} p_j \pdv{\dot{q}_j}{p_i} - \sum_{j = 1}^{N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{p_i} \\
+        \pqty{\pdv{H}{p_i}}_{\vb{q}} &= \dot{q}_i + \sum_{j = 1}^{3N} p_j \pdv{\dot{q}_j}{p_i} - \sum_{j = 1}^{3N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{p_i} \\
         &= \dot{q}_i
     \end{align*}
     by \autoref{eq:conjugate-momentum}.
@@ -261,7 +262,7 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
 \begin{proof}
     We have
     \begin{align*}
-        \pqty{\pdv{H}{q_i}}_{\vb{p}} &= \sum_{j = 1}^{N} p_j \pdv{\dot{q}_j}{q_i} - \pdv{L}{q_i} - \sum_{j = 1}^{N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{q_i} = - \pdv{L}{q_i}
+        \pqty{\pdv{H}{q_i}}_{\vb{p}} &= \sum_{j = 1}^{3N} p_j \pdv{\dot{q}_j}{q_i} - \pdv{L}{q_i} - \sum_{j = 1}^{3N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{q_i} = - \pdv{L}{q_i}
     \end{align*}
     by \autoref{eq:conjugate-momentum}.
 
@@ -278,7 +279,7 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
     We have
     \begin{equation}
         \label{eq:hamilton-equations}
-        \dot{q}_i = \pdv{H}{q_i} \qand \dot{p}_i = - \pdv{H}{q_i}
+        \dot{q}_i = \pdv{H}{p_i} \qand \dot{p}_i = - \pdv{H}{q_i}
     \end{equation}
 \end{theorem}
 
@@ -302,7 +303,7 @@ for fixed \(\vb{q} \pqty{t_A}, \vb{q} \pqty{t_B}\) (but not for \(\vb{p}\), sinc
     We have
     \begin{align*}
         \dv{H}{t} &= \dv{t} \pqty{H \pqty{\vb{q}, \vb{p}, t}} \\
-        &= \sum_{i = 1}^{N} \pqty{\pdv{H}{q_i} \dot{q}_i + \pdv{H}{p_i} \dot{p}_i} + \pdv{H}{t} \\
+        &= \sum_{i = 1}^{3N} \pqty{\pdv{H}{q_i} \dot{q}_i + \pdv{H}{p_i} \dot{p}_i} + \pdv{H}{t} \\
         &= \pdv{H}{t}
     \end{align*}
     by using \autoref{eq:hamilton-equations}. Therefore, if \(H\) has no explicit time-dependence, the Hamiltonian is conserved.
