@@ -4,25 +4,25 @@ Consider a system of \(N\) particles in three-dimensional space. The positions \
 \[
     \pqty{\vb{x}_1, \vb{x}_2, \ldots, \vb{x}_N}
 \]
-in a \(3N\)-dimensional space. This space is called \emph{configuration space}. Of course, it is possible (and often useful) to use non-Cartesian coordinates, and the notation we use is
+in a \(3N\)-dimensional space. This space is called \term{configuration space}. Of course, it is possible (and often useful) to use non-Cartesian coordinates, and the notation we use is
 \[
     \vb{q} = \pqty{\vb{q}_1, \vb{q}_2, \ldots, \vb{q}_N}
 \]
 for this space.
 
 \begin{definition}[Configuration Space]
-    The \emph{configuration space} is the space of \(N\)-tuples of positions of the \(N\) particles in the system.
+    The \term{configuration space} is the space of \(N\)-tuples of positions of the \(N\) particles in the system.
 \end{definition}
 
 A na\"ive way to find an equation for \(\vb{q}\) is to start from Cartesian and convert -- but starting with two quantities, the kinetic energy \(T\) and the potential energy \(V\) in terms of \(\vb{q}\) and \(\dot{\vb{q}}\), we can formalise it without worrying about conversion between coordinate systems.
 
 \begin{definition}[Lagrangian, Action]
-    We define the \emph{Lagrangian}
+    We define the \term{Lagrangian}
     \begin{equation}
         \label{eq:lagrangian}%
         L \pqty{\vb{q}, \dot{\vb{q}}, t} = T - V
     \end{equation}
-    and the \emph{action} of a path \(\vb{q}\pqty{t}\) in the configuration space between \(\vb{q}_{A}\) and \(\vb{q}_{B}\) is
+    and the \term{action} of a path \(\vb{q}\pqty{t}\) in the configuration space between \(\vb{q}_{A}\) and \(\vb{q}_{B}\) is
     \[
         I \bqty{\vb{q}} = \int_{t_A}^{t_B} L \pqty{\vb{q}\pqty{t}, \dot{\vb{q}} \pqty{t}, t} \dd{t}
     \]
@@ -95,7 +95,7 @@ The following result is a consequence of \autoref{prop:first-integral-x-inidepen
         &= - \pqty{T + V}.
     \end{align*}
 
-    So \(E\) is the \emph{total energy} of the particle.
+    So \(E\) is the \term{total energy} of the particle.
 \end{example}
 
 The Lagrangian encodes the laws of physics -- and this asserts that if the laws of physics does not change with time, then energy is conserved. This is a more fundamental view of where conserved energy arises.
@@ -125,7 +125,7 @@ Assume that we have a central potential \(V = V\pqty{r}\). Then the Lagrangian i
     \[
         m r^2 \dot{\phi} = \text{constant},
     \]
-    or more commonly seen, the \emph{angular momentum} per unit mass \(h\) is conserved
+    or more commonly seen, the \term{angular momentum} per unit mass \(h\) is conserved
     \[
         r^2 \dot{\phi} = h.
     \]
@@ -140,7 +140,7 @@ We could use this instead of finding the Euler--Lagrange equation for \(r\). As 
 \[
     \frac{1}{2} m \dot{r}^2 + V_{\text{eff}} \pqty{r} = E
 \]
-for the \emph{effective potential}
+for the \term{effective potential}
 \[
     V_{\text{eff}} \pqty{r} = \frac{m h^2}{2 r^2} + V\pqty{r}.
 \]
@@ -150,7 +150,7 @@ for the \emph{effective potential}
 Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function of \(\dot{\vb{q}}\). This allows us to take Legendre Transforms using \autoref{eq:legendre-transform-of-convex-function} with respect to \(\dot{\vb{q}}\), with \(\vb{q}\) and \(t\) fixed.
 
 \begin{definition}[Hamiltonian]
-    The \emph{Hamiltonian} \(H \pqty{\vb{q}, \vb{p}, t}\) is defined as the Legendre transform of \(L\) w.r.t. \(\dot{\vb{q}}\), i.e.
+    The \term{Hamiltonian} \(H \pqty{\vb{q}, \vb{p}, t}\) is defined as the Legendre transform of \(L\) w.r.t. \(\dot{\vb{q}}\), i.e.
     \begin{equation}
         \label{eq:hamiltonian}%
         H \pqty{\vb{q}, \vb{p}, t} = \sup_{\dot{\vb{q}}} \bqty{\vb{p} \vdot \dot{\vb{q}} - L \pqty{\vb{q}, \dot{\vb{q}}, t}}.
@@ -181,11 +181,11 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
     \[
         \vb{p} = m \dot{\vb{x}}
     \]
-    is the \emph{momentum} of the particle. Using \autoref{eq:hamiltonian}, we have
+    is the \term{momentum} of the particle. Using \autoref{eq:hamiltonian}, we have
     \[
         H = \vb{p} \vdot \frac{\vb{p}}{m} - \pqty{\frac{\vb{p}^2}{2m} - V} = \frac{\vb{p}^2}{2m} + V
     \]
-    is the \emph{total energy}.
+    is the \term{total energy}.
 \end{example}
 
 \begin{examples}[Two-Dimensional Central Potential]
@@ -221,7 +221,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
 \end{examples}
 
 \begin{definition}[Conjugate Momentum]
-    We call the variable \(p_i\) the \emph{conjugate momentum} to \(q_i\).
+    We call the variable \(p_i\) the \term{conjugate momentum} to \(q_i\).
 \end{definition}
 
 The Hamiltonian \(H\) is just the total energy
@@ -286,7 +286,7 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
 The Euler--Lagrange equations are second-order ODEs in a \(3N\)-dimensional configuration space with coordinates \(\vb{q}\). In contrast, Hamilton's equations are first-order ODEs in a \(6N\)-dimensional space with coordinates \(\pqty{\vb{q}, \vb{p}}\).
 
 \begin{definition}[Phase Space]
-    The \(6N\)-dimensional space that Hamilton's equations (in \(\pqty{\vb{q}, \vb{p}}\)) is called \emph{phase space}.
+    The \(6N\)-dimensional space that Hamilton's equations (in \(\pqty{\vb{q}, \vb{p}}\)) is called \term{phase space}.
 \end{definition}
 
 Another way to derive \autoref{eq:hamilton-equations} is to find the action in terms of

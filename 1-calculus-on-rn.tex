@@ -9,11 +9,11 @@ Assume \(f\) is sufficiently differentiable (and in particular, at least \(\cont
 
 \begin{definition}[Stationary Point]
     \label{def:stationary-point}%
-    We say a point \(\vb{a} \in \RR^n\) is a \emph{stationary point} of \(f\), if
+    We say a point \(\vb{a} \in \RR^n\) is a \term{stationary point} of \(f\), if
     \[
         \pqty{\grad f} \pqty{\vb{a}} = \vb{0},
     \]
-    where the \emph{gradient} is given by
+    where the \term{gradient} is given by
     \[
         \grad f = \pqty{\pdv{f}{x_1}, \pdv{f}{x_2}, \ldots, \pdv{f}{x_n}}.
     \]
@@ -23,7 +23,7 @@ We may also Taylor expand a function about a point, having
 \[
     f\pqty{\vb{x}} = f\pqty{\vb{a}} + \sum_{i} \pqty{x_i - a_i} \pqty{\nabla_i f} \pqty{\vb{a}} + \frac{1}{2} \sum_{i, j} \pqty{x_i - a_i} \pqty{x_j - a_j} H_{ij} \pqty{\vb{a}} + \bigO \pqty{\norm{\vb{x} - \vb{a}}^3},
 \]
-where the \emph{Hessian matrix} is given by
+where the \term{Hessian matrix} is given by
 \[
     H_{ij} = \pdv{f}{x_i}{x_j}.
 \]
@@ -55,14 +55,14 @@ Therefore, we have the following result.
     \label{prop:classification-stationary-point}%
     Using the Hessian matrix, at a stationary point,
     \begin{itemize}
-        \item if \(\lambda_i > 0\) for all \(i\), then \(f\pqty{\vb{x}} > f\pqty{\vb{0}}\) for sufficiently small \(\vb{x}\), and hence \(\vb{x} = \vb{0}\) is a \emph{local minimum};
-        \item if \(\lambda_i < 0\) for all \(i\), then \(\vb{x} = \vb{0}\) is a \emph{local maximum};
-        \item if there is some \(\lambda_i > 0\) and some other \(\lambda_j < 0\), then \(\vb{x} = \vb{0}\) is a \emph{saddle point}.
+        \item if \(\lambda_i > 0\) for all \(i\), then \(f\pqty{\vb{x}} > f\pqty{\vb{0}}\) for sufficiently small \(\vb{x}\), and hence \(\vb{x} = \vb{0}\) is a \term{local minimum};
+        \item if \(\lambda_i < 0\) for all \(i\), then \(\vb{x} = \vb{0}\) is a \term{local maximum};
+        \item if there is some \(\lambda_i > 0\) and some other \(\lambda_j < 0\), then \(\vb{x} = \vb{0}\) is a \term{saddle point}.
     \end{itemize}
 \end{proposition}
 
 \begin{remark}
-    The remaining cases are \emph{degenerate} stationary points -- behaviour depends on \(\bigO\pqty{x^3}\) terms.
+    The remaining cases are \term{degenerate} stationary points -- behaviour depends on \(\bigO\pqty{x^3}\) terms.
 \end{remark}
 
 \begin{corollary}[Hessian Matrix in Two-Variable Case]

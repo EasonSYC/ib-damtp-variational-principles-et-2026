@@ -4,7 +4,7 @@
 
 \begin{definition}[Legendre Transform]
     \label{def:legendre-transform}%
-    The \emph{Legendre Transform} of \(\functiondomain{f}{\dom\pqty{f} \subseteq \RR^n}{\RR}\) is
+    The \term{Legendre Transform} of \(\functiondomain{f}{\dom\pqty{f} \subseteq \RR^n}{\RR}\) is
     \[
         \legendre{f} \pqty{\vb{p}} = \sup_{\vb{x} \in \dom \pqty{f}} \bqty{\vb{p} \vdot \vb{x} - f\pqty{\vb{x}}}
     \]
@@ -182,11 +182,11 @@ What happens if we do a Legendre transform twice?
 
 An important application of Legendre transforms is in thermodynamics.
 
-Consider a system made of many molecules (say \(10^{23}\)). We are concerned with the \emph{macroscopic} behaviour of the system, i.e., involving length scale \(\gg\) separation of molecules.
+Consider a system made of many molecules (say \(10^{23}\)). We are concerned with the \term{macroscopic} behaviour of the system, i.e., involving length scale \(\gg\) separation of molecules.
 
-In \emph{thermal equilibrium}, we may describe the macroscopic physics of the system by just a few quantities: total energy \(E\), volume \(V\), temperature \(T\), pressure \(p\), and perhaps some others.
+In \term{thermal equilibrium}, we may describe the macroscopic physics of the system by just a few quantities: total energy \(E\), volume \(V\), temperature \(T\), pressure \(p\), and perhaps some others.
 
-An \emph{isolated system} is one which is simply not interacting with anything else, for example a gas in a vacuum flask.
+An \term{isolated system} is one which is simply not interacting with anything else, for example a gas in a vacuum flask.
 
 In thermal equilibrium, macroscopic physics in gas in a vacuum flask is \textbf{fully specified} by two quantities, \(E\) and \(V\). However, microscopically, this is far away from the description in microscopic physics (since we need to specify the position, velocity, orientation, etc. of each microscopic molecule). Therefore, there is some number of \(\Omega \pqty{E, V}\) of microscopic configurations that ``look identical'' macroscopically, at the scale of
 \[
@@ -194,7 +194,7 @@ In thermal equilibrium, macroscopic physics in gas in a vacuum flask is \textbf{
 \]
 
 \begin{definition}[Entropy]
-    We define the \emph{entropy} as
+    We define the \term{entropy} as
     \begin{equation}
         \label{eq:entropy}%
         S\pqty{E, V} = k_{\text{B}} \log \Omega \pqty{E, V},
@@ -209,7 +209,7 @@ If energy increased at fixed volume, then entropy will go up, because there are 
 \end{equation}
 
 \begin{definition}[Temperature, Pressure]
-    We may define the \emph{temperature} and \emph{pressure} as
+    We may define the \term{temperature} and \term{pressure} as
     \begin{subequations}
         \label{eq:temperature-pressure}%
         \begin{equation}
@@ -244,7 +244,7 @@ What is below is an overview of the Legendre Transforms -- details can be found 
     \[
         F\pqty{T, V} = E - TS
     \]
-    is called the \emph{Helmholtz Free Energy}.
+    is called the \term{Helmholtz Free Energy}.
 
     Note \autoref{eq:fundamental-thermodynamic-relation} implies that
     \[
@@ -269,7 +269,7 @@ What is below is an overview of the Legendre Transforms -- details can be found 
     \[
         H\pqty{S, P} = E + PV
     \]
-    is called the \emph{enthalpy}. It is very useful in chemistry.
+    is called the \term{enthalpy}. It is very useful in chemistry.
 
     Now, \autoref{eq:fundamental-thermodynamic-relation} implies that
     \[
@@ -291,7 +291,7 @@ What is below is an overview of the Legendre Transforms -- details can be found 
     \[
         G\pqty{T, P} = E - TS + PV
     \]
-    is called the \emph{Gibbs free energy}.
+    is called the \term{Gibbs free energy}.
 
     Using \autoref{eq:fundamental-thermodynamic-relation} gives
     \[
@@ -305,7 +305,7 @@ What is below is an overview of the Legendre Transforms -- details can be found 
 \end{example}
 
 \begin{definition}[Thermodynamic Potentials]
-    \(E, F, G, H\) are called \emph{thermodynamic potentials}.
+    \(E, F, G, H\) are called \term{thermodynamic potentials}.
 \end{definition}
 
 Assuming that everything is \(\contClass{2}\), we have
@@ -325,5 +325,5 @@ Applying \autoref{eq:temperature-pressure} gives
 There are three similar equations that follow from doing the same steps with different thermodynamic potentials, from \(F, H\) and \(G\).
 
 \begin{definition}[Maxwell Relations]
-    The four equations derived from the four thermodynamic potentials are the \emph{Maxwell relations}.
+    The four equations derived from the four thermodynamic potentials are the \term{Maxwell relations}.
 \end{definition}
