@@ -29,13 +29,13 @@ Our question is, which \(y \in \contClassSymb\) optimises \(F\)?
 Consider varying \(y\) to \(y + \var{y} \in \contClassSymb\), and we have
 \begin{align*}
     \var{F\bqty{y}} &= F\bqty{y + \var{y}} - F\bqty{y} \\
-    &= \int_{\alpha}^{\beta} \bqty{f \pqty{y + \var{y}, y' + \var{y}, x} - f \pqty{y, y', x}} \dd{x} \\
+    &= \int_{\alpha}^{\beta} \bqty{f \pqty{y + \var{y}, y' + \var{y'}, x} - f \pqty{y, y', x}} \dd{x} \\
     &= \int_{\alpha}^{\beta} \pqty{\var{y} \pdv{f}{y} + \var{y'} \pdv{f}{y'}} + \cdots\\
     &= \int_{\alpha}^{\beta} \dd{x} \var{y\pqty{x}} \pqty{\pdv{f}{y} - \dv{x} \pdv{f}{y'}} + \bqty{\var{y} \pdv{f}{y'}}_{\alpha}^{\beta} + \cdots
 \end{align*}
 using integration by parts.
 
-Now assume that \(\contClassSymb\) is such that the boundary conditions makes the final term vanish, for example,
+Now assume that \(\contClassSymb\) is such that the boundary conditions make the final term vanish, for example,
 \begin{itemize}
     \item \(y\pqty{\alpha} = a, y\pqty{\beta} = b\) for some \(a, b\); or
     \item \(\pdv*{f}{y'} = 0\) at \(x = \alpha, \beta\), for example \(f = \sqrt{1 + y'^2}\) equipped with \(y'\pqty{\alpha} = y'\pqty{\beta} = 0\).
@@ -55,14 +55,14 @@ So \(\var{F\bqty{y}}\) vanishes to first order for \emph{arbitrary} \(\var{y\pqt
     \fdv{F\bqty{y}}{y\pqty{x}} = \pdv{f}{y} - \dv{x} \pdv{f}{y'} = 0,
     \label{eq:euler-lagrange}
 \end{equation}
-the \term{Euler--Lagrange Equation}. This is an second order ODE for \(y\pqty{x}\).
+the \term{Euler--Lagrange Equation}. This is a second-order ODE for \(y\pqty{x}\).
 
 \begin{theorem}[Euler--Lagrange Equation]
     Let \(\functiondomain{f}{\RR^3}{\RR}\) be a function, and \(\contClassSymb\) be a class of functions that are smooth on \(\ccintv{\alpha}{\beta}\), and such that the boundary equation
     \[
         \bqty{\var{y} \pdv{f}{y'}}_{\alpha}^{\beta} = 0
     \]
-    holds for all \(\var{y} = y_1 - y_2\) for \(y_1, y_2 \in \contClassSymb\). Then a function \(y \in \contClassSymb\) optimises the functional
+    holds for all \(\var{y} = y_1 - y_2\) for \(y_1, y_2 \in \contClassSymb\). Then a function \(y \in \contClassSymb\) is a stationary point of the functional
     \[
         F\bqty{y} = \int_{\alpha}^{\beta} f\pqty{y, y', x} \dd{x}
     \]

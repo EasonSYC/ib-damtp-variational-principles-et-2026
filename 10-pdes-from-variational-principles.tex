@@ -10,7 +10,7 @@ for \(m > 1\), and functionals of the form
 \]
 where \(V \subseteq \RR^m\), and the gradient is a \(m \times n\) matrix.
 
-Similarly, we now study the variation of the functional, but here we use divergence theorem instead of a one-dimensional integration by parts. This leads to a generalisation of Euler--Lagrange equations, provided that the boundary conditions implies that the boundary term (surface integral) all vanishes.
+Similarly, we now study the variation of the functional, but here we use the divergence theorem instead of a one-dimensional integration by parts. This leads to a generalisation of the Euler--Lagrange equations, provided that the boundary conditions imply that the boundary term (surface integral) vanishes.
 
 \subsection{Minimal Surfaces}
 
@@ -98,7 +98,7 @@ describing a plane. But does this satisfy the boundary condition? This only sati
     \]
     in this case assuming that the region \(\mathcal{D}\) is a circle with radius \(R\).
     
-    Now we optimise w.r.t. \(z\pqty{r}\), and there is no dependence on \(z\), giving a first integral, giving a solution of the form
+    Now we optimise w.r.t. \(z\pqty{r}\), and there is no dependence on \(z\), giving a first integral and a solution of the form
     \[
         r = r_0 \cosh \pqty{\frac{z - z_0}{r_0}},
     \]
@@ -173,7 +173,7 @@ and hence
 for some \(\phi\pqty{t, \vb{x}}\). They are called the \term{magnetic potential} and \term{electric potential} respectively.
 
 \begin{example}[Deriving the Remaining Two Maxwell's Equations]
-    The actions is, in fact, a functional of \(\vb{A}\) and \(\phi\), in the form
+    The action is, in fact, a functional of \(\vb{A}\) and \(\phi\), in the form
     \[
         I\bqty{\vb{A}, \phi} = \int \dd{t} \iiint \dd[3]{\vb{x}} \Bqty{\frac{1}{2} \epsilon_0 \vb{E}^2 - \frac{1}{2 \mu_0} \vb{B}^2 + \vb{A} \vdot \vb{j} - \phi \rho}
     \]

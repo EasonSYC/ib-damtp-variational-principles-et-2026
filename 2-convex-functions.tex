@@ -8,7 +8,7 @@
     \]
 \end{definition}
 
-\autoref{def:convex-set} says that a set is convex, if and only if the straight line segment that connects any two points are included in the set.
+\autoref{def:convex-set} says that a set is convex if and only if the straight line segment that connects any two points is included in the set.
 
 \begin{definition}[Graph of Function]
     \label{def:graph-of-fn}%
@@ -24,7 +24,7 @@
     A function \(f\) is \term{convex}, if
     \begin{itemize}
         \item its domain \(\dom\pqty{f}\) is convex (as a set); and
-        \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vb{x}, \vb{y} \in S\) and \(t \in \ccintv{0}{1}\), we have
+        \item the graph of \(f\) lies below, or on, its chords; mathematically, for any \(\vb{x}, \vb{y} \in \dom\pqty{f}\) and \(t \in \ccintv{0}{1}\), we have
         \begin{equation}
             f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}} \leq t f\pqty{\vb{x}} + \pqty{1 - t} f\pqty{\vb{y}}. \label{eq:convex-condition}
         \end{equation}
@@ -240,13 +240,13 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
         \vb{h} \vdot \bqty{\grad f\pqty{\vb{x} + \vb{h}} - \grad f\pqty{\vb{x}}} \geq 0.
     \]
 
-    By Taylor expanding, we have
+    By Taylor expanding the gradient, we have
     \[
-        \nabla_i f\pqty{\vb{x} + \vb{h}} = \nabla_i f \pqty{\vb{x}} + h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{h^3} \geq 0
+        \nabla_i f\pqty{\vb{x} + \vb{h}} = \nabla_i f \pqty{\vb{x}} + h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{\abs{\vb{h}}^2},
     \]
     and hence
     \[
-        h_i h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{h^3} \geq 0.
+        h_i h_j H_{ij} \pqty{\vb{x}} + \bigO \pqty{\abs{\vb{h}}^3} \geq 0.
     \]
 
     Suppose that \(\vb{H}\pqty{\vb{x}}\) has some negative eigenvalue \(\lambda\) with eigenvector \(\vb{e}\), then setting \(\vb{h} = h \vb{e}\) gives that
@@ -284,7 +284,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
         \tr \vb{H} = \frac{2}{xy} \pqty{\frac{1}{x^2} + \frac{1}{y^2}} > 0.
     \]
 
-    This means the eigenvalues of \(\vb{H}\) is strictly true in \(\dom\pqty{f}\), and hence \(f\) is strictly convex.
+    This means both eigenvalues of \(\vb{H}\) are positive throughout \(\dom\pqty{f}\), and hence \(f\) is strictly convex.
 
     Note that if we take the domain to be
     \[

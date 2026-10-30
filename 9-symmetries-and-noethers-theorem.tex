@@ -51,12 +51,12 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
         0 &= \int_{t_A}^{t_B} \bqty{L \pqty{\vb{q} \pqty{t} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, \dot{\vb{q}} \pqty{t} + s \dv{t} \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, t}} - L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} \\
         &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{q_i} + s \dv{t} \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} + \cdots} \dd{t} \\
         &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pqty{\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i}} + s \dv{t} \pqty{\pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0}} + \cdots} \dd{t} \\
-        &= \bqty{s \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{t = 0}}_{t_A}^{t_B} + \bigO\pqty{s^2}.
+        &= \bqty{s \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0}}_{t_A}^{t_B} + \bigO\pqty{s^2}.
     \end{align*}
 
     Taking an \(s\)-derivative and setting \(s = 0\) gives
     \[
-        \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{t = 0}
+        \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0}
     \]
     takes the same value at time \(t_A\) and \(t_B\). But this holds for arbitrary \(t_A\) and \(t_B\), giving a conserved quantity.
 \end{proof}
@@ -134,7 +134,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 
 We can generalise the definition of a 1-parameter family of symmetries to allow for boundary term.
 
-\begin{corollary}[Noether's Theorem, Version 1, with Bondary Term]
+\begin{corollary}[Noether's Theorem, Version 1, with Boundary Term]
     If \autoref{thm:noether-thm-ver-1} has the condition of \autoref{eq:symmetry-of-action} changed such that
     \begin{equation}
         \label{eq:conserved-symmetry-with-boundary-term}%
@@ -170,7 +170,7 @@ We can generalise the definition of a 1-parameter family of symmetries to allow 
     Now, we have
     \begin{align*}
         L \pqty{\vb{x}^{\ast}, \dot{\vb{x}}^{\ast}, t} &= \sum_{i = 1}^{N} \frac{1}{2} m_i \pqty{\dot{\vb{x}}_i - \unitv{n}s}^2 - V \pqty{\vb{x}_1^{\ast}, \ldots, \vb{x}_N^{\ast}} \\
-        &= \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N} - s \unitv{n} \vdot \sum_{n = 1}^{N} m_i \dot{\vb{x}}_i + \bigO \pqty{s^2} \\
+        &= \sum_{i = 1}^{N} \frac{1}{2} m_i \dot{\vb{x}}_i^2 - V\pqty{\vb{x}_1, \ldots, \vb{x}_N} - s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \dot{\vb{x}}_i + \bigO \pqty{s^2} \\
         &= L\pqty{\vb{x}, \dot{\vb{x}}, t} - \dv{t} \pqty{s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i} + \bigO \pqty{s^2}.
     \end{align*}
 

@@ -65,9 +65,9 @@ Optimising with respect to \(\lambda\) recovers \(g\pqty{\vb{x}} = 0\), and opti
     The \(\lambda\) defined above is a \term{Lagrange multiplier}.
 \end{definition}
 
-Note whatever we did above generates to \(\RR^n\), but the difficulty is to determine the nature of the stationary points -- there is not a generalisation of the Hessian in this situation.
+Note that everything we did above generalises to \(\RR^n\), but the difficulty is to determine the nature of the stationary points -- there is no simple generalisation of the Hessian in this situation.
 
-\begin{example}[Lagrnage Multiplier, Easier Example]
+\begin{example}[Lagrange Multiplier, Easier Example]
     Consider an open rectangular box with dimensions \(\pqty{x, y, z}\) (with the \(xy\) surface missing for the top). We want to minimise its surface area \(A\) subject to a constraint of fixed volume \(V = \flatfrac{L^3}{2}\).
         
     Mathematically,
@@ -163,7 +163,7 @@ The main advantage of this method is it works even when the constraint is very c
     \]
     so the eigenvalues of \(\vb{A}\) are the values of \(f\) at the stationary points, and the minimum of \(f\) is given by the lowest eigenvalue of \(\vb{A}\).
 
-    Alternatively, we may use a rotation to diagonalise \(\vb{A}\) (which is what we did in \textit{Vectors and Matrices}). Or, we could consider the ratio
+    Alternatively, we may use a rotation to diagonalise \(\vb{A}\) (which is what we did in \textit{Vectors and Matrices}). Or, defining \(g\pqty{\vb{x}} = \abs{\vb{x}}^2\), we could consider the ratio
     \[
         \Lambda\pqty{\vb{x}} = \frac{f\pqty{\vb{x}}}{g\pqty{\vb{x}}} = \hat{x}_i A_{ij} \hat{x}_j = f\pqty{\hat{\vb{x}}}
     \]
