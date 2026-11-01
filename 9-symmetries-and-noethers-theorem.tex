@@ -46,7 +46,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 \end{theorem}
 
 \begin{proof}
-    For any small \(s\), we substitute \autoref{eq:image-curve-taylor} into \autoref{eq:symmetry-of-action}. Subtracting gives
+    For any small \(s\), we substitute \eqref{eq:image-curve-taylor} into \eqref{eq:symmetry-of-action}. Subtracting gives
     \begin{align*}
         0 &= \int_{t_A}^{t_B} \bqty{L \pqty{\vb{q} \pqty{t} + s \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, \dot{\vb{q}} \pqty{t} + s \dv{t} \pqty{\pdv{\vb{Q}}{s}}_{s = 0} + \cdots, t}} - L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} \\
         &= \int_{t_A}^{t_B} \bqty{s \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{q_i} + s \dv{t} \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} + \cdots} \dd{t} \\
@@ -77,7 +77,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
     \[
         \pqty{\pdv{Q_i}{s}}_{s = 0} \pdv{L}{\dot{q}_i} = \pdv{L}{\dot{q}_1} = p_1
     \]
-    which is the conjugate momentum, as in \autoref{eq:conjugate-momentum}.
+    which is the conjugate momentum, as in \eqref{eq:conjugate-momentum}.
 \end{example}
 
 \begin{example}[Conservation of Total Momentum]
@@ -93,7 +93,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
     \[
         L \pqty{\vb{q}^{\ast}, \dot{\vb{q}}^{\ast}, t} = L \pqty{\vb{q}, \dot{\vb{q}}, t}
     \]
-    so \autoref{eq:symmetry-of-action} holds. This means there is a conserved quantity of the form
+    so \eqref{eq:symmetry-of-action} holds. This means there is a conserved quantity of the form
     \begin{align*}
         \sum_{i = 1}^{3N} \pdv{L}{\dot{q}_i} \pqty{\pdv{Q_i}{s}}_{s = 0} &= \vb{a} \vdot \sum_{i = 1}^{N} \pdv{L}{\dot{\vb{x}}_i} \\
         &= \vb{a} \vdot \sum_{i = 1}^{N} \vb{p}_i \\
@@ -135,7 +135,7 @@ For \(\abs{s} \ll 1\), we may Taylor expand \(\vb{q}^{\ast}\) for small \(s\), g
 We can generalise the definition of a 1-parameter family of symmetries to allow for boundary term.
 
 \begin{corollary}[Noether's Theorem, Version 1, with Boundary Term]
-    If \autoref{thm:noether-thm-ver-1} has the condition of \autoref{eq:symmetry-of-action} changed such that
+    If \autoref{thm:noether-thm-ver-1} has the condition of \eqref{eq:symmetry-of-action} changed such that
     \begin{equation}
         \label{eq:conserved-symmetry-with-boundary-term}%
         \int_{t_A}^{t_B} L \pqty{\vb{q}^{\ast}, \dot{\vb{q}}^{\ast}, t} \dd{t} = \int_{t_A}^{t_B} L \pqty{\vb{q}, \dot{\vb{q}}, t} \dd{t} + \bqty{s K \pqty{\vb{q}, \dot{\vb{q}}, t}}_{t_A}^{t_B}
@@ -174,7 +174,7 @@ We can generalise the definition of a 1-parameter family of symmetries to allow 
         &= L\pqty{\vb{x}, \dot{\vb{x}}, t} - \dv{t} \pqty{s \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i} + \bigO \pqty{s^2}.
     \end{align*}
 
-    So \autoref{eq:conserved-symmetry-with-boundary-term} holds with
+    So \eqref{eq:conserved-symmetry-with-boundary-term} holds with
     \[
         K = - \unitv{n} \vdot \sum_{i = 1}^{N} m_i \vb{x}_i = - \unitv{n} \vdot \pqty{M \vb{R}}
     \]
@@ -225,7 +225,7 @@ Consider, similarly, a 1-parameter family of such symmetries \(T\pqty{t, s}\) wh
         \dv{t}{t^{\ast}} = 1 - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} + \bigO\pqty{s^2}
     \]
 
-    Let \(I^{\ast}, I\) be the two sides of \autoref{eq:symmetry-of-action-time}. We change the integral of \(t^{\ast}\) to \(t\), gives
+    Let \(I^{\ast}, I\) be the two sides of \eqref{eq:symmetry-of-action-time}. We change the integral of \(t^{\ast}\) to \(t\), gives
     \begin{align*}
         I^{\ast} &= \int_{t_A}^{t_B} L \pqty{\vb{q}\pqty{t}, \dv{t}{t^{\ast}} \dv{t} \vb{q} \pqty{t}, T\pqty{t}} \dv{t^{\ast}}{t} \dd{t} \\
         &= \int_{t_A}^{t_B} L \pqty{\vb{q} \pqty{t}, \dot{\vb{q}} \pqty{t} - s \dv{t} \pqty{\pdv{T}{s}}_{s = 0} \dot{\vb{q}} \pqty{t} + \cdots, t + s \pqty{\pdv{T}{s}}_{s = 0} + \cdots} \\

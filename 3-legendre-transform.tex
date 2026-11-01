@@ -63,20 +63,20 @@
 \end{corollary}
 
 \begin{remark}
-    If \(f\) is \emph{strictly} convex, then the solution to \autoref{eq:legendre-transform-of-convex-function} is unique. The idea is to consider the chord joining the two maxima of the function, and use the concave version of \autoref{eq:strict-convex-condition}.
+    If \(f\) is \emph{strictly} convex, then the solution to \eqref{eq:legendre-transform-of-convex-function} is unique. The idea is to consider the chord joining the two maxima of the function, and use the concave version of \eqref{eq:strict-convex-condition}.
 \end{remark}
 
 \begin{examples}[Legendre Transforms for \(n = 1\)]
     \label{ex:legendre-one-dimensional}%
     \begin{enumerate}
-        \item Consider the quadratic \(f\pqty{x} = \frac{1}{2} a x^2\) for \(a > 0\). \(f\) is strictly convex, and \autoref{eq:legendre-transform-of-convex-function} holds if and only if \(x = \flatfrac{p}{a}\). Hence,
+        \item Consider the quadratic \(f\pqty{x} = \frac{1}{2} a x^2\) for \(a > 0\). \(f\) is strictly convex, and \eqref{eq:legendre-transform-of-convex-function} holds if and only if \(x = \flatfrac{p}{a}\). Hence,
         \[
             \legendre{f} \pqty{p} = \frac{p^2}{a} - \frac{p^2}{2a} = \frac{p^2}{2a}.
         \]
         
         This is indeed convex, with domain \(\RR\).
 
-        \item Consider the function \(f\pqty{v} = - \sqrt{1 - v^2}\) defined for \(-1 < v < 1\). This is a semi-circle and is convex. \autoref{eq:legendre-transform-of-convex-function} holds if and only if \(p = \flatfrac{v}{\sqrt{1 - v^2}}\). This gives the solution
+        \item Consider the function \(f\pqty{v} = - \sqrt{1 - v^2}\) defined for \(-1 < v < 1\). This is a semi-circle and is convex. \eqref{eq:legendre-transform-of-convex-function} holds if and only if \(p = \flatfrac{v}{\sqrt{1 - v^2}}\). This gives the solution
         \[
             v = \frac{p}{\sqrt{1 + p^2}}
         \]
@@ -133,7 +133,7 @@ What happens if we do a Legendre transform twice?
 \end{theorem}
 
 \begin{proof}
-    To find \(\llegendre{f}\), we need to find \(\vb{p} \pqty{\vb{x}}\) obeying \autoref{eq:legendre-transform-of-convex-function}, which reads
+    To find \(\llegendre{f}\), we need to find \(\vb{p} \pqty{\vb{x}}\) obeying \eqref{eq:legendre-transform-of-convex-function}, which reads
     \[
         \grad \legendre{f} \pqty{\vb{p} \pqty{\vb{x}}} = \vb{x} \eqno{(\ast)}.
     \]
@@ -142,13 +142,13 @@ What happens if we do a Legendre transform twice?
     \[
         \legendre{f} \pqty{\vb{p}} = \vb{p} \vdot \vb{x} \pqty{\vb{p}} - f\pqty{\vb{x} \pqty{\vb{p}}}
     \]
-    where \(\vb{x} \pqty{\vb{p}}\) is given by \autoref{eq:legendre-transform-of-convex-function}.
+    where \(\vb{x} \pqty{\vb{p}}\) is given by \eqref{eq:legendre-transform-of-convex-function}.
 
     Differentiating \(\legendre{f}\) with respect to \(\vb{p}\), we have
     \begin{align*}
         \pdv{\legendre{f}}{p_i} &= x_i + p_j \pdv{x_j}{p_i} - \pdv{x_j}{p_i} \pdv{f}{x_j}\pqty{\vb{x}\pqty{\vb{p}}} && \text{allowed by smoothness assumption of \(f\)} \\
         &= x_i + \pdv{x_j}{p_i} \pqty{p_j - \nabla_j f \pqty{\vb{x} \pqty{\vb{p}}}} \\
-        &= x_i. && \text{by \autoref{eq:legendre-transform-of-convex-function}}
+        &= x_i. && \text{by \eqref{eq:legendre-transform-of-convex-function}}
     \end{align*}
 
     So we have
@@ -235,18 +235,18 @@ If energy increased at fixed volume, then entropy will go up, because there are 
 What is below is an overview of the Legendre Transforms -- details can be found on Example Sheets.
 
 \begin{example}[Legendre Transforms for Temperature -- Helmholtz Free Energy]
-    Now, we forget \autoref{eq:temperature} (for temperature). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(S\), with parameter \(T\). Call this \(-F\), i.e.,
+    Now, we forget \eqref{eq:temperature} (for temperature). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(S\), with parameter \(T\). Call this \(-F\), i.e.,
     \[
         -F \pqty{T, V} = \sup_{S} \Bqty{TS - E \pqty{S, V}}.
     \] 
 
-    We may show that the stability of equilibrium state implies that \(E\) is convex, with respect to \(S\). Now, \autoref{eq:legendre-transform-of-convex-function} maximises for \(S\pqty{T, V}\) satisfying \autoref{eq:temperature}, and
+    We may show that the stability of equilibrium state implies that \(E\) is convex, with respect to \(S\). Now, \eqref{eq:legendre-transform-of-convex-function} maximises for \(S\pqty{T, V}\) satisfying \eqref{eq:temperature}, and
     \[
         F\pqty{T, V} = E - TS
     \]
     is called the \term{Helmholtz Free Energy}.
 
-    Note \autoref{eq:fundamental-thermodynamic-relation} implies that
+    Note \eqref{eq:fundamental-thermodynamic-relation} implies that
     \[
         \dd{F} = - S \dd{T} - P \dd{V}
     \]
@@ -260,18 +260,18 @@ What is below is an overview of the Legendre Transforms -- details can be found 
 \end{example}
 
 \begin{example}[Legendre Transforms for Pressure -- Enthalpy]
-    Similarly, we forget \autoref{eq:pressure} (for pressure). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(V\) at fixed \(S\), with parameter \(-P\). We call this \(-H\), i.e.,
+    Similarly, we forget \eqref{eq:pressure} (for pressure). Consider the Legendre Transform of \(E\pqty{S, V}\) with respect to \(V\) at fixed \(S\), with parameter \(-P\). We call this \(-H\), i.e.,
     \[
         -H \pqty{S, P} = \sup_{V} \Bqty{-PV - E \pqty{S, V}}
     \]
 
-    Similarly, applying \autoref{eq:legendre-transform-of-convex-function} maximises for \(V\) satisfying \autoref{eq:pressure}, and
+    Similarly, applying \eqref{eq:legendre-transform-of-convex-function} maximises for \(V\) satisfying \eqref{eq:pressure}, and
     \[
         H\pqty{S, P} = E + PV
     \]
     is called the \term{enthalpy}. It is very useful in chemistry.
 
-    Now, \autoref{eq:fundamental-thermodynamic-relation} implies that
+    Now, \eqref{eq:fundamental-thermodynamic-relation} implies that
     \[
         \dd{H} = T \dd{S} + V \dd{P}
     \]
@@ -287,13 +287,13 @@ What is below is an overview of the Legendre Transforms -- details can be found 
     \[
         -G \pqty{T, P} = \sup_{S, V} \Bqty{TS - PV - E \pqty{S, V}}
     \]
-    and applying \autoref{eq:legendre-transform-of-convex-function}, we have the maximum of \(S\pqty{T, P}\) and \(V\pqty{T, P}\) gives both of \autoref{eq:temperature-pressure}. Hence, \(G\) is given by
+    and applying \eqref{eq:legendre-transform-of-convex-function}, we have the maximum of \(S\pqty{T, P}\) and \(V\pqty{T, P}\) gives both of \eqref{eq:temperature-pressure}. Hence, \(G\) is given by
     \[
         G\pqty{T, P} = E - TS + PV
     \]
     is called the \term{Gibbs free energy}.
 
-    Using \autoref{eq:fundamental-thermodynamic-relation} gives
+    Using \eqref{eq:fundamental-thermodynamic-relation} gives
     \[
         \dd{G} = -S \dd{T} + V \dd{P}
     \]
@@ -317,7 +317,7 @@ and hence
     \pqty{\pdv{S} \pqty{\pdv{E}{V}}_S}_{V} = \pqty{\pdv{V} \pqty{\pdv{E}{S}}_{V}}_{S}.
 \]
 
-Applying \autoref{eq:temperature-pressure} gives
+Applying \eqref{eq:temperature-pressure} gives
 \[
     - \pqty{\pdv{P}{S}}_{V} = \pqty{\pdv{T}{V}}_{S}
 \]

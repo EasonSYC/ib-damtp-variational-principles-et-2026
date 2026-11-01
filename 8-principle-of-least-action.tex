@@ -33,7 +33,7 @@ A na\"ive way to find an equation for \(\vb{q}\) is to start from Cartesian and 
     The actual path from \(\vb{q}_A\) to \(\vb{q}_B\) of the system makes the action stationary.
 \end{theorem}
 
-Since \(\vb{q}_A\) and \(\vb{q}_B\) are fixed, the boundary term in \(\var{I}\) vanishes, allowing us to simply recover \autoref{eq:euler-lagrange}, the Euler--Lagrange equation:
+Since \(\vb{q}_A\) and \(\vb{q}_B\) are fixed, the boundary term in \(\var{I}\) vanishes, allowing us to simply recover \eqref{eq:euler-lagrange}, the Euler--Lagrange equation:
 \[
     \pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i} = 0,
 \]
@@ -49,7 +49,7 @@ for \(i = 1, 2, \ldots, 3N\).
         L = \frac{1}{2} m \dot{\vb{x}}^2 - V \pqty{\vb{x}, t}.
     \]
 
-    \autoref{eq:euler-lagrange} reduces to
+    \eqref{eq:euler-lagrange} reduces to
     \[
         \pdv{V}{x_i} + \dv{t} \pqty{m \dot{x}_i} = 0
     \]
@@ -147,7 +147,7 @@ for the \term{effective potential}
 
 \subsection{The Hamiltonian and Hamilton's Equations}
 
-Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function of \(\dot{\vb{q}}\). This allows us to take Legendre Transforms using \autoref{eq:legendre-transform-of-convex-function} with respect to \(\dot{\vb{q}}\), with \(\vb{q}\) and \(t\) fixed.
+Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function of \(\dot{\vb{q}}\). This allows us to take Legendre Transforms using \eqref{eq:legendre-transform-of-convex-function} with respect to \(\dot{\vb{q}}\), with \(\vb{q}\) and \(t\) fixed.
 
 \begin{definition}[Hamiltonian]
     The \term{Hamiltonian} \(H \pqty{\vb{q}, \vb{p}, t}\) is defined as the Legendre transform of \(L\) w.r.t. \(\dot{\vb{q}}\), i.e.
@@ -157,7 +157,7 @@ Now, we assume that \(L\pqty{\vb{q}, \dot{\vb{q}}, t}\) is convex as a function 
     \end{equation}
 \end{definition}
 
-Using \autoref{eq:legendre-transform-of-convex-function}, we have
+Using \eqref{eq:legendre-transform-of-convex-function}, we have
 \[
     H\pqty{\vb{q}, \vb{p}, t} = \vb{p} \vdot \dot{\vb{q}} - L\pqty{\vb{q}, \dot{\vb{q}}, t}
 \]
@@ -173,7 +173,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
         L = \frac{1}{2} m \dot{\vb{x}}^2 - V \pqty{\vb{x}, t}.
     \]
 
-    We have by \autoref{eq:conjugate-momentum},
+    We have by \eqref{eq:conjugate-momentum},
     \[
         p_i = \pdv{L}{\dot{x}_i} = m \dot{x}_i
     \]
@@ -181,7 +181,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
     \[
         \vb{p} = m \dot{\vb{x}}
     \]
-    is the \term{momentum} of the particle. Using \autoref{eq:hamiltonian}, we have
+    is the \term{momentum} of the particle. Using \eqref{eq:hamiltonian}, we have
     \[
         H = \vb{p} \vdot \frac{\vb{p}}{m} - \pqty{\frac{\vb{p}^2}{2m} - V} = \frac{\vb{p}^2}{2m} + V
     \]
@@ -195,7 +195,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
     \]
     with \(\vb{q} = \pqty{r, \phi}\).
 
-    From \autoref{eq:conjugate-momentum}, we have
+    From \eqref{eq:conjugate-momentum}, we have
     \[
         p_r = \pdv{L}{\dot{r}} = m \dot{r},
     \]
@@ -213,7 +213,7 @@ for the stationary point of the brackets in \(\dot{q}_i\), i.e., where \(\vb{p}\
         \dot{\phi} = \frac{p_\phi}{m r^2}.
     \]
 
-    Then we have from \autoref{eq:hamiltonian} that
+    Then we have from \eqref{eq:hamiltonian} that
     \[
         H = p_r \dot{r} + p_\phi \dot{\phi} - L = \frac{p_r^2}{2m} + \frac{p_\phi^2}{2 m r^2} + V\pqty{r}
     \]
@@ -228,7 +228,7 @@ The Hamiltonian \(H\) is just the total energy
 \[
     H = \sum_{i = 1}^{3N} \dot{q}_i \pdv{L}{\dot{q}_i} - L,
 \]
-but since \(H = H\pqty{\vb{q}, \vb{p}, t}\), we would have \(\dot{\vb{q}}\) eliminated in favour of \(\vb{q}, \vb{p}\) and \(t\), using \autoref{eq:conjugate-momentum}.
+but since \(H = H\pqty{\vb{q}, \vb{p}, t}\), we would have \(\dot{\vb{q}}\) eliminated in favour of \(\vb{q}, \vb{p}\) and \(t\), using \eqref{eq:conjugate-momentum}.
 
 Therefore, the Hamiltonian is conserved if \(\pdv*{L}{t} = 0\).
 
@@ -248,7 +248,7 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
         \pqty{\pdv{H}{p_i}}_{\vb{q}} &= \dot{q}_i + \sum_{j = 1}^{3N} p_j \pdv{\dot{q}_j}{p_i} - \sum_{j = 1}^{3N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{p_i} \\
         &= \dot{q}_i
     \end{align*}
-    by \autoref{eq:conjugate-momentum}.
+    by \eqref{eq:conjugate-momentum}.
 \end{proof}
 
 \begin{proposition}[Differentiating Hamiltonian w.r.t. Position]
@@ -264,13 +264,13 @@ We can now `forget' about the Lagrangian formalism, and write the equations of m
     \begin{align*}
         \pqty{\pdv{H}{q_i}}_{\vb{p}} &= \sum_{j = 1}^{3N} p_j \pdv{\dot{q}_j}{q_i} - \pdv{L}{q_i} - \sum_{j = 1}^{3N} \pdv{L}{\dot{q}_j} \pdv{\dot{q}_j}{q_i} = - \pdv{L}{q_i}
     \end{align*}
-    by \autoref{eq:conjugate-momentum}.
+    by \eqref{eq:conjugate-momentum}.
 
     By Euler--Lagrange Equations, we have
     \[
         - \pdv{L}{q_i} = - \dv{t} \pdv{L}{\dot{q}_i} = - \dot{p}_i
     \]
-    again by using \autoref{eq:conjugate-momentum}.
+    again by using \eqref{eq:conjugate-momentum}.
 \end{proof}
 
 \autoref{prop:hamiltonian-diff-conjugate-momentum} and \autoref{prop:hamiltonian-diff-position} give the following pair of equations.
@@ -289,7 +289,7 @@ The Euler--Lagrange equations are second-order ODEs in a \(3N\)-dimensional conf
     The \(6N\)-dimensional space in which Hamilton's equations evolve, with coordinates \(\pqty{\vb{q}, \vb{p}}\), is called \term{phase space}.
 \end{definition}
 
-Another way to derive \autoref{eq:hamilton-equations} is to find the action in terms of
+Another way to derive \eqref{eq:hamilton-equations} is to find the action in terms of
 \[
     I\bqty{\vb{q}, \vb{p}} = \int_{t_A}^{t_B} \pqty{\vb{p} \vdot \dot{\vb{q}} - H \pqty{\vb{q}, \vb{p}, t}} \dd{t}
 \]
@@ -306,5 +306,5 @@ for fixed \(\vb{q} \pqty{t_A}, \vb{q} \pqty{t_B}\) (but not for \(\vb{p}\), sinc
         &= \sum_{i = 1}^{3N} \pqty{\pdv{H}{q_i} \dot{q}_i + \pdv{H}{p_i} \dot{p}_i} + \pdv{H}{t} \\
         &= \pdv{H}{t}
     \end{align*}
-    by using \autoref{eq:hamilton-equations}. Therefore, if \(H\) has no explicit time-dependence, the Hamiltonian is conserved.
+    by using \eqref{eq:hamilton-equations}. Therefore, if \(H\) has no explicit time-dependence, the Hamiltonian is conserved.
 \end{proof}

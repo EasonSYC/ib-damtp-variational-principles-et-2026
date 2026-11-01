@@ -66,7 +66,7 @@ the \term{Euler--Lagrange Equation}. This is a second-order ODE for \(y\pqty{x}\
     \[
         F\bqty{y} = \int_{\alpha}^{\beta} f\pqty{y, y', x} \dd{x}
     \]
-    if and only if \autoref{eq:euler-lagrange} (the Euler--Lagrange Equation) holds.
+    if and only if \eqref{eq:euler-lagrange} (the Euler--Lagrange Equation) holds.
 \end{theorem}
 
 For a generalisation, for a function
@@ -99,7 +99,7 @@ The first question we have is how to parameterise this curve. There are two choi
         L\bqty{y} = \int_{x_A}^{x_B} \sqrt{1 + \pqty{y'}^2} \dd{x}.
     \]
 
-    We have \(f = \sqrt{1 + \pqty{y'}^2}\), and in particular, \(\pdv*{f}{y} = 0\). \autoref{eq:euler-lagrange} implies that \(\pdv{f}{y'}\) is a constant, so
+    We have \(f = \sqrt{1 + \pqty{y'}^2}\), and in particular, \(\pdv*{f}{y} = 0\). \eqref{eq:euler-lagrange} implies that \(\pdv{f}{y'}\) is a constant, so
     \[
         \frac{y'}{\sqrt{1 + \pqty{y'}^2}}
     \]
@@ -118,7 +118,7 @@ The boundary conditions are \(x\pqty{0} = x_A\), \(x\pqty{1} = x_B\), and simila
 \[
     f = \sqrt{\dot{x}^2 + \dot{y}^2},
 \]
-and \autoref{eq:euler-lagrange} on \(x\) imposes that
+and \eqref{eq:euler-lagrange} on \(x\) imposes that
 \[
     \dv{t} \pdv{f}{\dot{x}} - \pdv{f}{x} = 0.
 \]
@@ -147,5 +147,5 @@ and similarly \(\dv*{y}{l} = \sin \theta\).
 So \(x = x_A + l \cos \theta\), \(y = y_A + l \sin \theta\) which is a completely arbitrary straight line.
 
 \begin{remark}
-    There is a good reason why we start with \(t\) -- since if we use \(l\) initially, then the upper limit of the integration \emph{will depend on the curve}, but our derivation of \autoref{eq:euler-lagrange} assumed that the boundaries are fixed.
+    There is a good reason why we start with \(t\) -- since if we use \(l\) initially, then the upper limit of the integration \emph{will depend on the curve}, but our derivation of \eqref{eq:euler-lagrange} assumed that the boundaries are fixed.
 \end{remark}

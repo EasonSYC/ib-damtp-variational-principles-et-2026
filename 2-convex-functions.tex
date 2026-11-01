@@ -30,7 +30,7 @@
         \end{equation}
     \end{itemize}
 
-    If instead, \autoref{eq:convex-condition} is strict: for any \(\vb{x}, \vb{y} \in S\) with \(\vb{x} \neq \vb{y}\), and \(t \in \oointv{0}{1}\), we have
+    If instead, \eqref{eq:convex-condition} is strict: for any \(\vb{x}, \vb{y} \in S\) with \(\vb{x} \neq \vb{y}\), and \(t \in \oointv{0}{1}\), we have
     \begin{equation}
         f\pqty{t \vb{x} + \pqty{1 - t} \vb{y}} < t f\pqty{\vb{x}} + \pqty{1 - t} f\pqty{\vb{y}}, \label{eq:strict-convex-condition}
     \end{equation}
@@ -100,7 +100,7 @@ Note that the first property is important, since we need the domain to be convex
 
 \begin{theorem}[First Order Condition]
     \label{thm:first-order-condition}%
-    If \(f\) is differentiable, then \autoref{eq:convex-condition} is equivalent to
+    If \(f\) is differentiable, then \eqref{eq:convex-condition} is equivalent to
     \begin{equation}
         \forall \vb{x}, \vb{y} \in \dom\pqty{f}: f\pqty{\vb{y}} \geq f\pqty{\vb{x}} + \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}} \label{eq:first-order-condition}
     \end{equation}
@@ -144,12 +144,12 @@ Note that the first property is important, since we need the domain to be convex
 \end{corollary}
 
 \begin{proof}
-    If \(\vb{a}\) is a stationary point, \(\grad f\pqty{\vb{a}} = \vb{0}\), so \autoref{eq:first-order-condition} implies that \(f\pqty{\vb{y}} \geq f\pqty{\vb{a}}\), for all \(\vb{y} \in \dom\pqty{f}\).
+    If \(\vb{a}\) is a stationary point, \(\grad f\pqty{\vb{a}} = \vb{0}\), so \eqref{eq:first-order-condition} implies that \(f\pqty{\vb{y}} \geq f\pqty{\vb{a}}\), for all \(\vb{y} \in \dom\pqty{f}\).
 \end{proof}
 
 Now we prove the first-order condition.
 
-\begin{proof}[\proofname\ that \autoref{eq:convex-condition} implies \autoref{eq:first-order-condition}]
+\begin{proof}[\proofname\ that \eqref{eq:convex-condition} implies \eqref{eq:first-order-condition}]
     Let
     \[
         h\pqty{t} = \pqty{1 - t} f\pqty{\vb{x}} + t f\pqty{\vb{y}} - f\pqty{\pqty{1 - t} \vb{x} + t \vb{y}}.
@@ -159,19 +159,19 @@ Now we prove the first-order condition.
     \[
         h'\pqty{0} = - f\pqty{\vb{x}} + f\pqty{\vb{y}} - \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}}
     \]
-    which is the difference of two sides in \autoref{eq:first-order-condition}.
+    which is the difference of two sides in \eqref{eq:first-order-condition}.
 
     But note that by definition,
     \[
         h'\pqty{0} = \lim_{t \to 0} \frac{h\pqty{t} - h\pqty{0}}{t} = \lim_{t \to 0} \frac{h\pqty{t}}{t}.
     \]
 
-    But note that \autoref{eq:convex-condition} gives that \(h\pqty{t} \geq 0\) for all \(t \in \oointv{0}{1}\), and hence \(h'\pqty{0} \geq 0\), giving \autoref{eq:first-order-condition}.
+    But note that \eqref{eq:convex-condition} gives that \(h\pqty{t} \geq 0\) for all \(t \in \oointv{0}{1}\), and hence \(h'\pqty{0} \geq 0\), giving \eqref{eq:first-order-condition}.
  
 \end{proof}
 
-\begin{proof}[\proofname\ that \autoref{eq:first-order-condition} implies \autoref{eq:convex-condition}]
-    In this direction, note that \autoref{eq:first-order-condition} implies that
+\begin{proof}[\proofname\ that \eqref{eq:first-order-condition} implies \eqref{eq:convex-condition}]
+    In this direction, note that \eqref{eq:first-order-condition} implies that
     \begin{align*}
         f\pqty{\vb{x}} &\geq f\pqty{\vb{z}} + \pqty{\vb{x} - \vb{z}} \vdot \grad f\pqty{\vb{z}} \\
         f\pqty{\vb{y}} &\geq f\pqty{\vb{z}} + \pqty{\vb{y} - \vb{z}} \vdot \grad f\pqty{\vb{z}}
@@ -183,11 +183,11 @@ Now we prove the first-order condition.
         \pqty{1 - t} f\pqty{\vb{x}} + t f \pqty{\vb{y}} \geq f\pqty{z} + \bqty{\pqty{1 - t} \vb{x} + t \vb{y} - \vb{z}} \vdot \grad f\pqty{\vb{z}}.
     \]
 
-    We now choose \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\), which implies \autoref{eq:convex-condition}.
+    We now choose \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\), which implies \eqref{eq:convex-condition}.
 \end{proof}
 
 \begin{proposition}[Alternative First Order Condition]
-    An alternative way to write \autoref{eq:first-order-condition} is that
+    An alternative way to write \eqref{eq:first-order-condition} is that
     \begin{equation}
         \pqty{\vb{y} - \vb{x}} \vdot \pqty{\grad f\pqty{\vb{y}} - \grad f\pqty{\vb{x}}} \geq 0
         \label{eq:first-order-condition-alternative}
@@ -195,19 +195,19 @@ Now we prove the first-order condition.
     for all \(\vb{x}, \vb{y} \in \dom\pqty{f}\).
 \end{proposition}
 
-In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} states that \(\pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}} \geq 0\), which implies \(f'\pqty{y} \geq f'\pqty{x}\) if \(y \geq x\), i.e., \(f'\) is monotonically increasing.
+In particular, for \(n = 1\), \eqref{eq:first-order-condition-alternative} states that \(\pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}} \geq 0\), which implies \(f'\pqty{y} \geq f'\pqty{x}\) if \(y \geq x\), i.e., \(f'\) is monotonically increasing.
 
-\begin{proof}[\proofname\ that \autoref{eq:first-order-condition} implies \autoref{eq:first-order-condition-alternative}]
-    From \autoref{eq:first-order-condition}, we have
+\begin{proof}[\proofname\ that \eqref{eq:first-order-condition} implies \eqref{eq:first-order-condition-alternative}]
+    From \eqref{eq:first-order-condition}, we have
     \begin{align*}
         f\pqty{\vb{y}} &\geq f\pqty{\vb{x}} + \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}}, \\
         f\pqty{\vb{x}} &\geq f\pqty{\vb{y}} + \pqty{\vb{x} - \vb{y}} \vdot \grad f\pqty{\vb{y}}.
     \end{align*}
 
-    Adding these give \autoref{eq:first-order-condition-alternative}.
+    Adding these give \eqref{eq:first-order-condition-alternative}.
 \end{proof}
 
-\begin{proof}[\proofname\ that \autoref{eq:first-order-condition-alternative} implies \autoref{eq:first-order-condition}]
+\begin{proof}[\proofname\ that \eqref{eq:first-order-condition-alternative} implies \eqref{eq:first-order-condition}]
     We let \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\).
 
     Then we have
@@ -222,20 +222,20 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
         f\pqty{\vb{y}} - f\pqty{\vb{x}} - \pqty{\vb{y} - \vb{x}} \vdot \grad f\pqty{\vb{x}} = \int_{0}^{1} \dd{t} \Bqty{\pqty{\vb{y} - \vb{x}} \vdot \bqty{\grad f\pqty{\vb{z}} - \grad f \pqty{\vb{x}}}}.
     \]
 
-    Replace \(\vb{y}\) with \(\vb{z}\) in \autoref{eq:first-order-condition-alternative} gives that \(t \Bqty{\cdots} \geq 0\) (by using that \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\)), and hence \(\Bqty{\cdots} \geq 0\).
+    Replace \(\vb{y}\) with \(\vb{z}\) in \eqref{eq:first-order-condition-alternative} gives that \(t \Bqty{\cdots} \geq 0\) (by using that \(\vb{z} = \pqty{1 - t} \vb{x} + t \vb{y}\)), and hence \(\Bqty{\cdots} \geq 0\).
 
-    Hence, the integral is non-negative, and \autoref{eq:first-order-condition} holds.
+    Hence, the integral is non-negative, and \eqref{eq:first-order-condition} holds.
 \end{proof}
 
 \subsection{Second Order Condition}
 
 \begin{theorem}[Second Order Condition]
     \label{thm:second-order-condition}%
-    If \(f\) is \(\contClass{2}\), then \autoref{eq:convex-condition} is equivalent to all eigenvalues of the Hessian \(\vb{H} \pqty{\vb{x}}\) is non-negative, for all \(\vb{x} \in \dom\pqty{f}\). In other words, the Hessian is positive semi-definite.
+    If \(f\) is \(\contClass{2}\), then \eqref{eq:convex-condition} is equivalent to all eigenvalues of the Hessian \(\vb{H} \pqty{\vb{x}}\) is non-negative, for all \(\vb{x} \in \dom\pqty{f}\). In other words, the Hessian is positive semi-definite.
 \end{theorem}
 
-\begin{proof}[\proofname\ that \autoref{eq:convex-condition} implies \autoref{thm:second-order-condition}]
-    We start from \autoref{eq:first-order-condition-alternative}. Set \(\vb{Y} = \vb{x} + \vb{h}\) in \autoref{eq:first-order-condition-alternative}, we have
+\begin{proof}[\proofname\ that \eqref{eq:convex-condition} implies \autoref{thm:second-order-condition}]
+    We start from \eqref{eq:first-order-condition-alternative}. Set \(\vb{Y} = \vb{x} + \vb{h}\) in \eqref{eq:first-order-condition-alternative}, we have
     \[
         \vb{h} \vdot \bqty{\grad f\pqty{\vb{x} + \vb{h}} - \grad f\pqty{\vb{x}}} \geq 0.
     \]
@@ -256,7 +256,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
     but the left-hand side is negative for sufficiently small \(h\) (since \(\lambda < 0\)), which is a contradiction.
 \end{proof}
 
-\begin{proof}[\proofname\ that \autoref{thm:second-order-condition} implies \autoref{eq:convex-condition}]
+\begin{proof}[\proofname\ that \autoref{thm:second-order-condition} implies \eqref{eq:convex-condition}]
     We only prove in the case \(n = 1\) in this case, and we have \(H\pqty{x} = f''\pqty{x}\) and hence \(f''\pqty{x} \geq 0\) for all x.
 
     We have
@@ -267,7 +267,7 @@ In particular, for \(n = 1\), \autoref{eq:first-order-condition-alternative} sta
     \[
         0 \leq \pqty{y - x} \pqty{f'\pqty{y} - f'\pqty{x}}
     \]
-    which gives the result for \autoref{eq:first-order-condition-alternative}, hence \autoref{eq:first-order-condition}.
+    which gives the result for \eqref{eq:first-order-condition-alternative}, hence \eqref{eq:first-order-condition}.
 \end{proof}
 
 \begin{example}[Using Second Order Conditions]

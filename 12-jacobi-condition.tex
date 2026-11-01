@@ -14,7 +14,7 @@ since it is a total derivative. Then expanding gives
 \]
 and this holds for any differentiable \(\phi\).
 
-Adding this to \autoref{eq:second-variation-parameter}, we have
+Adding this to \eqref{eq:second-variation-parameter}, we have
 \[
     \var[2]{F\bqty{y_0, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \pqty{\rho \pqty{\xi'}^2 + 2 \phi \xi \xi' + \pqty{\sigma + \phi'} \xi^2} \dd{x}.
 \]
@@ -49,11 +49,11 @@ But \(\xi\pqty{\alpha} = 0\) gives \(C = 0\), so \(\xi = 0\) is trivial. So we h
 \]
 for any non-trivial, allowed \(\xi\).
 
-In other words, we have shown that \(y_0\) is a local minimum, if there exists a solution to \autoref{eq:riccati} on \(\ccintv{\alpha}{\beta}\). Considering a substitution
+In other words, we have shown that \(y_0\) is a local minimum, if there exists a solution to \eqref{eq:riccati} on \(\ccintv{\alpha}{\beta}\). Considering a substitution
 \[
     \phi = - \rho \frac{u'}{u}
 \]
-for non-zero \(u\). Then from \autoref{eq:riccati}, we have
+for non-zero \(u\). Then from \eqref{eq:riccati}, we have
 \[
     - \pqty{\rho \frac{u'}{u}}' + \sigma = \rho \pqty{\frac{u'}{u}}^2.
 \]
@@ -66,11 +66,11 @@ Then
 is the \term{Jacobi accessory equation}.
 
 \begin{theorem}[Jacobi Condition]
-    If there exists a solution to \autoref{eq:jacobi-accessory-eq} with \(u \neq 0\) on \(\ccintv{\alpha}{\beta}\), then \(y_0\) is a local minimum.
+    If there exists a solution to \eqref{eq:jacobi-accessory-eq} with \(u \neq 0\) on \(\ccintv{\alpha}{\beta}\), then \(y_0\) is a local minimum.
 \end{theorem}
 
 \begin{remark}
-    \autoref{eq:jacobi-accessory-eq} can always be solved, but not necessarily with \(u \neq 0\).
+    \eqref{eq:jacobi-accessory-eq} can always be solved, but not necessarily with \(u \neq 0\).
 \end{remark}
 
 \begin{example}[Alternative solution to \autoref{ex:sturm-liouville-application-second-variation} using Jacobi Condition]
@@ -80,7 +80,7 @@ is the \term{Jacobi accessory equation}.
     \]
     with the boundary conditions \(y\pqty{0} = y_0, y\pqty{a} = y_1\).
     
-    Then \autoref{eq:jacobi-accessory-eq} reduces to
+    Then \eqref{eq:jacobi-accessory-eq} reduces to
     \[
         - u'' - u = 0
     \]

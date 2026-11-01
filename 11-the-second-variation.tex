@@ -31,12 +31,12 @@ This gives
 \[
     F\bqty{y + \epsilon \xi} - F\bqty{y} = \epsilon \int_{\alpha}^{\beta} \xi \fdv{F}{y} \dd{x} + \epsilon^2 \var[2]{F\bqty{y, \xi}} + \bigO\pqty{\epsilon^3}
 \]
-where the boundary term vanishes due to our initial conditions in \autoref{eq:boundary-eqn}, and where we denote
+where the boundary term vanishes due to our initial conditions in \eqref{eq:boundary-eqn}, and where we denote
 \[
     \var[2]{F\bqty{y, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \pqty{\xi^2 \pdv[2]{f}{y} + 2 \xi \xi' \pdv{f}{y}{y'} + \xi'^2 \pdv[2]{f}{{y'}}} \dd{x}.
 \]
 
-Writing \(2 \xi \xi' = \pqty{\xi^2}'\), using integration by parts (and that the boundary terms vanishes by \autoref{eq:boundary-eqn}), we have
+Writing \(2 \xi \xi' = \pqty{\xi^2}'\), using integration by parts (and that the boundary terms vanishes by \eqref{eq:boundary-eqn}), we have
 \begin{equation}
     \label{eq:second-variation}%
     \begin{aligned}
@@ -46,7 +46,7 @@ Writing \(2 \xi \xi' = \pqty{\xi^2}'\), using integration by parts (and that the
 \end{equation}
 
 \begin{definition}[Second Variation]
-    We define the \term{second variation} by \autoref{eq:second-variation}, as
+    We define the \term{second variation} by \eqref{eq:second-variation}, as
     \[
         \var[2]{F\bqty{y, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \bqty{\xi^2 \pqty{\pdv[2]{f}{y} - \dv{x} \pdv{f}{y}{y'}} + \pqty{\xi'}^2 \pdv[2]{f}{{y'}}} \dd{x}
     \]
@@ -62,7 +62,7 @@ Recall that if \(\vb{H} \pqty{\vb{x}}\) is positive-definite for \emph{all} \(\v
     for \emph{all} \(y \in \contClassSymb\) and all ``allowed'' \(\xi\pqty{x}\) (i.e. \(y + \xi \in \contClassSymb\), in other words, \(\xi\) is \(\contClass{2}\) and \(\xi\pqty{\alpha} = \xi\pqty{\beta} = 0\)), then \(y = y_0\) is a global minimum of \(F\) in \(\contClassSymb\), if \(y_0 \in \contClassSymb\) satisfies the Euler--Lagrange equation.
 \end{theorem}
 
-Notice that the class of functions \(\contClassSymb\), as defined in \autoref{eq:boundary-eqn}, is indeed convex by the definition of a convex set.
+Notice that the class of functions \(\contClassSymb\), as defined in \eqref{eq:boundary-eqn}, is indeed convex by the definition of a convex set.
 
 \begin{example}[Geodesics in the Euclidean Plane]
     Recall we have the length functional
@@ -70,7 +70,7 @@ Notice that the class of functions \(\contClassSymb\), as defined in \autoref{eq
         F\bqty{y} = \int_{\alpha}^{\beta} \sqrt{1 + \pqty{y'}^2} \dd{x}.
     \]
 
-    Using \autoref{eq:second-variation}, since we have
+    Using \eqref{eq:second-variation}, since we have
     \[
         \pdv[2]{f}{y} = \pdv{f}{y}{y'} = 0,
     \]
@@ -124,7 +124,7 @@ But usually our functionals do not have this \emph{global} condition. Now, suppo
 \end{theorem}
 
 \begin{proof}[\proofname\ (Outline)]
-    If this quantity were negative at some point \(x = x_0 \in \ccintv{\alpha}{\beta}\), then this allows us to choose some allowed \(\xi\), such that \(\xi\) is only non-zero near \(x_0\) and \(\xi'\) is large while \(\xi\) is small, and this will make \autoref{eq:second-variation} negative, hence not a local minimum.
+    If this quantity were negative at some point \(x = x_0 \in \ccintv{\alpha}{\beta}\), then this allows us to choose some allowed \(\xi\), such that \(\xi\) is only non-zero near \(x_0\) and \(\xi'\) is large while \(\xi\) is small, and this will make \eqref{eq:second-variation} negative, hence not a local minimum.
 \end{proof}
 
 \begin{example}[Application of Legendre Condition]
@@ -137,7 +137,7 @@ But usually our functionals do not have this \emph{global} condition. Now, suppo
     \[
         \pdv[2]{f}{{y'}} = x \pqty{1 + \pqty{y'}^2}^{-\flatfrac{3}{2}}
     \]
-    and hence this violates \autoref{eq:legendre-condition} for \(x < 0\). Therefore, any solution to the Euler--Lagrange equation cannot be a local minimum.
+    and hence this violates \eqref{eq:legendre-condition} for \(x < 0\). Therefore, any solution to the Euler--Lagrange equation cannot be a local minimum.
 \end{example}
 
 \begin{definition}[Simplification of Second Variation Notation]
@@ -161,7 +161,7 @@ Then Legendre Condition stated that \(\rho \geq 0\) is necessary for \(y_0\) to 
 \begin{proof}
     Clearly, \(\var[2]{F} \geq 0\) for all \(\xi\).
     
-    If \(\var[2]{F} = 0\) for some \(\xi\), then \(\xi'\) has to vanish on the interval \(\oointv{\alpha}{\beta}\). This means \(\xi\) is a constant. With the boundary conditions in \autoref{eq:boundary-eqn}, \(\xi\) must be identically zero.
+    If \(\var[2]{F} = 0\) for some \(\xi\), then \(\xi'\) has to vanish on the interval \(\oointv{\alpha}{\beta}\). This means \(\xi\) is a constant. With the boundary conditions in \eqref{eq:boundary-eqn}, \(\xi\) must be identically zero.
 
     So if \(\xi\) is non-trivial, then \(\var[2]{F} > 0\) strictly.
 \end{proof}
@@ -214,7 +214,7 @@ Then Legendre Condition stated that \(\rho \geq 0\) is necessary for \(y_0\) to 
 
 \subsection{Eigenvalue Problem of Second Variation}
 
-In general, we integrate by parts using \autoref{eq:second-variation-parameter} (c.f. \autoref{eq:sturm-liouville}) to get
+In general, we integrate by parts using \eqref{eq:second-variation-parameter} (c.f. \eqref{eq:sturm-liouville}) to get
 \begin{equation}
     \label{eq:second-variation-sturm}%
     \var[2]{F\bqty{y_0, \xi}} = \frac{1}{2} \int_{\alpha}^{\beta} \xi \mathcal{L} \xi \dd{x} + \frac{1}{2} \bqty{\rho \xi \xi'}_{\alpha}^{\beta} = \frac{1}{2} \int_{\alpha}^{\beta} \xi \mathcal{L} \xi \dd{x},
@@ -224,7 +224,7 @@ where we define
     \mathcal{L} = - \dv{x}\pqty{\rho \dv{x}} + \sigma.
 \]
 
-Consider the Sturm--Liouville problem, i.e. the eigenvalue problem (c.f. \autoref{eq:eigenvalue-problem})
+Consider the Sturm--Liouville problem, i.e. the eigenvalue problem (c.f. \eqref{eq:eigenvalue-problem})
 \begin{equation}
     \label{eq:eigenvalue-problem-variation}%
     \mathcal{L} \eta = \lambda w \eta
@@ -232,11 +232,11 @@ Consider the Sturm--Liouville problem, i.e. the eigenvalue problem (c.f. \autore
 with \(\eta\pqty{\alpha} = \eta\pqty{\beta} = 0\), where \(w > 0\) on \(\oointv{\alpha}{\beta}\).
 
 \begin{proposition}[Existence of Negative Eigenvalue implies Not Local Minimum]
-    If \autoref{eq:eigenvalue-problem-variation} admits a negative eigenvalue \(\lambda\), then \(y_0\) is not a local minimum.
+    If \eqref{eq:eigenvalue-problem-variation} admits a negative eigenvalue \(\lambda\), then \(y_0\) is not a local minimum.
 \end{proposition}
 
 \begin{proof}
-    Let \(\eta\) be an eigenfunction, and set \(\xi = \eta\) in \autoref{eq:second-variation-sturm}, we have
+    Let \(\eta\) be an eigenfunction, and set \(\xi = \eta\) in \eqref{eq:second-variation-sturm}, we have
     \[
         \var[2]{F\bqty{y_0, \eta}} = \frac{1}{2} \int_{\alpha}^{\beta} \eta \mathcal{L} \eta \dd{x} = \frac{\lambda}{2} \int_{\alpha}^{\beta} w \eta^2 \dd{x} < 0
     \]
@@ -246,11 +246,11 @@ with \(\eta\pqty{\alpha} = \eta\pqty{\beta} = 0\), where \(w > 0\) on \(\oointv{
 The converse is true as well.
 
 \begin{proposition}[All Eigenvalues Positive implies Local Minimum]
-    If all eigenvalues in \autoref{eq:eigenvalue-problem-variation} are positive, then \(y_0\) is a local minimum.
+    If all eigenvalues in \eqref{eq:eigenvalue-problem-variation} are positive, then \(y_0\) is a local minimum.
 \end{proposition}
 
 \begin{proof}
-    Let \(\lambda_n\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) be the \(n\)th eigenfunction to the problem \autoref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\Bqty{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
+    Let \(\lambda_n\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) be the \(n\)th eigenfunction to the problem \eqref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\Bqty{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
     \[
         \eta\pqty{x} = \sum_{n} a_n y_n \pqty{x}
     \]
@@ -294,7 +294,7 @@ The converse is true as well.
     \]
     and we have \(\rho = 1\), \(\sigma = -1\).
 
-    This means the associated Sturm--Liouville problem, using \autoref{eq:second-variation-sturm}, we have
+    This means the associated Sturm--Liouville problem, using \eqref{eq:second-variation-sturm}, we have
     \[
         - \dv[2]{\eta}{x} - \eta = \lambda w \eta
     \]
