@@ -250,11 +250,11 @@ The converse is true as well.
 \end{proposition}
 
 \begin{proof}
-    Let \(\lambda_n\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) be the \(n\)th eigenfunction to the problem \eqref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\Bqty{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
+    Let \(\lambda_n\) be the \(n\)th eigenvalue, and \(y_n\pqty{x}\) be the \(n\)th eigenfunction to the problem \eqref{eq:eigenvalue-problem-variation}. From \textit{Methods}, we know that the set of functions \(\set{y_n}\) form a complete set for the space of allowed \(\eta\), i.e., we may express any \(\eta\) as a linear combination of such \(y_n\)s, with constant coefficients. Then
     \[
         \eta\pqty{x} = \sum_{n} a_n y_n \pqty{x}
     \]
-    for some \(\Bqty{a_n}\), and we can choose the set of eigenfunctions \(\Bqty{y_n}\) to be orthogonal, with respect to the inner product
+    for some \(\set{a_n}\), and we can choose the set of eigenfunctions \(\set{y_n}\) to be orthogonal, with respect to the inner product
     \[
         \int_{\alpha}^{\beta} w y_m y_n \dd{x} = 0
     \]
@@ -266,7 +266,7 @@ The converse is true as well.
         &= \frac{1}{2} \sum_{m} \lambda_m a_m^2 \int_{\alpha}^{\beta} w y_m^2 \dd{x} \\
         &\geq 0,
     \end{align*}
-    vanishing if and only if \(\Bqty{a_m}\) is trivial, i.e., \(\eta\) is zero.
+    vanishing if and only if \(\set{a_m}\) is trivial, i.e., \(\eta\) is zero.
 
     So \(\var[2]{F} > 0\) for \(\eta \neq 0\).
 \end{proof}
